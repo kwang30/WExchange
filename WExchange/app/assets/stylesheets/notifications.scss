@@ -1,0 +1,44 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notification {
+  background-color: white;
+  box-shadow: 5px 8px 8px #888888;
+}
+
+#profile-picture {
+  height: 80px;
+  width: 80px;
+  padding: 5px;
+  display: block;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+#notification-header-text {
+  display: block;
+  margin-top: 0px;
+}
+
+#notification-header-name {
+  font-size: 30px;
+}
+
+#notification-header-time-ago {
+  font-size:15px;
+  color: gray;
+}
+
+#notification-body {
+  padding: 10px 0;
+}
+
+#notification-footer-text {
+  text-align: right;
+  color: gray;
+  &:hover {
+    color: black;
+    cursor: pointer;
+  }
+}
