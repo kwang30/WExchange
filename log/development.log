@@ -9641,3 +9641,122 @@ Processing by UsersController#profile as HTML
 Completed 200 OK in 47ms (Views: 44.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-07 00:34:04 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+Completed 200 OK in 760ms (Views: 536.8ms)
+
+
+Started GET "/notifications" for 127.0.0.1 at 2017-10-07 00:34:06 -0400
+Processing by NotificationsController#notifications as HTML
+  Rendering notifications/notifications.html.erb within layouts/application
+  Rendered layouts/_notification.html.erb (1.3ms)
+  Rendered notifications/notifications.html.erb within layouts/application (3.5ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+Completed 200 OK in 47ms (Views: 45.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-07 00:34:25 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.6ms)
+Completed 200 OK in 33ms (Views: 31.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-07 00:34:26 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 31ms (Views: 28.8ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-10-07 00:34:29 -0400
+Processing by UsersController#profile as HTML
+  Rendering users/profile.html.erb within layouts/application
+  Rendered layouts/_portfolio.html.erb (1.6ms)
+  Rendered users/profile.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 55ms (Views: 52.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-07 00:35:17 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 33ms (Views: 31.2ms)
+
+
+Started GET "/notifications" for 127.0.0.1 at 2017-10-07 00:35:18 -0400
+Processing by NotificationsController#notifications as HTML
+  Rendering notifications/notifications.html.erb within layouts/application
+  Rendered layouts/_notification.html.erb (2.1ms)
+  Rendered notifications/notifications.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 48ms (Views: 45.6ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-10-07 00:35:21 -0400
+Processing by UsersController#profile as HTML
+  Rendering users/profile.html.erb within layouts/application
+  Rendered layouts/_portfolio.html.erb (2.6ms)
+  Rendered users/profile.html.erb within layouts/application (7.6ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+Completed 200 OK in 44ms (Views: 40.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 13:06:12 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+Completed 200 OK in 1506ms (Views: 950.0ms)
+
+
+Started GET "/notifications" for 127.0.0.1 at 2017-10-08 13:06:17 -0400
+Processing by NotificationsController#notifications as HTML
+  Rendering notifications/notifications.html.erb within layouts/application
+  Rendered layouts/_notification.html.erb (1.9ms)
+  Rendered notifications/notifications.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 93ms (Views: 87.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 13:06:22 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 46ms (Views: 43.0ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-10-08 13:06:23 -0400
+Processing by UsersController#profile as HTML
+  Rendering users/profile.html.erb within layouts/application
+  Rendered layouts/_portfolio.html.erb (11.6ms)
+  Rendered users/profile.html.erb within layouts/application (20.8ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 77ms (Views: 74.7ms)
+
+
+Started GET "/profile/request" for 127.0.0.1 at 2017-10-08 13:06:30 -0400
+Processing by RequestsController#requests as HTML
+  Rendering requests/requests.html.erb within layouts/application
+  Rendered layouts/_request.html.erb (0.3ms)
+  Rendered requests/requests.html.erb within layouts/application (2.2ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 55ms (Views: 50.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-08 13:06:42 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (0.7ms)
+Completed 200 OK in 33ms (Views: 31.5ms)
+
+
