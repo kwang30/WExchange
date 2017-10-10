@@ -9760,3 +9760,77 @@ Processing by HomeController#home as HTML
 Completed 200 OK in 33ms (Views: 31.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-10 16:41:03 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 3896ms (Views: 3690.4ms)
+
+
+Started GET "/notifications" for 127.0.0.1 at 2017-10-10 16:41:08 -0400
+Processing by NotificationsController#notifications as HTML
+  Rendering notifications/notifications.html.erb within layouts/application
+  Rendered layouts/_message.html.erb (0.5ms)
+  Rendered layouts/_message.html.erb (0.1ms)
+  Rendered layouts/_notification.html.erb (6.7ms)
+  Rendered notifications/notifications.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+Completed 200 OK in 73ms (Views: 68.2ms)
+
+
+Started GET "/notifications" for 127.0.0.1 at 2017-10-10 16:41:09 -0400
+Processing by NotificationsController#notifications as HTML
+  Rendering notifications/notifications.html.erb within layouts/application
+  Rendered layouts/_message.html.erb (0.5ms)
+  Rendered layouts/_message.html.erb (0.1ms)
+  Rendered layouts/_notification.html.erb (6.0ms)
+  Rendered notifications/notifications.html.erb within layouts/application (9.9ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+Completed 200 OK in 69ms (Views: 66.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-10 16:41:19 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+Completed 200 OK in 44ms (Views: 42.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-10 16:41:21 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 31ms (Views: 29.8ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2017-10-10 16:41:22 -0400
+Processing by UsersController#profile as HTML
+  Rendering users/profile.html.erb within layouts/application
+  Rendered layouts/_portfolio.html.erb (1.8ms)
+  Rendered users/profile.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+Completed 200 OK in 46ms (Views: 43.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-10 17:49:44 -0400
+Processing by HomeController#home as HTML
+  Rendering home/home.html.erb within layouts/application
+  Rendered home/home.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+Completed 200 OK in 60ms (Views: 58.3ms)
+
+
+Started GET "/notifications" for 127.0.0.1 at 2017-10-10 17:49:46 -0400
+Processing by NotificationsController#notifications as HTML
+  Rendering notifications/notifications.html.erb within layouts/application
+  Rendered layouts/_message.html.erb (0.4ms)
+  Rendered layouts/_message.html.erb (0.0ms)
+  Rendered layouts/_notification.html.erb (7.9ms)
+  Rendered notifications/notifications.html.erb within layouts/application (10.2ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+Completed 200 OK in 60ms (Views: 56.2ms)
+
+

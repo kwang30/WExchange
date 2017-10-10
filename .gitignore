@@ -42,3 +42,15 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+
+
+
+
+
+
+
+# .gitignore
+
+# Ignore environment variables
+.env

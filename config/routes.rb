@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/notifications', to: 'notifications#notifications'
   get '/profile', to: 'users#profile'
   get '/profile/request', to: 'requests#requests'
-
+  resources :charges
 end
