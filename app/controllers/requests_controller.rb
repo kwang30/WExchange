@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   def requests
+    @user = User.new
   end
 
   def create
