@@ -4,9 +4,11 @@
     <ul id="dropdown1" class="dropdown-content">
       <li><%= link_to "My Profile", profile_path, target: "_self" %></li>
       <li class="divider"></li>
-      <li><a href="#!">Sign Up</a></li>
+      <li><%= link_to "Sign Up", signup_path, target: "_self" %></li>
       <li class="divider"></li>
-      <li><a href="#!">Log In</a></li>
+      <li><%= link_to "Log In", login_path, target: "_self" %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Settings", settings_path, target: "_self" %></li>
     </ul>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to "Home", root_path, target: "_self", class: "active" %></li>
