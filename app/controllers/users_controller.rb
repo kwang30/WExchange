@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome!"
       redirect_to @user
     else
-      puts @user.errors.full_messages
       render 'new'
     end
   end
