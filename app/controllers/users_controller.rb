@@ -20,6 +20,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome!"
       redirect_to @user
     else
+      puts @user.errors.full_messages
       render 'new'
     end
   end
@@ -36,8 +37,8 @@ class UsersController < ApplicationController
  private
 
    def user_params
-     params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation)
+     params.require(:user).permit(:username, :first_name, :last_name, :email,
+                                  :password, :password_confirmation)
    end
 
 end
