@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+has_secure_password
     has_one :profile
     has_many :transactions
     has_many :portfolios
@@ -6,7 +7,7 @@ class User < ApplicationRecord
 
     before_save { self.email = email.downcase }
     before_save { self.username = email.username }
-    has_secure_password
+
 
     validates :name,  presence: true, length: {maximum: 50 },
     uniqueness: { case_sensitive: false }
@@ -15,4 +16,9 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
     validates :password, presence: true, length: { minimum: 6 }
 
+    def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 end
