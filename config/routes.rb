@@ -1,18 +1,21 @@
 Rails.application.routes.draw do
-
-  get 'signup/main'
-
-  get 'login/main'
-
-  get '/signup', to: 'signup#main'
-
+  root 'home#home'
   get '/', to: 'home#home'
 
-  root 'home#home'
+
+
+  get  '/signup',  to: 'users#new'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
+
+
+
 
   get '/notifications', to: 'notifications#notifications'
 
-  get '/profile', to: 'users#profile'
+  get '/profile', to: 'users#show'
   get '/profile/edit', to: 'settings#edit_user'
   get '/profile/request', to: 'requests#requests'
 
