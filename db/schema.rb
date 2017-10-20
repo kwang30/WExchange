@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020051208) do
+ActiveRecord::Schema.define(version: 20171020184217) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "message_id"
@@ -61,8 +61,6 @@ ActiveRecord::Schema.define(version: 20171020051208) do
     t.integer "user_id"
     t.string "username"
     t.string "email"
-    t.string "password"
-    t.string "password_comfirm"
     t.string "first_name"
     t.string "last_name"
     t.string "display_name"
@@ -71,6 +69,7 @@ ActiveRecord::Schema.define(version: 20171020051208) do
     t.string "profile_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
 end

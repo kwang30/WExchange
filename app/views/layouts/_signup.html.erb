@@ -1,47 +1,25 @@
 <div class="container signup-container row">
-
     <div class="col-md-6 col-md-offset-3">
-
       <%= form_for(@user) do |f| %>
-      <div class="input-field custom-input-field col s3 offset-s3" type="text" class="validate">
+
         <%= f.label :first_name %>
         <%= f.text_field :first_name, class: 'form-control' %>
 
-      </div>
-
-      <div class="input-field custom-input-field col s3" type="text" class="validate">
         <%= f.label :last_name %>
         <%= f.text_field :last_name, class: 'form-control' %>
-      </div>
 
-      <div class="input-field custom-input-field col s3 offset-s3" type="text" class="validate">
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>
-      </div>
 
-      <div class="input-field custom-input-field col s3" type="text" class="validate">
         <%= f.label :username %>
         <%= f.text_field :username, class: 'form-control' %>
-      </div>
 
-      <div class="input-field custom-input-field col s4 offset-s4" type="text" class="validate">
         <%= f.label :password %>
-        <%= f.text_field :password, class: 'form-control' %>
-      </div>
+        <%= f.password_field :password, class: 'form-control' %>
 
-      <div class="input-field custom-input-field col s4 offset-s4" type="text" class="validate">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-        <%= f.label :password_comfirm %>
-        <%= f.text_field :password_comfirm, class: 'form-control' %>
-
-      </div>
-
-      <div class="col s12 center">
         <%= f.submit "Sign Up", target: "_self", class: "active waves-effect waves-light btn"  %>
-      </div>
-
-         <% end %>
-
-
-    </div>
+      <% end %>
 </div>
