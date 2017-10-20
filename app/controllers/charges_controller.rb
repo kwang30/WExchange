@@ -1,35 +1,29 @@
 class ChargesController < ApplicationController
-  before_action :amount_to_be_charged
-  before_action :set_description
-  # before_action :authenticate_user!
+	def new
+		# @room = Room.find(params[:r])
+	end
 
-  def new
-  end
+	def create
+		@booking = Booking.find(params[:id])
+	  # Amount in cents
+	  @amount = (@booking.room.price * 100).to_i
 
-  def create
-    customer = StripeTool.create_customer(email: params[:stripeEmail],
-                                          stripe_token: params[:stripeToken])
+	  customer = Stripe::Customer.create(
+	    :email => params[:stripeEmail],
+	    :source  => params[:stripeToken]
+	  )
 
-    charge = StripeTool.create_charge(customer_id: customer.id,
-                                      amount: @amount,
-                                      description: @description)
-    redirect_to thanks_path
+	  charge = Stripe::Charge.create(
+	    :customer    => customer.id,
+	    :amount      => @amount,
+	    :description => "Booking id: #{@booking.id}",
+	    :currency    => 'aud'
+	  )
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to new_charge_path
-  end
+		@transaction = Transaction.create(amount: @amount, user_id: current_user.id, booking_id: @booking.id)
 
-  def thanks
-  end
-
-
-  private
-    def set_description
-      @description = "Some amazing product"
-    end
-
-    def amount_to_be_charged
-      @amount = 10000
-    end
+	rescue Stripe::CardError => e
+	  flash[:error] = e.message
+	  redirect_to guestdashboard_path
+	end
 end

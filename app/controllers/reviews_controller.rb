@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :require_logged_in, only: [:create, :update]
 
   def index
-    if review_params["room_id"]
+    if review_params[:id]
       @reviews = Review.where(room_id: review_params["room_id"]).order(created_at: :desc)
     else
       @reviews = Review.all
@@ -15,19 +15,12 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
 
-    if @review.save
-      render :show
-    else
-      render json: @review.errors.messages, status: 422
-    end
   end
 
   def update
     # debugger
     @review = current_user.reviews.find(params[:id])
-
     if @review.update(review_params)
       render :show
     else

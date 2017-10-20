@@ -39,12 +39,7 @@ ActiveRecord::Schema.define(version: 20171020051208) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "transactions", force: :cascade do |t|
+  create_table "requests", force: :cascade do |t|
     t.integer "transaction_id"
     t.integer "creator_id"
     t.integer "recipient_id"
@@ -53,6 +48,11 @@ ActiveRecord::Schema.define(version: 20171020051208) do
     t.integer "amount"
     t.string "status"
     t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
