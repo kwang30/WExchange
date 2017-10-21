@@ -1,2 +1,14 @@
+
 <%= render 'layouts/navigation' %>
-<%= render 'request' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <%= form_for (@request) do |f| %>
+
+        <%= f.label :amount %>
+        <%= f.text_field :amount, class: 'form-control' %>
+        <%= f.button  :submit , name: 'id', value: params[:id]%>
+      <% end %>
+    </div>
+  </div>
+</div>

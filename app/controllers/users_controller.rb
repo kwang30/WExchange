@@ -4,14 +4,23 @@ class UsersController < ApplicationController
   end
 
   def show
-      @user = User.find(params[:id])
+    if params[:id].nil?
+      @user=current_user
+    else
+      @user=User.find(params[:id])
+    end
+    @name=@user.first_name+" "+@user.last_name
+  end
+
+
+  def profile
   end
 
   def index
+    @users=User.all
   end
 
-  def show
-  end
+
 
   def create
     @user = User.new(user_params)
@@ -24,20 +33,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def drop
-    if params[:id]
-      Enrollment.destroy(params[:id])
-      flash[:success] = "Sucessfully Dropped!"
-      redirect_to current_user
-    end
-  end
-
 
  private
-
    def user_params
      params.require(:user).permit(:username, :first_name, :last_name, :email,
                                   :password, :password_confirmation)
    end
-
 end

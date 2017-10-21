@@ -6,10 +6,16 @@ Rails.application.routes.draw do
   post    '/login',                   to: 'sessions#create'
   delete  '/logout',                  to: 'sessions#destroy'
   get     '/notifications',           to: 'notifications#notifications'
-  get     '/profile',                 to: 'users#show'
   get     '/profile/edit',            to: 'settings#edit_user'
+
+  get     '/profile',                 to: 'users#show'
   get     '/profile/request',         to: 'requests#new'
-  
+  post     '/profile/request',         to: 'requests#create'
+  get     '/profile/comfirm',         to: 'requests#comfirm'
+  get     '/requests',         to: 'requests#index'
+
+
+
   get     '/discover',                to: 'discover#main'
   get     '/settings',                to: 'settings#index'
   get     '/settings/profile',        to: 'settings#edit_user'
@@ -19,5 +25,5 @@ Rails.application.routes.draw do
 
   resources :charges
   resources :users
-  resources :requestss
+  resources :requests
 end

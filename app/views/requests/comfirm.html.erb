@@ -1,0 +1,33 @@
+<%= render 'layouts/navigation' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="wrapper" id="booking-recap-wrapper">
+        <div class="booking-recap-container">
+          <div class="text-center">
+            <h1>Congrats!</h1>
+
+            <p>
+              Thank You For Requesting Work To Be Done By:
+              <strong> <%= @user.first_name %>
+              <%= @user.last_name %></strong>
+            <%= @user.first_name %> will get back to you soon about the request.
+            </p>
+
+            <h1>Request Details!</h1>
+            <h3>You're paying: <%= @request.amount %> </h3>
+            <div class="btn-show-more">
+              <%= link_to "Show me other timepieces", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="col-sm-6">
+      </div>
+    </div>
+  </div>
+</div>

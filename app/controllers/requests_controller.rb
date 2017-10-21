@@ -3,69 +3,38 @@ class RequestsController < ApplicationController
     @request = Request.new
   end
 
+  def index
+    @requests=Request.all
+  end
+
   def create
-    @request.creator_id  = current_user.id
-    @request.recipient_id=
-    @request.creation_date=
-    @request.completion_date=
-    @request.amount=
-    @request.status=
-    @request.approval_status=params[:submitted]
+    @request=Request.new(request_params)
+    @request.creator_id=current_user.id
+    @request.recipient_id=params[:id]
+    @request.status="Submitted"
     if @request.save
-      render :thanks
-    else
-      flash[:notices] = ["You are missing some paramters"]
+      flash[:success] = "Thanks! I'll be in touch soon!"
+      redirect_to :action => 'comfirm', :id => params[:id]
     end
   end
 
 
 
+    def comfirm
+      @user=User.where("id = ?", params[:id].to_i).last
+      @request=Request.where("creator_id = ?", current_user.id).last
+    end
+
+
+
   def show
     @request = Request.find_by :transaction_id
+    @user=User.find_by
   end
 
 
-  def thanks
-  end
-
-
-  def edit
-  end
-
-
-  def destroy
-  end
-
-  def update
-  end
-
-
-  def cancel
-
-  end
-
-  def decline
-
-  end
-
-
-
-  def approve
-    @request = Booking.find_by_id(params[:id])
-      if @booking.space.owner_id == current_user.id
-          @booking.update_approval_status("approve")
-        else
-        redirect_to(:back)
-      end
-  end
-
-
-
-   private
-
-     def user_params
-       params.require(:user).permit(:name, :email, :password,
-                                    :password_confirmation)
+  private
+     def request_params
+       params.require(:request).permit(:amount)
      end
-
   end
