@@ -5,6 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'figaro'
+gem 'toastr-rails'
+
+
 gem 'simple_form'
 gem 'paperclip'
 gem 'stripe'
@@ -36,6 +43,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do # <<<< :development, not devlopment
+  gem 'better_errors'
   gem 'sqlite3'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -43,6 +51,10 @@ group :development, :test do # <<<< :development, not devlopment
   gem 'selenium-webdriver'
 end
 
+
+group :assets do
+  gem 'jquery-ui-rails'
+end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

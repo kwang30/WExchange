@@ -10,14 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+//= require jquery
+//= require jquery-ui
+//= require jquery_ujs
 //= require turbolinks
+//= require toastr
 //= require_tree .
-$('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-
-$(document).ready(function) {
-  $(".dropdown-button").dropdown();
-}

@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171020184217) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "transaction_id"
+    t.boolean "negotiate"
     t.integer "creator_id"
     t.integer "recipient_id"
     t.string "creation_date"
@@ -61,8 +62,6 @@ ActiveRecord::Schema.define(version: 20171020184217) do
     t.integer "user_id"
     t.string "username"
     t.string "email"
-    t.string "password"
-    t.string "password_comfirm"
     t.string "first_name"
     t.string "last_name"
     t.string "display_name"

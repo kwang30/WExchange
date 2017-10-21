@@ -11,9 +11,14 @@ Rails.application.routes.draw do
   get     '/profile',                 to: 'users#show'
   get     '/profile/request',         to: 'requests#new'
   post     '/profile/request',         to: 'requests#create'
-  get     '/profile/comfirm',         to: 'requests#comfirm'
-  get     '/requests',         to: 'requests#index'
 
+
+
+  get     '/requests',                to: 'requests#index'
+  post     '/requests',                to: 'requests#decline'
+  post     '/requests',                to: 'requests#comfrimed'
+  post     '/requests',                to: 'requests#edit'
+  post      '/decline',                        to: 'requests#decline'
 
 
   get     '/discover',                to: 'discover#main'
