@@ -8,12 +8,13 @@
   <div class="left side">
     <div class="col s5">
         <div class="profile-img">
-          <%= image_tag "dummy.png", :alt => "Profile Picture", id:"pro-picture", class:"col s3" %>
+        <%= image_tag @user.image.url(:medium)%>
         </div>
         <%= render 'user_rating' %>
         <%if current_user.id!=params[:id].to_i%>
             <%= render 'request_message' %>
         <%end%>
+
     </div>
   </div>
   <div class="right side">

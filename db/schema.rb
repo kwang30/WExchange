@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020184217) do
+ActiveRecord::Schema.define(version: 20171022031844) do
+
+  create_table "media", force: :cascade do |t|
+    t.integer "portfolio_id"
+    t.string "media_url"
+    t.string "media_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.integer "message_id"
@@ -18,14 +26,6 @@ ActiveRecord::Schema.define(version: 20171020184217) do
     t.integer "recipient_id"
     t.integer "time"
     t.string "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "portfolio_media", force: :cascade do |t|
-    t.integer "portfolio_id"
-    t.string "media_url"
-    t.string "media_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,6 +71,10 @@ ActiveRecord::Schema.define(version: 20171020184217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
 end

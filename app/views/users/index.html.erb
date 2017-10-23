@@ -1,0 +1,9 @@
+<% @users.each do |u|%>
+<%= puts u.inspect %>
+
+<%=  u.id %>
+<%=  u.first_name %>
+<%if !u.image.nil? %>
+<%= image_tag u.image.url(:thumb)%>
+<%end%>
+<%end%>

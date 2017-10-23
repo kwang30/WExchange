@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get     '/profile/request',         to: 'requests#new'
   post     '/profile/request',         to: 'requests#create'
 
+  get     '/profile/addPic',         to: 'users#addPic'
+
 
 
   get     '/requests',                to: 'requests#index'

@@ -7,7 +7,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.integer :recipient_id
       t.string :creation_date
       t.string :completion_date
-      t.integer :amount
+      t.decimal :amount, :precision =>6, :scale =>2
       t.string :status
       t.integer :rating
 

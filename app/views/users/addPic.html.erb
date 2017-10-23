@@ -1,0 +1,10 @@
+<%= image_tag @user.image.url(:medium)%>
+<%= form_for @user, :url => {:action => 'update'}, :html => { :multipart => true } do |form| %>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Upload!', id: current_user.id%>
+  </div>
+<% end %>

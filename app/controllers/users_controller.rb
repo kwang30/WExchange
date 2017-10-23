@@ -3,6 +3,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @users=User.all
+  end
+
   def show
     if params[:id].nil?
       @user=current_user
@@ -20,8 +24,6 @@ class UsersController < ApplicationController
     @users=User.all
   end
 
-
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -33,10 +35,26 @@ class UsersController < ApplicationController
     end
   end
 
+  def addPic
+    @user=current_user
+  end
+
+  def update
+    @user=current_user;
+    if @user.update_attribute(:image, params[:user][:image])
+          flash[:success] = "Profile picture updated."
+          redirect_to @user
+      else
+          flash[:danger] = "Failed to update profile picture."
+          puts "AF"
+      end
+  end
 
  private
    def user_params
      params.require(:user).permit(:username, :first_name, :last_name, :email,
-                                  :password, :password_confirmation)
+                                  :password, :password_confirmation, :image)
+
+
    end
 end

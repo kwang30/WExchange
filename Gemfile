@@ -6,18 +6,39 @@ git_source(:github) do |repo_name|
 end
 
 
+
+gem 'gon'
+gem "paperclip",'4.3.6' #last stable version
+gem "aws-sdk" , '<2.0'
+gem 'friendly_id'
+gem 'figaro'
+gem 'dotenv-rails'
+
+
+# Use for materalize and ui
+gem 'materialize-sass'
+gem 'will_paginate'
+gem 'will_paginate-materialize'
+gem 'simple_form'
+
+# Use for searching
+gem 'ransack'
+
+# Use for rendering dates and times
+gem 'local_time'
+
+# Use for Stripe payments
+gem 'stripe'
+gem 'stripe_event'
+
+
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'figaro'
 gem 'toastr-rails'
 
 
-gem 'simple_form'
-gem 'paperclip'
-gem 'stripe'
-gem 'aws-sdk'
+
 gem "bcrypt"
-gem 'materialize-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use Puma as the app server
