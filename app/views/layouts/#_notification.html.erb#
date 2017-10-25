@@ -1,0 +1,24 @@
+<div class="row container">
+  <ul class="notification col s10 offset-s1 m8 offset-m2 collapsible" data-collapsible="expandable">
+    <li id="notfication-content">
+      <div id="notification-header" class="collapsible-header">
+        <div class="notification-header-wrapper row">
+          <%= image_tag "profile_picture.jpg", :alt => "Profile Picture", id:"profile-picture", class:"col s3" %>
+          <div id="notification-header-name" class="col s12 m9">Tom Brady</div>
+          <div id="notification-header-time-ago" class="col s12 m9">3 hours ago</div>
+          <div id="notification-header-text" class="col s12 m12"> 2 new messages </div>
+        </div>
+      </div>
+      <div id="notification-body" class="collapsible-body">
+        <!--
+          TODO: Generate messages from database. The notifications will be
+          gernerated by looping through notifications and something like the
+          render calls below.
+        -->
+        <%= render 'layouts/message', :locals => { :message_text => "This is the first test message", :message_time => "9/16/2017 10:25 PM" } %>
+        <%= render 'layouts/message', :locals => { :message_text => "This is the second test message", :message_time => "9/19/2017 5:32 PM" } %>
+      </div>
+    </li>
+  </ul>
+</div>
+
