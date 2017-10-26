@@ -8,6 +8,7 @@
       <%= form_for (@portfolio) do |f| %>
       <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
       <%= f.text_field :description, placeholder: "Description", class: "form-control" %>
+      <%= f.hidden_field :user_id, value: current_user.id.to_i %>
 	        <%= f.button :submit , name: 'id', value: params[:id]%>
       <% end %>
     </div>

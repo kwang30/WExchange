@@ -13,7 +13,9 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     if @portfolio.save
       flash[:success] = "Successfully created a new portfolio!!"
-      redirect_to @user # change?  
+      redirect_to '/profile' # change hardcoding
+    else
+      puts "failed"
     end
   end
 
@@ -28,8 +30,8 @@ class PortfoliosController < ApplicationController
   end
 
     private
-    def request_params
-       params.require(:portfolio).permit(:name, :description)
+    def portfolio_params
+       params.require(:portfolio).permit(:name, :description, :user_id)
      end
 
      def get_portfolio
