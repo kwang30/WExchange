@@ -5,15 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
 gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
 gem 'figaro'
 gem 'dotenv-rails'
-
 
 # Use for materalize and ui
 gem 'materialize-sass'
@@ -31,12 +28,9 @@ gem 'local_time'
 gem 'stripe'
 gem 'stripe_event'
 
-
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'toastr-rails'
-
-
 
 gem "bcrypt"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

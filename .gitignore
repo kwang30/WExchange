@@ -42,18 +42,3 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
-
-
-
-
-
-
-
-
-# .gitignore
-
-# Ignore environment variables
-.env
-
-# Ignore application configuration
-/config/application.yml
