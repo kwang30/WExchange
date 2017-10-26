@@ -13,6 +13,7 @@
     <% else %>
     <ul id="dropdown1" class="dropdown-content">
       <% puts current_user.id%>
+      <% puts current_portfolios.first %>
       <li><%= link_to "My Profile", profile_path, target: "_self", id: current_user.id %></li>
       <li class="divider"></li>
       <li><%= link_to "Sign Up", signup_path, target: "_self" %></li>

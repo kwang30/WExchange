@@ -17,4 +17,8 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+
+  def current_portfolios
+    @current_portfolios ||= Portfolio.where(user_id: session[:user_id])
+  end
 end

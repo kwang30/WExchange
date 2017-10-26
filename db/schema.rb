@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20171022031844) do
     t.integer "recipient_id"
     t.string "creation_date"
     t.string "completion_date"
-    t.integer "amount"
+    t.decimal "amount", precision: 6, scale: 2
     t.string "status"
     t.integer "rating"
     t.datetime "created_at", null: false
@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 20171022031844) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipient_id"
+    t.integer "request_id"
+    t.float "rating"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,10 +69,10 @@ ActiveRecord::Schema.define(version: 20171022031844) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
+    t.string "full_name"
     t.string "display_name"
     t.integer "rating"
     t.string "biography"
-    t.string "profile_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
