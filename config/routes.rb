@@ -37,5 +37,5 @@ Rails.application.routes.draw do
   resources :charges
   resources :users
   resources :requests
-  #resources :portfolios
+  resources :portfolios
 end
