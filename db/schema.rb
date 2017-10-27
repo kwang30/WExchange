@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022031844) do
-
-  create_table "media", force: :cascade do |t|
-    t.integer "portfolio_id"
-    t.string "media_url"
-    t.string "media_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20171026031007) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "message_id"
@@ -26,6 +18,22 @@ ActiveRecord::Schema.define(version: 20171022031844) do
     t.integer "recipient_id"
     t.integer "time"
     t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "portfolio_media", force: :cascade do |t|
+    t.integer "portfolio_id"
+    t.string "media_url"
+    t.string "media_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,26 +47,20 @@ ActiveRecord::Schema.define(version: 20171022031844) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "requests", force: :cascade do |t|
-    t.integer "transaction_id"
-    t.boolean "negotiate"
-    t.integer "creator_id"
-    t.integer "recipient_id"
-    t.string "creation_date"
-    t.string "completion_date"
-    t.decimal "amount", precision: 6, scale: 2
-    t.string "status"
-    t.integer "rating"
+  create_table "reviews", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "transactions", force: :cascade do |t|
+    t.integer "transaction_id"
+    t.integer "creator_id"
     t.integer "recipient_id"
-    t.integer "request_id"
-    t.float "rating"
-    t.text "text"
+    t.string "creation_date"
+    t.string "completion_date"
+    t.integer "amount"
+    t.string "status"
+    t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,10 +71,10 @@ ActiveRecord::Schema.define(version: 20171022031844) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
-    t.string "full_name"
     t.string "display_name"
     t.integer "rating"
     t.string "biography"
+    t.string "profile_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
