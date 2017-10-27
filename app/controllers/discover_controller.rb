@@ -1,11 +1,10 @@
 class DiscoverController < ApplicationController
   def main
-    @users=User.all;
+    @users = User.where("first_name like ?",  "%#{params[:q]}%")
   end
 
   def index
-    @users=User.all;
+    render 'main'
   end
-
 
 end

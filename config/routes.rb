@@ -16,14 +16,13 @@ Rails.application.routes.draw do
   patch    '/profile/addPic',         to: 'users#update'
 
 
-
   get     '/requests',                to: 'requests#index'
   post     '/requests',                to: 'requests#decline'
   post     '/requests',                to: 'requests#comfrimed'
   post     '/requests',                to: 'requests#edit'
   post      '/decline',                        to: 'requests#decline'
 
-
+  post     '/discover',                   to: 'discover#main'
   get     '/discover',                to: 'discover#main'
   get     '/settings',                to: 'settings#index'
   get     '/settings/profile',        to: 'settings#edit_user'
