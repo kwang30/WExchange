@@ -14,11 +14,8 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     if @portfolio.save!
-      puts "SUCCESS"
-      flash[:success] = "Successfully created a new portfolio!!"
-      redirect_to '/profile' # change hardcoding
+      redirect_to '/profile'
     else
-      puts "failed"
       redirect_to '/profile' # TEMP: To avoid crashing out on failture to create
     end
   end
