@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+gem 'activeadmin'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
 gem "aws-sdk" , '<2.0'
@@ -13,6 +15,8 @@ gem 'figaro'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+
 
 # Use for materalize and ui
 gem 'materialize-sass'

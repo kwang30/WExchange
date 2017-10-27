@@ -1,3 +1,4 @@
 class PortfolioMedia < ApplicationRecord
-  has_many :messages
+  belongs_to :user
+  has_many :photos, as: :imageable
 end

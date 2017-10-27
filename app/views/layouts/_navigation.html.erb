@@ -23,10 +23,11 @@
       <li><%= link_to "Home", root_path, target: "_self", class: "active" %></li>
       <li><%= link_to "Messages", notifications_path, target: "_self" %></li>
       <li><%= link_to "Requests", requests_path, target: "_self" %></li>
-
       <li><%= link_to "Discover", discover_path, target: "_self" %></li>
       <li><%= link_to "Messages", root_path, target: "_self" %></li>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li>  <%= image_tag current_user.image.url(:small)%></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+
     </ul>
     <% end %>
   </div>
