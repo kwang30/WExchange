@@ -1,6 +1,5 @@
 class User < ApplicationRecord
 has_secure_password
-    has_one :profile
     has_many :transactions
     has_many :portfolios
     has_many :messages
@@ -16,6 +15,7 @@ has_secure_password
     has_secure_password
 
     has_attached_file :image, styles: {
+      small: '50X50',
        thumb: '100x100>',
        square: '200x200#',
        medium: '300x300>',

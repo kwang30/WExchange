@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post     '/profile/request',         to: 'requests#create'
 
   get     '/profile/addPic',         to: 'users#addPic'
+  patch    '/profile/addPic',         to: 'users#update'
 
 
 

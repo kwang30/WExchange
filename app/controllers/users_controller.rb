@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     else
       @user=User.find(params[:id])
     end
-    @name=@user.first_name + " " + @user.last_name
+    @user.full_name=@user.first_name + " " + @user.last_name
+    @portfolios=Portfolio.where(" id = ?", current_user.id)
   end
 
 
@@ -46,7 +47,6 @@ class UsersController < ApplicationController
           redirect_to @user
       else
           flash[:danger] = "Failed to update profile picture."
-          puts "AF"
       end
   end
 
