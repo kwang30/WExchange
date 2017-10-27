@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  after_create_commit { notify }
 
   def new
     @request = Request.new
@@ -78,4 +77,3 @@ class RequestsController < ApplicationController
        @request = Request.find(params[:id])
      end
 end
-
