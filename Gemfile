@@ -14,6 +14,7 @@ gem 'friendly_id'
 gem 'figaro'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 
 
@@ -32,10 +33,6 @@ gem 'local_time'
 # Use for Stripe payments
 gem 'stripe'
 gem 'stripe_event'
-
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'toastr-rails'
 
 gem "bcrypt"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
