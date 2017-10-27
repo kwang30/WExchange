@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  after_create_commit { notify }
 
   def new
     @request = Request.new
@@ -13,6 +14,7 @@ class RequestsController < ApplicationController
     @request.recipient_id=params[:id]
     @request.creator_id=current_user.id
     if @request.save
+      # create notification to usera
       flash[:success] = "Thanks! I'll be in touch soon!"
       redirect_to :action => 'thanks', :id => params[:id]
     end
@@ -65,6 +67,9 @@ class RequestsController < ApplicationController
 
 
   private
+    def notify
+      Notification.create(event: "New Notification")
+    end
      def request_params
        params.require(:request).permit(:amount)
      end
