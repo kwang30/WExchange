@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SignupControllerTest < ActionDispatch::IntegrationTest
   test "should get main" do
-    get signup_main_url
+    get signup_path
     assert_response :success
   end
 
