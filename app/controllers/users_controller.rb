@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     else
       @user=User.find(params[:id])
     end
-    @name=@user.first_name+" "+@user.last_name
+    @name=@user.first_name + " " + @user.last_name
   end
 
 
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
  private
    def user_params
      params.require(:user).permit(:username, :first_name, :last_name, :email,
-                                  :password, :password_confirmation, :image)
+                                  :display_name, :password, :password_confirmation, :image)
 
 
    end
