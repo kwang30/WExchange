@@ -10,3 +10,43 @@
     display:block;
     z-index:999;
 }
+
+.create-portfolio-wrapper {
+  color: black;
+
+  .title {
+    font-size: 3em;
+    margin: 0;
+  }
+
+  .button-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.modal-content {
+  padding-top: 0;
+}
+
+#portfolio-wrapper {
+  background-color: white;
+
+  .title {
+    font-size: 30px;
+    margin: 0;
+    padding: 10px 10px 0 10px;
+  }
+
+  .short-description {
+    margin: 0 10px 10px 10px;
+  }
+
+  .collapsible-body {
+    padding: 10px;
+  }
+}

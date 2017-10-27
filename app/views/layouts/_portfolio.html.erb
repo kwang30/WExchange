@@ -1,0 +1,47 @@
+<!-- <div class="row">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <ul class="collapsible popout" data-collapsible="expandable">
+        <span class="card-title">Portfolios</span>
+        <div id="create-portfolio-modal" class="modal">
+          <div class="modal-content">
+            <%= render 'layouts/portfolio_create_form' %>
+          </div>
+        </div>
+        <% if current_portfolios.any? %>
+          <% current_portfolios.find_each do |p| %>
+            <li>
+              <div class="collapsible-header blue-grey darken-1 white-text">
+                <%="#{p.name}"%>
+              </div>
+              <div class="collapsible-body  blue-grey lighten-1 white-text">
+                <%= image_tag "album-5.jpg", :alt => "Profile Picture", id:"portfolio-picture"%>
+                <span> <%="#{p.description}"%> </span>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div> -->
+
+<!-- locals[:portfolio][*] where * is the field -->
+<div id="portfolio-wrapper">
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">
+        <p class="title"><%= portfolio.name %></p>
+        <p class="short-description"><%= portfolio.description %></p>
+      </div>
+      <div class="collapsible-body">
+        <p class="long-description">More detailed information about the service goes here.</p>
+      </div>
+      <div class="collapsible-footer">
+        <%= image_tag "album-3.jpg", :alt => "Portfolio Image", id:"portfolio-picture"%>
+        <%= image_tag "album-4.jpg", :alt => "Portfolio Image", id:"portfolio-picture"%>
+        <%= image_tag "album-5.jpg", :alt => "Portfolio Image", id:"portfolio-picture"%>
+      </div>
+    </li>
+  </ul>
+</div>

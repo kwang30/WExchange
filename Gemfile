@@ -11,6 +11,7 @@ gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
 gem 'figaro'
 gem 'dotenv-rails'
+gem 'jquery-rails'
 
 # Use for materalize and ui
 gem 'materialize-sass'

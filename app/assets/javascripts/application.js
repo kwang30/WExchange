@@ -14,5 +14,10 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
+//= require materialize-sprockets
 //= require toastr
 //= require_tree .
+
+$(document).ready( function(){
+  $('#create-portfolio-modal').modal();
+});

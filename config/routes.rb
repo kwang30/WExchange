@@ -30,10 +30,9 @@ Rails.application.routes.draw do
   get     '/settings/advanced',       to: 'settings#edit_advanced'
   get     '/settings/notifications',  to: 'settings#edit_notifications'
 
-  get      '/portfolios',             to: 'portfolios#new'
   post     '/portfolios',             to: 'portfolios#create'
   get      '/portfolios/edit',        to: 'portfolios#edit'
-  
+
   resources :charges
   resources :users
   resources :requests
