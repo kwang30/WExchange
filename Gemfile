@@ -6,6 +6,10 @@ git_source(:github) do |repo_name|
 end
 
 
+
+gem 'geocoder'
+
+gem 'devise'
 gem 'activeadmin'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
