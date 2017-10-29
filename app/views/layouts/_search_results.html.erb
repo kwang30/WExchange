@@ -1,0 +1,11 @@
+<div id="search-results">
+<table>
+  <tbody>
+    <tr>
+      <% for user in @users %>
+      <td> <%= user.username %> </td>
+      <td> <%= user.email %> </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

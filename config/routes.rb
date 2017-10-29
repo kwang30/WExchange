@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#home'
   get     '/',                        to: 'home#home'
 
+<<<<<<< HEAD
   controller :users do
     get     '/profile/addPic',         to: 'users#addPic'
     patch    '/profile/addPic',         to: 'users#update'
@@ -50,6 +51,32 @@ Rails.application.routes.draw do
   controller :discover do
     get     '/discover',                to: 'discover#main'
   end
+=======
+  get     '/profile',                 to: 'users#show'
+  get     '/profile/request',         to: 'requests#new'
+  post     '/profile/request',         to: 'requests#create'
+
+  get     '/profile/addPic',         to: 'users#addPic'
+  patch    '/profile/addPic',         to: 'users#update'
+
+
+  get     '/requests',                to: 'requests#index'
+  post     '/requests',                to: 'requests#decline'
+  post     '/requests',                to: 'requests#comfrimed'
+  post     '/requests',                to: 'requests#edit'
+  post      '/decline',                        to: 'requests#decline'
+
+  post     '/discover',                   to: 'discover#main'
+  get     '/discover',                to: 'discover#main'
+  get     '/settings',                to: 'settings#index'
+  get     '/settings/profile',        to: 'settings#edit_user'
+  get     '/settings/billing',        to: 'settings#edit_billing'
+  get     '/settings/advanced',       to: 'settings#edit_advanced'
+  get     '/settings/notifications',  to: 'settings#edit_notifications'
+
+  post     '/portfolios',             to: 'portfolios#create'
+  get      '/portfolios/edit',        to: 'portfolios#edit'
+>>>>>>> fdfdfeb87b740efb0157aad043dfe34cf2e18a52
 
   resources :charges
   resources :users do

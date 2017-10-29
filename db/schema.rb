@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20171027221301) do
     t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id"
   end
 
+  create_table "portfolio_media", force: :cascade do |t|
+    t.integer "portfolio_id"
+    t.string "media_url"
+    t.string "media_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "portfolios", force: :cascade do |t|
     t.integer "user_id"
     t.integer "portfolio_id"
@@ -60,15 +68,29 @@ ActiveRecord::Schema.define(version: 20171027221301) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer "transaction_id"
+    t.integer "creator_id"
+    t.integer "recipient_id"
+    t.string "creation_date"
+    t.string "completion_date"
+    t.integer "amount"
+    t.string "status"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "username"
+    t.string "email"
     t.string "first_name"
     t.string "last_name"
-    t.string "full_name"
     t.string "display_name"
-    t.string "email"
     t.integer "rating"
-    t.string "phone_number"
     t.string "biography"
+    t.string "profile_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
@@ -76,8 +98,6 @@ ActiveRecord::Schema.define(version: 20171027221301) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
-    t.index ["display_name"], name: "index_users_on_display_name", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
