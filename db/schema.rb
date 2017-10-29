@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027062541) do
+ActiveRecord::Schema.define(version: 20171027221301) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "message_id"
@@ -31,8 +31,15 @@ ActiveRecord::Schema.define(version: 20171027062541) do
   end
 
   create_table "photos", force: :cascade do |t|
+    t.string "imageable_type"
+    t.integer "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["imageable_type", "imageable_id"], name: "index_photos_on_imageable_type_and_imageable_id"
   end
 
   create_table "portfolios", force: :cascade do |t|
@@ -45,13 +52,12 @@ ActiveRecord::Schema.define(version: 20171027062541) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "recipient_id"
-    t.integer "request_id"
-    t.float "rating"
+    t.integer "star", default: 1
     t.text "text"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

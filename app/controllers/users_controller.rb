@@ -13,8 +13,12 @@ class UsersController < ApplicationController
     else
       @user=User.find(params[:id])
     end
-    @user.full_name=@user.first_name + " " + @user.last_name
+    @name=@user.first_name + " " + @user.last_name
     @portfolios=Portfolio.where(" id = ?", current_user.id)
+    @reviews =   @user.reviews
+    puts @user.reviews
+
+
   end
 
 

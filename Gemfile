@@ -23,6 +23,7 @@ gem 'materialize-sass'
 gem 'will_paginate'
 gem 'will_paginate-materialize'
 gem 'simple_form'
+gem 'mail_form'
 
 # Use for searching
 gem 'ransack'

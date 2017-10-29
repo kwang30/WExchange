@@ -1,0 +1,13 @@
+<%= form_for @photo, :url=>{:action=> :upload_images,:method=> (:patch), :id=> @portfolio.id} do |f| %>
+
+  <div class="form-group comment-tab">
+  </div>
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%f. hidden_field :imageable_id, value: @portfolio.id%>
+    <%puts @portfolio.id%>
+    <%= f.submit "Upload",  {:action=> :upload_images, :controller=>:portfolios, :id=> @portfolio.id} %>
+  </div>
+<% end %>

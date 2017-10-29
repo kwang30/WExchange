@@ -14,7 +14,7 @@
     <ul id="dropdown1" class="dropdown-content">
       <% puts current_user.id%>
       <% puts current_portfolios.first %>
-      <li><%= link_to "My Profile", profile_path, target: "_self", id: current_user.id %></li>
+      <li><%= link_to "My Profile", current_user, target: "_self", id: current_user.id %></li>
       <li><%= link_to "Settings", settings_path, target: "_self" %></li>
       <li><%= link_to "Log Out", logout_path, method: :delete %></li>
     </ul>
@@ -25,7 +25,6 @@
       <li><%= link_to "Requests", requests_path, target: "_self" %></li>
       <li><%= link_to "Discover", discover_path, target: "_self" %></li>
       <li><%= link_to "Messages", root_path, target: "_self" %></li>
-        <li>  <%= image_tag current_user.image.url(:small)%></li>
         <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
 
     </ul>

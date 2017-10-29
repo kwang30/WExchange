@@ -1,9 +1,9 @@
 class ReviewsController < ApplicationController
-  before_action :require_logged_in, only: [:create, :update]
+  # before_action :require_logged_in, only: [:create, :update]
 
   def index
     if review_params[:id]
-      @reviews = Review.where(room_id: review_params["room_id"]).order(created_at: :desc)
+      @reviews = User.find(params[:id]).reviews
     else
       @reviews = Review.all
     end
@@ -14,8 +14,9 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
-
+    @review = current_user.reviews.create(review_params)
+    @review.save!
+		redirect_to current_user
   end
 
   def update
@@ -31,12 +32,12 @@ class ReviewsController < ApplicationController
   def destroy
     @review = current_user.reviews.find(params[:id])
     @review.destroy
-    render :show
+    redirect_to current_user
   end
 
   private
   def review_params
-    params.require(:review).permit(:consumer_id, :customer_id, :rating, :body)
+    params.require(:review).permit(:text, :star, :user_id)
   end
 
 end

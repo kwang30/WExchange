@@ -1,3 +1,4 @@
+<%@portfolios.each do |portfolio|  %>
 <div id="portfolio-wrapper">
   <ul class="collapsible" data-collapsible="accordion">
     <li>
@@ -9,10 +10,15 @@
         <p class="long-description">More detailed information about the service goes here.</p>
       </div>
       <div class="collapsible-footer">
-        <%= image_tag "album-3.jpg", :alt => "Portfolio Image", id:"portfolio-picture"%>
-        <%= image_tag "album-4.jpg", :alt => "Portfolio Image", id:"portfolio-picture"%>
-        <%= image_tag "album-5.jpg", :alt => "Portfolio Image", id:"portfolio-picture"%>
-      </div>
+        <%if !portfolio.photos.nil? %>
+          <%portfolio.photos.each do |photo| %>
+          <%= image_tag photo.image.url, :alt => "Portfolio Image", id:"portfolio-picture"%>
+          <%end %>
+        <%end %>
+        <%= link_to "Add" , {action: "addPhoto", controller: "portfolios",  id: portfolio.id}, class: "active waves-effect waves-light btn"%>
+        <%= link_to "Delete" , {action: "delete", controller: "portfolios",  id: portfolio.id}, class: "active waves-effect waves-light btn"%>
+
     </li>
   </ul>
 </div>
+<%end%>
