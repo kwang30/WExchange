@@ -22,12 +22,8 @@
       <%= render partial: 'layouts/portfolio', locals: { portfolio: portfolio } %>
     <% end %>
     <div id="add-button-wrapper">
-      <%= link_to "+ Add Portfolio", '#create-portfolio-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
-      <div id="create-portfolio-modal" class="modal">
-        <div class="modal-content">
-          <%= render 'layouts/portfolio_create_form' %>
-        </div>
-      </div>
+      <%= link_to "+ Add Portfolio", '#portfolio-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
+      <%= render 'layouts/portfolio_create_modal' %>
     </div>
   </div>
 </div>

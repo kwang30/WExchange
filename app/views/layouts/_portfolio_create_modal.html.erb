@@ -1,0 +1,19 @@
+<div id="portfolio-create-modal" class="modal">
+  <div class="modal-content create-portfolio-wrapper">
+    <p class="title">Create Portfolio</p>
+    <%= form_for (Portfolio.new()) do |f| %>
+      <div class="col s12">
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: "Ex. Graphic Design" %>
+      </div>
+      <div class="col s12">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "materialize-textarea" %>
+      </div>
+      <div class="button-wrapper col s12">
+        <%= hidden_field(:user_id, current_user.id.to_i) %>
+        <%= f.submit "Create", class: "waves-effect waves-light btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -18,5 +18,6 @@
 //= require_tree .
 
 $(document).ready( function(){
-  $('#create-portfolio-modal').modal();
+  $('.modal').modal();
+
 });
