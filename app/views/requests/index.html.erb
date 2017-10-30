@@ -1,7 +1,0 @@
-<%= render 'layouts/navigation' %>
-<div class="container">
-  <h1 class=" text-center">Your Bookings:</h1>
-    <% @requests.reverse.each do |r| %>
-      <%render _request_block%>
-    <% end %>
-</div>
