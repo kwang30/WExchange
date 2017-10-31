@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   end
 
   controller :discover do
-    get     '/discover',                to: 'discover#main'
+    get     '/discover',                to: 'discover#show'
   end
 
   controller :requests do
