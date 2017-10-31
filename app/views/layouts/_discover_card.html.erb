@@ -1,0 +1,13 @@
+<div class="card discover-card">
+  <div class="card-image">
+    <%= image_tag locals[:user].image.url(:small)%>
+  </div>
+  <div class="card-content">
+    <span class="card-title"><%= locals[:user].first_name + " " + locals[:user].last_name %></span>
+    <span class="card-subtitle"><%= "@" + locals[:user].display_name %></span>
+    <span class="card-about-me"><%= locals[:user].biography %></span>
+  </div>
+  <div class="card-action">
+    <%= link_to 'View Profile', locals[:user], class: 'view-profile-link' %>
+  </div>
+</div>
