@@ -1,0 +1,9 @@
+<div id="about-me-edit-modal" class="modal">
+  <div class="modal-content about-me-edit-wrapper">
+    <p class="title">Edit Bio</p>
+    <%= form_for current_user do |f| %>
+      <%= f.text_area :biography, class: "materialize-textarea col-s12", size: "12x12"  %>
+      <%= f.submit "Save", class: "waves-effect waves-light btn" %>
+    <% end %>
+  </div>
+</div>

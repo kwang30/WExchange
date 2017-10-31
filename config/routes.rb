@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     patch    '/profile/addPic',         to: 'users#update'
     get     '/signup',                  to: 'users#new'
     get     '/profile',                 to: 'users#show'
+    post    '/profile',                 to: 'users#update'
   end
 
   controller :sessions do

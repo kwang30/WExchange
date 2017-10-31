@@ -5,7 +5,7 @@
     </div>
     <%= render 'user_rating' %>
     <p class="name"><%= @name %></p>
-    <p class="display-name">@<%= current_user.display_name %></p>
+    <p class="display-name">@<%= @user.display_name %></p>
     <%if current_user.id!=params[:id].to_i%>
       <!-- FIXME: Partial routing error -->
       <%# render 'request_message' %>
@@ -14,11 +14,16 @@
     <%= render 'reviews/list' %>
   </div>
   <div class="right-side col s7 l8">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">About Me</span>
-        <p> <% @user.biography %> </p>
-      </div>
+    <div class="card about-me-wrapper">
+        <span class="card-header">
+          <p class="title-text">About Me</p>
+          <% if current_user.id == params['id'].to_i %>
+            <%= link_to "Edit", '#about-me-edit-modal', class: "modal-trigger waves-effect waves-light btn", id: "about-me-edit-button" %>
+            <%= render 'layouts/about_me_edit_modal' %>
+          <% end %>
+        </span>
+        <br />
+        <p class="card-content about-me-content"> <%= @user.biography %> </p>
     </div>
     <% current_user.portfolios.each do |portfolio| %>
       <%= render partial: 'layouts/portfolio', locals: { portfolio: portfolio } %>
