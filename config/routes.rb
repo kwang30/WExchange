@@ -32,11 +32,11 @@ Rails.application.routes.draw do
   end
 
   controller :portfolios do
-    get     '/addPhoto',              to: 'portfolios#addPhoto'
-    post    '/addPhoto' ,             to: 'portfolios#upload_images'
-    post     '/portfolios',           to: 'portfolios#create'
-    get      '/portfolios/edit',      to: 'portfolios#edit'
-    get     'portfolios/delete'
+    get     '/addPhoto',             to: 'portfolios#addPhoto'
+    post    '/addPhoto' ,            to: 'portfolios#upload_images'
+    post    '/portfolios',           to: 'portfolios#create'
+    get     '/portfolios/edit',      to: 'portfolios#edit'
+    delete  '/portfolios/delete',     to: 'portfolios#delete'
   end
 
   controller :transactions do
@@ -51,6 +51,10 @@ Rails.application.routes.draw do
 
   controller :discover do
     get     '/discover',                to: 'discover#main'
+  end
+
+  controller :requests do
+    get '/requests',   to: 'requests#index'
   end
 
 

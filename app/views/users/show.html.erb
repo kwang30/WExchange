@@ -7,34 +7,25 @@
     <p class="name"><%= @name %></p>
     <p class="display-name">@<%= current_user.display_name %></p>
     <%if current_user.id!=params[:id].to_i%>
-      <%= render 'request_message' %>
+      <!-- FIXME: Partial routing error -->
+      <%# render 'request_message' %>
     <%end%>
     <%= render 'reviews/form' %>
     <%= render 'reviews/list' %>
-
-
   </div>
   <div class="right-side col s7 l8">
     <div class="card blue-grey darken-1">
       <div class="card-content white-text">
         <span class="card-title">About Me</span>
         <p> <% @user.biography %> </p>
-
       </div>
     </div>
     <% current_user.portfolios.each do |portfolio| %>
       <%= render partial: 'layouts/portfolio', locals: { portfolio: portfolio } %>
-
     <% end %>
     <div id="add-button-wrapper">
-      <%= link_to "+ Add Portfolio", '#create-portfolio-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
-      <div id="create-portfolio-modal" class="modal">
-        <div class="modal-content">
-          <%= render 'layouts/portfolio_create_form' %>
-
-
-        </div>
-      </div>
+      <%= link_to "+ Add Portfolio", '#portfolio-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
+      <%= render 'layouts/portfolio_create_modal' %>
     </div>
   </div>
 </div>

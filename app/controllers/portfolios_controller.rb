@@ -1,4 +1,8 @@
 class PortfoliosController < ApplicationController
+  def index
+    @rooms = current_user.rooms
+  end
+
   def new
     @portfolio = Portfolio.new
   end
@@ -7,13 +11,11 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     if @portfolio.save!
-      flash[:success] = "Successfully created a new portfolio!!"
       redirect_to '/profile' # change hardcoding
     else
       redirect_to '/profile' # TEMP: To avoid crashing out on failture to create
     end
   end
-
 
   def upload_images
     @photo=Portfolio.find(params[:id]).photos.build(photo_params)
@@ -21,22 +23,11 @@ class PortfoliosController < ApplicationController
     redirect_to current_user
   end
 
-
   def addPhoto
-    @portfolio=Portfolio.find(params[:id])
-    @photo=@portfolio.photos.new
-    @photo.imageable_id=  @portfolio.id
-  end
-
-
-
-  def delete
     @portfolio = Portfolio.find(params[:id])
-    @portfolio.destroy
-    redirect_to current_user
+    @photo = @portfolio.photos.new
+    @photo.imageable_id = @portfolio.id
   end
-
-
 
 
   def show
@@ -49,8 +40,11 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.find(params[:id])
   end
 
-
-
+  def delete
+    @portfolio = Portfolio.find(params[:id])
+    @portfolio.destroy
+    redirect_to current_user
+  end
 
   def update
     @portfolio = Portfolio.find(params[:id])
@@ -66,7 +60,7 @@ class PortfoliosController < ApplicationController
 
     private
     def portfolio_params
-      params.require(:portfolio).permit(:name,:description, :user_id, :images)
+      params.require(:portfolio).permit(:name, :description, :user_id, :images)
     end
 
     def get_portfolio
@@ -76,6 +70,5 @@ class PortfoliosController < ApplicationController
     def photo_params
       params.require(:photo).permit(:portfolio_id, :image, :portfolio_name)
     end
-
 
 end
