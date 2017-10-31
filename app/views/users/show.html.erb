@@ -25,12 +25,14 @@
         <br />
         <p class="card-content about-me-content"> <%= @user.biography %> </p>
     </div>
-    <% current_user.portfolios.each do |portfolio| %>
+    <% User.find_by(id: params[:id]).portfolios.each do |portfolio| %>
       <%= render partial: 'layouts/portfolio', locals: { portfolio: portfolio } %>
     <% end %>
-    <div id="add-button-wrapper">
-      <%= link_to "+ Add Portfolio", '#portfolio-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
-      <%= render 'layouts/portfolio_create_modal' %>
-    </div>
+    <% if current_user.id == params['id'].to_i %>
+      <div id="add-button-wrapper">
+        <%= link_to "+ Add Portfolio", '#portfolio-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
+        <%= render 'layouts/portfolio_create_modal' %>
+      </div>
+    <% end %>
   </div>
 </div>

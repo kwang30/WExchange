@@ -11,9 +11,9 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     if @portfolio.save!
-      redirect_to '/profile' # change hardcoding
+      redirect_to current_user # change hardcoding
     else
-      redirect_to '/profile' # TEMP: To avoid crashing out on failture to create
+      redirect_to current_user # TEMP: To avoid crashing out on failture to create
     end
   end
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get     '/profile/addPic',         to: 'users#addPic'
     patch    '/profile/addPic',         to: 'users#update'
     get     '/signup',                  to: 'users#new'
-    get     '/profile',                 to: 'users#show'
+    get     '/',                 to: 'users#show'
     post    '/profile',                 to: 'users#update'
   end
 
@@ -62,11 +62,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews
   end
-
-
-
-
-
 
   resources :charges
   resources :transactions
