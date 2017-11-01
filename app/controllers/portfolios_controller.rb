@@ -47,8 +47,8 @@ class PortfoliosController < ApplicationController
   end
 
   def update
-    @portfolio = Portfolio.find(params[:id])
-    if @portfolio.update_attributes(params[:portfolio])
+    @portfolio = Portfolio.find_by(id: params[:id])
+    if @portfolio.update_attributes(portfolio_params)
       redirect_to current_user
     else
       render :controller => :portfolios, :action => :new
