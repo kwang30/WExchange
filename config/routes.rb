@@ -41,13 +41,9 @@ Rails.application.routes.draw do
   end
 
   controller :transactions do
-    get     '/transactions',                to: 'transactions#index'
-    post     '/transactions',                to: 'transactions#decline'
-    post     '/transactions',                to: 'transactions#comfrimed'
-    post     '/transactions',                to: 'transactions#edit'
-    post      '/decline',                to: 'transactions#decline'
-    get     '/profile/request',         to: 'transactions#new'
-    post     '/profile/request',         to: 'transactions#create'
+    get      '/transactions',         to: 'transactions#index'
+    get      '/transactions',         to: 'transactions#new'
+    post     '/transactions/create',         to: 'transactions#create'
   end
 
   controller :discover do

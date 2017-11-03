@@ -1,0 +1,11 @@
+<div id="transaction-create-modal" class="modal">
+  <div class="modal-content transaction-create-wrapper">
+    <p class="modal-title">Create Request</p>
+    <%= form_for Transaction.new do |f| %>
+      <%= f.label "Request Message" %>
+      <%= f.text_area :request_message, class: "materialize-textarea col-s12", size: "12x12"  %>
+      <%= f.hidden_field :creator_id, value: params[:id] %>
+      <%= f.submit "Send", url: {controller: 'transactions', action: 'create'}, class: "waves-effect waves-light btn" %>
+    <% end %>
+  </div>
+</div>

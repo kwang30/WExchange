@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027221301) do
+ActiveRecord::Schema.define(version: 20171102183016) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "message_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171027221301) do
     t.integer "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "request_message"
   end
 
   create_table "users", force: :cascade do |t|

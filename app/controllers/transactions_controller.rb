@@ -9,38 +9,20 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @request=Transaction.new(request_params)
-    @request.recipient_id=params[:id]
-    @request.creator_id=current_user.id
+    @request =Transaction.new(request_params)
+    @request.recipient_id = current_user.id
+    @request.creator_id = params[:transaction][:creator_id]
     if @request.save
-      # create notification to usera
-      flash[:success] = "Thanks! I'll be in touch soon!"
-      redirect_to :action => 'thanks', :id => params[:id]
+      #TODO: Display success message
+    else
+      #TODO: Display error message
     end
+    redirect_to user_path(params[:transaction][:creator_id])
   end
-
 
   def edit
     @request = Transaction.find(params[:id])
   end
-
-
-
-  def reject
-    @request = Transaction.find(params[:id])
-    @request.status="REJECTED"
-  end
-
-
-
-
-
-  def comfirm
-    @request = Transaction.find(params[:id])
-    @request.status="COMFIRMED"
-  end
-
-
 
   def remove
     if params[:id]
@@ -50,27 +32,13 @@ class TransactionsController < ApplicationController
     end
   end
 
-
-
-
-    def thanks
-      @user=User.where("id = ?", params[:id].to_i).last
-      @request=Transaction.find(params[:id])
-    end
-
-
-
   def show
     @request = Transaction.find_by :transaction_id
   end
 
-
   private
-    def notify
-      Notification.create(event: "New Notification")
-    end
      def request_params
-       params.require(:request).permit(:amount)
+       params.require(:transaction).permit(:request_message)
      end
 
      def get_request
