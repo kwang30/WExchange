@@ -5,10 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
-
 gem 'geocoder'
-
 gem 'devise'
 gem 'activeadmin'
 gem 'gon'
@@ -19,8 +16,8 @@ gem 'figaro'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
-
+gem 'chartkick'
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
 # Use for materalize and ui
 gem 'materialize-sass'

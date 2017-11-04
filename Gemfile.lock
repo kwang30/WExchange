@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/stympy/faker.git
+  revision: be8fc6741bbcec08782208ec7068e889cc16e7e6
+  branch: master
+  specs:
+    faker (1.8.4)
+      i18n (~> 0.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,6 +83,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (2.2.5)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
@@ -304,9 +313,11 @@ DEPENDENCIES
   better_errors
   byebug
   capybara (~> 2.13)
+  chartkick
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  faker!
   figaro
   friendly_id
   geocoder
