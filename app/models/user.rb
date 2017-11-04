@@ -4,6 +4,7 @@ has_secure_password
     has_many :portfolios
     has_many :messages
     has_many :reviews
+    has_many :photos
 
     before_save { email.downcase! }
     validates :first_name, :last_name,  presence: true, length: {maximum: 50 }

@@ -7,6 +7,8 @@ end
 
 gem 'geocoder'
 gem 'devise'
+
+gem 'devise'
 gem 'activeadmin'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
@@ -16,8 +18,11 @@ gem 'figaro'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery-fileupload-rails"
 gem 'chartkick'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+gem "jquery-slick-rails"
+
 
 # Use for materalize and ui
 gem 'materialize-sass'
@@ -69,6 +74,8 @@ group :development, :test do # <<<< :development, not devlopment
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
+
+
 
 
 group :assets do

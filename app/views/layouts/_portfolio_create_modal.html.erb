@@ -1,7 +1,8 @@
 <div id="portfolio-create-modal" class="modal">
   <div class="modal-content portfolio-modal-wrapper">
-    <p class="modal-title">Create Portfolio</p>
-    <%= form_for (Portfolio.new()) do |f| %>
+    <p class="title">Create Portfolio</p>
+    <div class="container">
+      <%= form_for @portfolio, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
       <div class="col s12">
         <%= f.label :name %>
         <%= f.text_field :name, placeholder: "Ex. Graphic Design" %>
@@ -10,10 +11,12 @@
         <%= f.label :description %>
         <%= f.text_area :description, class: "materialize-textarea" %>
       </div>
-      <div class="button-wrapper col s12">
+      <%=render 'layouts/uploads', f:f %>
+      <div class="button-wrapper col s3">
         <%= hidden_field(:user_id, current_user.id.to_i) %>
         <%= f.submit "Create", class: "waves-effect waves-light btn" %>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

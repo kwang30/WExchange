@@ -1,6 +1,7 @@
 class PortfoliosController < ApplicationController
+
   def index
-    @rooms = current_user.rooms
+    @portfolio = current_user.portfolios
   end
 
   def new
@@ -11,6 +12,10 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     if @portfolio.save!
+      params[:images].each do |image|
+          @portfolio.photos.create!(:image => image)
+       end
+
       redirect_to current_user # change hardcoding
     else
       redirect_to current_user # TEMP: To avoid crashing out on failture to create
@@ -32,12 +37,14 @@ class PortfoliosController < ApplicationController
 
   def show
     @portfolio = Portfolio.find(params[:id])
+
   end
 
 
 
   def edit
     @portfolio = Portfolio.find(params[:id])
+
   end
 
   def delete
@@ -57,7 +64,7 @@ class PortfoliosController < ApplicationController
 
     private
     def portfolio_params
-      params.require(:portfolio).permit(:name, :description, :user_id, :images)
+      params.require(:portfolio).permit(:name, :description, :user_id, photos_attributes: [:image])
     end
 
     def get_portfolio

@@ -10,6 +10,8 @@
         <%= f.label :description %>
         <%= f.text_area :description, class: "materialize-textarea" %>
       </div>
+      <%=render 'layouts/edituploads', f:f, portfolio: portfolio %>
+
       <div class="button-wrapper col s12">
         <%= hidden_field(:user_id, current_user.id.to_i) %>
         <%= f.submit "Save", class: "waves-effect waves-light btn" %>

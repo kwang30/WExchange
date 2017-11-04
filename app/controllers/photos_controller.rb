@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   		@photo.destroy
   	end
 
-  
+
 
     def new
       if @photo.save!

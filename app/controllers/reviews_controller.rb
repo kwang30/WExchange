@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  # before_action :require_logged_in, only: [:create, :update]
+  before_action :require_logged_in, only: [:create, :update]
 
   def index
     if review_params[:id]
