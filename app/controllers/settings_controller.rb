@@ -1,23 +1,29 @@
 class SettingsController < ApplicationController
   def index
-    @user=User.new
+    @user=current_user
 
   end
 
   def edit_user
-    @user=User.new
+    @user=current_user
   end
 
   def edit_notifications
-    @user=User.new
+    @user=current_user
   end
 
   def edit_advanced
-    @user=User.new
+    @user=current_user
   end
 
   def edit_billing
-    @user=User.new
+    @user=current_user
+  end
+
+  private
+    def setting_params()
+    end
+
   end
 
 

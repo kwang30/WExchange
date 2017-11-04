@@ -16,7 +16,10 @@ class UsersController < ApplicationController
     @name = @user.first_name + " " + @user.last_name
     @portfolios=Portfolio.where(" id = ?", current_user.id)
     @reviews = @user.reviews
-    puts @user.reviews
+    @portfolio=Portfolio.new
+    1.times do
+      @portfolio.photos.build
+    end
   end
 
 

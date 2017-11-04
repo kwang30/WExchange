@@ -8,6 +8,7 @@ end
 
 
 gem 'geocoder'
+gem 'devise'
 
 gem 'devise'
 gem 'activeadmin'
@@ -19,7 +20,9 @@ gem 'figaro'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery-fileupload-rails"
 
+gem "jquery-slick-rails"
 
 
 # Use for materalize and ui
@@ -72,6 +75,8 @@ group :development, :test do # <<<< :development, not devlopment
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
+
+
 
 
 group :assets do
