@@ -7,8 +7,8 @@
     <p class="name"><%= @name %></p>
     <p class="display-name">@<%= @user.display_name %></p>
     <%if current_user.id!=params[:id].to_i%>
-      <!-- FIXME: Partial routing error -->
-      <%# render 'request_message' %>
+      <%= link_to "Request Job", '#transaction-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "transaction-create-button" %>
+      <%= render 'layouts/transaction_create_modal' %>
     <%end%>
     <%= render 'reviews/form' %>
     <%= render 'reviews/list' %>

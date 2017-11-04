@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103050754) do
 
+
+ActiveRecord::Schema.define(version: 20171102183016) do
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,6 +60,20 @@ ActiveRecord::Schema.define(version: 20171103050754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "transaction_id"
+    t.integer "creator_id"
+    t.integer "recipient_id"
+    t.string "creation_date"
+    t.string "completion_date"
+    t.integer "amount"
+    t.string "status"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "request_message"
   end
 
   create_table "users", force: :cascade do |t|
