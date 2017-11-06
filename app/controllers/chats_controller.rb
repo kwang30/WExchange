@@ -5,7 +5,7 @@ class ChatsController < ApplicationController
 
   def create
     @chat = Chat.get(current_user.id, params[:user_id])
-    
+
     add_to_chats unless conversated?
 
     respond_to do |format|
@@ -15,12 +15,12 @@ class ChatsController < ApplicationController
 
   def index
     session[:chats] ||= []
- 
+
     @users = User.all.where.not(id: current_user)
     @chats = Chat.includes(:recipient, :messages)
                .find(session[:chats])
   end
-  
+
   def show
   end
 
@@ -44,5 +44,5 @@ class ChatsController < ApplicationController
   def conversated?
     session[:chats].include?(@chat.id)
   end
-  
+
 end

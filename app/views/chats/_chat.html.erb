@@ -1,20 +1,21 @@
-<li>
-  <div class="panel panel-default" data-chat-id="<%= chat.id %>">
-    <div class="panel-heading">
-      <%= link_to chat.opposed_user(user).display_name, '', class: 'toggle-window' %>
-      <%= link_to "x", close_chat_path(chat), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %>
+<li class="chat-wrapper">
+  <div data-chat-id="<%= chat.id %>">
+    <div class="chat-heading">
+      <%= link_to chat.opposed_user(user).display_name, '', class: 'toggle-window chat-display-name' %>
+      <%= link_to "x", close_chat_path(chat), class: "btn btn-default btn-xs pull-right close-chat-button", remote: true, method: :post %>
     </div>
-
-    <div class="panel-body" style="display: none;">
+    <div class="chat-body" style="display: none;">
       <div class="messages-list">
         <ul>
           <%= render 'chats/chat_content', messages: chat.messages, user: user %>
         </ul>
       </div>
-      <%= form_for [chat, chat.messages.new], remote: true do |f| %>
+      <%= form_for [chat, chat.messages.new], html: {class: "message-form row"}, remote: true do |f| %>
         <%= f.hidden_field :user_id, value: user.id %>
-        <%= f.text_area :content, class: "form-control" %>
-        <%= f.submit "Send", class: "btn btn-success" %>
+        <%= f.text_area :content, class: "message-input col m10" %>
+        <div class="message-send-button-wrapper col m2">
+          <%= f.submit "Send", class: "btn message-send-button" %>
+        </div>
       <% end %>
     </div>
   </div>

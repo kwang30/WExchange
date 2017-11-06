@@ -2,11 +2,12 @@ var chats = $('#chats-list');
 var chat = chats.find("[data-chat-id='" + "<%= @chat.id %>" + "']");
 
 if (chat.length !== 1) {
+  chats.empty();
   chats.append("<%= j(render 'chats/chat', chat: @chat, user: current_user) %>");
   chat = chats.find("[data-chat-id='" + "<%= @chat.id %>" + "']");
 }
 
-chat.find('.panel-body').show();
+chat.find('.chat-body').show();
 
 var messages_list = chat.find('.messages-list');
 var height = messages_list[0].scrollHeight;
