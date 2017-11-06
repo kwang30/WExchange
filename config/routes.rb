@@ -66,5 +66,10 @@ Rails.application.routes.draw do
   resources :transactions
   resources :portfolios
   resources :photos
-
+  resources :chats, only: [:create] do
+    member do
+      post :close
+    end
+    resources :messages, only: [:create]
+  end
 end
