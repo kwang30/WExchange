@@ -54,8 +54,8 @@ Rails.application.routes.draw do
     get '/requests',   to: 'requests#index'
   end
 
-  controller :photos do
-    post 'photos/:id/destroy' => "photos#destroy", as: 'destroy_photo'
+  controller :chats do
+    get '/chats', to: 'chats#index'
   end
 
   resources :users do

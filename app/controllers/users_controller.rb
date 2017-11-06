@@ -17,9 +17,7 @@ class UsersController < ApplicationController
     @portfolios=Portfolio.where(" id = ?", current_user.id)
     @reviews = @user.reviews
     @portfolio=Portfolio.new
-    1.times do
-      @portfolio.photos.build
-    end
+    @portfolio.photos.build
   end
 
 
