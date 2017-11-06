@@ -3,7 +3,6 @@
     <div class="profile-img">
       <%= image_tag @user.image.url(:large)%>
     </div>
-    <%= render 'user_rating' %>
     <p class="name"><%= @name %></p>
     <p class="display-name">@<%= @user.display_name %></p>
     <%if current_user.id!=params[:id].to_i%>

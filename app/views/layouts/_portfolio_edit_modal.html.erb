@@ -1,7 +1,8 @@
 <div id="portfolio-edit-modal" class="modal">
   <div class="modal-content portfolio-modal-wrapper">
-    <p class="modal-title">Edit Portfolio</p>
+    <p class="title">Edit Portfolio</p>
     <%= form_for (portfolio) do |f| %>
+
       <div class="col s12">
         <%= f.label :name %>
         <%= f.text_field :name, placeholder: "Ex. Graphic Design" %>
@@ -10,8 +11,18 @@
         <%= f.label :description %>
         <%= f.text_area :description, class: "materialize-textarea" %>
       </div>
-      <%=render 'layouts/edituploads', f:f, portfolio: portfolio %>
+      <div class="field">
 
+      <% if !portfolio.nil? && !portfolio.photos.nil?%>
+            <%portfolio.photos.each do |photo| %>
+              <%= image_tag photo.image.url, :alt => "Portfolio Image", id:"portfolio-picture"%>
+              <%= check_box_tag "delete[]", photo.id, {:multiple => true}, class: 'checkbox-inline', id: "start"%>
+              <%= label_tag "start", "Delete" %>
+            <% end %>
+      <% end %>
+
+      <%=render 'layouts/uploads', f:f %>
+    </div>
       <div class="button-wrapper col s12">
         <%= hidden_field(:user_id, current_user.id.to_i) %>
         <%= f.submit "Save", class: "waves-effect waves-light btn" %>
