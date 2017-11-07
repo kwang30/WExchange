@@ -3,6 +3,7 @@
     <a href="#" class="brand-logo left">WExchange</a>
 
     <% if !logged_in? %>
+
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to "Home", root_path, target: "_self", class: "active" %></li>
       <li class="divider"></li>
@@ -10,8 +11,10 @@
       <li class="divider"></li>
       <li><%= link_to "Sign Up", signup_path, target: "_self" %></li>
     </ul>
+
     <% else %>
-    <ul id="dropdown1" class="dropdown-content">
+    <!-- My Account DROPDOWN MENU -->
+    <ul id="my-account-dropdown" class="dropdown-content">
       <% puts current_user.id%>
       <% puts current_portfolios.first %>
       <li><%= link_to "My Profile", current_user, target: "_self", id: current_user.id %></li>
@@ -19,12 +22,21 @@
       <li><%= link_to "Log Out", logout_path, method: :delete %></li>
     </ul>
 
+    <!-- Notifications DROPDOWN MENU -->
+    <ul id="notifications-dropdown" data-behavior="notification-items" class="dropdown-content"></ul>
+
+    <!-- NAVIGATION BAR ITEMS -->
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to "Home", root_path, target: "_self", class: "active" %></li>
-      <li><%= link_to "Notifications", notifications_path, target: "_self" %></li>
       <li><%= link_to "Discover", discover_path, target: "_self" %></li>
       <li><%= link_to "Messages", chats_path, target: "_self" %></li>
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li data-behavior="notifications">
+        <a class="dropdown-button nav-dropdown" data-behavior="notifications-link" data-beloworigin="true" data-constrainwidth="false" href="#!" data-activates="notifications-dropdown">
+          <i class="material-icons left">notifications</i>
+          <span data-behavior="unread-count" class="new badge"></span>
+        </a>
+      </li>
+      <li><a class="dropdown-button nav-dropdown" data-beloworigin="true" href="#!" data-activates="my-account-dropdown">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
     <% end %>
   </div>

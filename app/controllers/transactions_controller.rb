@@ -9,11 +9,11 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @request =Transaction.new(request_params)
+    @request = Transaction.new(request_params)
     @request.recipient_id = current_user.id
     @request.creator_id = params[:transaction][:creator_id]
     if @request.save
-      #TODO: Display success message
+      Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "Sent you", notifiable: @request)
     else
       #TODO: Display error message
     end

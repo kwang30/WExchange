@@ -19,6 +19,7 @@
 //= require jquery.slick
 //= require materialize-sprockets
 //= require_tree .
+
 $(document).ready( function(){
   $('.modal').modal();
 });
