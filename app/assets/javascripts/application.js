@@ -17,7 +17,6 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/basic-plus
 //= require jquery.slick
-//= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
 $(document).ready( function(){
