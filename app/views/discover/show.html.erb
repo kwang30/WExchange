@@ -1,14 +1,13 @@
 <div class="discover-wrapper container row">
-  <form>
+  <form class="search-form">
     <div class="input-field col m6 offset-m3">
-      <input id="search" type="search" name="search_query" placeholder="search..."required>
+      <input id="search" type="search" name="search_query" placeholder="Search..." required>
       <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-      <i class="material-icons close-icon">close</i>
     </div>
   </form>
   <div class="row search-results-wrapper">
   <% @users.each do |user| %>
-    <div class="col s10 m4 l4">
+    <div class="col s10 m3 l3">
       <%= render 'layouts/discover_card', locals: {user: user} %>
     </div>
   <% end %>
