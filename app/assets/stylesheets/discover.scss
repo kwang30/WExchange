@@ -2,17 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #search {
-  padding-left: 50px;
-}
-
-.search-bar {
-  background-color: white;
+  padding-left: 35px;
 }
 
 .input-field {
-  background-color: white !important;
   height: 50px;
 }
+
+.row .input-field input:focus {
+  // HACK: Background color is hardcoded here
+  background-color: #f6f6f6;
+  border-bottom: 1px solid red !important;
+  box-shadow: 0 1px 0 0 red !important
+}
+
+
 
 .close-icon {
   padding-top: 10px;
@@ -24,6 +28,11 @@
   margin-top: 2px;
 }
 
+.search-form {
+  width: 100%;
+  height: 75px;
+}
+
 .search-results {
   width: 100%;
 }
@@ -33,14 +42,43 @@
 }
 
 .discover-card {
-  margin: 40px;
-}
+  margin: 10px;
 
-.discover-card .card-subtitle {
-  display: block;
-  margin-top: -15px;
-}
+  .card-content {
+    padding: 10px 20px;
+    height: 150px;
+  }
 
-.discover-card .view-profile-link {
-  color: black !important;
+  .card-title {
+
+  }
+
+  .card-subtitle {
+    display: block;
+    font-weight: lighter;
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+
+  $about-me-line-height: 1.4;
+  $about-me-lines-to-show: 3;
+  $about-me-font-size: 15px;
+
+  .card-about-me {
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: $about-me-font-size * $about-me-line-height * $about-me-lines-to-show; /* Fallback for non-webkit */
+    margin: 0 auto;
+    font-size: $about-me-font-size;
+    line-height: $about-me-line-height;
+    -webkit-line-clamp: $about-me-lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .view-profile-link {
+    color: black !important;
+  }
+
 }

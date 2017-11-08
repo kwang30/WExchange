@@ -5,6 +5,7 @@ has_secure_password
     has_many :messages
     has_many :reviews
     has_many :photos
+    has_many :notifications, foreign_key: :recipient_id
     has_many :chats, foreign_key: :sender_id # paul
 
     before_save { email.downcase! }

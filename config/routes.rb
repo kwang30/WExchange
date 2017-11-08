@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   end
 
   controller :notifications do
-    get     '/notifications',           to: 'notifications#notifications'
-    get     '/notifications/home',           to: 'notifications#home'
 
   end
 
@@ -62,10 +60,17 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   resources :charges
   resources :transactions
   resources :portfolios
   resources :photos
+
   resources :chats, only: [:create] do
     member do
       post :close
