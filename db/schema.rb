@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20171105213017) do
     t.string "request_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "request_message"
     t.string "transaction_title"
   end
 
