@@ -1,25 +1,65 @@
+// ##########################
+// views/chats/index.html.erb
+// ##########################
+
+#chats-list {
+  margin-top: 0;
+  height: 100%;
+}
+
+// ##########################
+// views/chats/_user_cell.html.erb
+// ##########################
+
+.user-cell-wrapper {
+  margin-bottom: 0px;
+  height: 100%;
+}
+
+.user-cell-profile-picture {
+  height: 50px;
+  border-radius: 50%;
+  width: 50px;
+}
+
+.user-cell-right-side {
+  margin-left: 10px;
+}
+
+.user-cell-display-name {
+  font-size: 20px;
+}
+
+.user-cell-recent-message {
+  margin: 0;
+}
+
+.user-cell-recent-message-time {
+  margin: 0;
+}
+
 
 // ##########################
 // views/chats/index.html.erb
 // ##########################
 
 .messages-wrapper {
-  height: 100%;
+  height: calc(100% - 64px);
+  overflow-y: hidden;
   .col {
     margin: 0;
     padding: 0;
     height: 100%;
   }
-
   .row {
     height: 100%;
+    margin-bottom: 0px;
   }
 }
 
 .message-user-column {
   border-right: 3px solid black;
   height: 100%;
-
   .user-list-heading {
     text-align: center;
     border-bottom: 2px solid black;
@@ -38,16 +78,25 @@
   }
 }
 
+.message-content-column {
+  height: 100%;
+  bottom: 0px;
+}
+
 // ##########################
 // views/chats/_chat.html.erb
 // ##########################
 
-.chat-wrapper {
-  padding-bottom: 20px;
-  .chat-heading {
-    height: 40px;
-    margin-bottom: 10px;
 
+.chat-wrapper {
+  height: 100%;
+  width: 100%;
+  .data-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+  .chat-heading {
+    height: 45px;
     .chat-display-name {
       font-size: 25px;
       padding-left: 10px;
@@ -56,34 +105,37 @@
       float: right;
       margin-right: 20px;
     }
-
   }
-}
-
-.messages-list {
-  max-height: 200px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  ul {
-    padding-left: 0px;
-    list-style: none;
-  }
-}
-
-.message-form {
-  padding: 10px;
-  .message-input {
-    resize: none;
-  }
-  .message-send-button-wrapper {
+  .chat-body {
     display: block;
-    height: 46px;
-  }
-  .message-send-button {
-    display: block;
-    margin: auto 5%;
     height: 100%;
-    width: 90%;
+    .messages-list {
+      overflow-y: scroll;
+      height: calc(100% - 109px);
+      ul {
+        padding-left: 0px;
+        list-style: none;
+      }
+    }
+    .message-form {
+      height: 60px;
+      padding: 10px;
+      bottom: 0px;
+
+      .message-input {
+        resize: none;
+      }
+      .message-send-button-wrapper {
+        display: block;
+        height: 46px;
+      }
+      .message-send-button {
+        display: block;
+        margin: auto 5%;
+        height: 100%;
+        width: 90%;
+      }
+    }
   }
 }
 

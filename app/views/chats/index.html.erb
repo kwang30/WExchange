@@ -7,17 +7,15 @@
       <div class="user-list-body">
         <ul>
           <% @users.each do |user| %>
-            <li class="user-list-item"><%= link_to user.display_name, chats_path(user_id: user), remote: true, method: :post %></li>
+            <li class="user-list-item">
+              <%= render partial: 'chats/user_cell.html.erb', locals: {user: user} %>
+            </li>
           <% end %>
         </ul>
       </div>
     </div>
     <div class="col m9 message-content-column">
-      <ul id="chats-list">
-        <% @chats.each do |chat| %>
-          <%= render 'chats/chat', chat: chat, user: current_user %>
-        <% end %>
-      </ul>
+      <ul id="chats-list"></ul>
     </div>
   </div>
 </div>

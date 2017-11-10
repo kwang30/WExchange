@@ -1,0 +1,15 @@
+<div class="user-cell-wrapper row">
+  <%= image_tag user.image.url(:small), class: "user-cell-profile-picture col m3" %>
+  <div class="user-cell-right-side-wrapper col m9">
+    <div class="user-cell-right-side">
+      <%= link_to user.display_name, chats_path(user_id: user), remote: true, method: :post, class: "user-cell-display-name" %>
+      <div class="user-cell-recent-message-wrapper">
+        <% chat = Chat.get(current_user.id, user.id) %>
+        <% if chat.messages.length > 0 %>
+          <p class="user-cell-recent-message"><%= chat.messages.last.content %></p>
+          <p class="user-cell-recent-message-time"><%= chat.messages.last.created_at.strftime("%m/%d/%y") %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
