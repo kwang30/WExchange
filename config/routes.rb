@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  root 'home#home'
-  get     '/',                        to: 'home#home'
+  get 'home/show'
+
+  root 'home#show'
+
+  controller :dashboard do
+    get '/dashboard', to: 'dashboard#show'
+  end
 
   controller :users do
     get     '/profile/addPic',         to: 'users#addPic'

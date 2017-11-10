@@ -1,17 +1,16 @@
 <div class="container-fluid row">
-
   <div class="col l4 m4 s12">
     <div class="deadlines card">
       <div class="card-content">
         <div class="carddashboard-sidebar-items-container">
           <h1 class="dashboard-sidebar-header">Open Requests</h1>
           <ul class="dashboard-sidebar-items">
-            <% @requests.each do |request| %>
+            <% @incoming_requests.each do |request| %>
             <li class="dashboard-sidebar-item">
-              <a href="#" class="dashboard-sidebar-item-name"><%= request["name"] %></a>
+              <a href="#" class="dashboard-sidebar-item-name"><%= request.transaction_title %></a>
               </br>
-              <span class="dashboard-sidebar-item-requester">Requested By: <a><%= request["recipient"] %></a></span>
-              <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request["deadline"] %></a></span>
+              <span class="dashboard-sidebar-item-requester">Requested By: <a><%= User.find_by(id: request.recipient_id).display_name %></a></span>
+              <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request.deadline %></a></span>
               <div class="divider"></div>
             </li>
             <% end %>
@@ -20,7 +19,7 @@
         <div class="dashboard-sidebar-items-container">
           <h1 class="dashboard-sidebar-header">My Transactions</h1>
           <ul class="dashboard-sidebar-items">
-            <% @requests.each do |request| %>
+            <% @outgoing_requests.each do |request| %>
             <li class="dashboard-sidebar-item">
               <a href="#" class="dashboard-sidebar-item-name"><%= request["name"] %></a>
               </br>
@@ -34,37 +33,6 @@
       </div>
     </div>
   </div>
-  <!-- <div class="dashboard-sidebar-container col l3 m4 s12">
-    <div class="carddashboard-sidebar-items-container">
-      <h1 class="dashboard-sidebar-header">Open Requests</h1>
-      <ul class="dashboard-sidebar-items">
-        <% @requests.each do |request| %>
-        <li class="dashboard-sidebar-item">
-          <a href="#" class="dashboard-sidebar-item-name"><%= request["name"] %></a>
-          </br>
-          <span class="dashboard-sidebar-item-requester">Requested By: <a><%= request["recipient"] %></a></span>
-          <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request["deadline"] %></a></span>
-          <div class="divider"></div>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="dashboard-sidebar-items-container">
-      <h1 class="dashboard-sidebar-header">My Transactions</h1>
-      <ul class="dashboard-sidebar-items">
-        <% @requests.each do |request| %>
-        <li class="dashboard-sidebar-item">
-          <a href="#" class="dashboard-sidebar-item-name"><%= request["name"] %></a>
-          </br>
-          <span class="dashboard-sidebar-item-requester">Requested By: <a><%= request["recipient"] %></a></span>
-          <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request["deadline"] %></a></span>
-          <div class="divider"></div>
-        </li>
-        <% end %>
-      </ul>
-    </div>
-  </div> -->
-
   <div class="col l3 m4 s12">
     <div class="deadlines card">
       <div class="card-content">
