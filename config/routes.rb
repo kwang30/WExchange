@@ -82,4 +82,6 @@ Rails.application.routes.draw do
     end
     resources :messages, only: [:create]
   end
+  resources :tags, only: [:index, :show]
+
 end

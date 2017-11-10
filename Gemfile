@@ -7,7 +7,8 @@ end
 
 gem 'geocoder'
 gem 'devise'
-
+gem 'acts-as-taggable-on'
+gem "select2-rails"
 gem 'devise'
 gem 'activeadmin'
 gem 'gon'

@@ -64,7 +64,7 @@ class PortfoliosController < ApplicationController
 
     private
     def portfolio_params
-      params.require(:portfolio).permit(:name, :description, :user_id, photos_attributes: [:image])
+      params.require(:portfolio).permit(:name, :description, :user_id, :tag_list, photos_attributes: [:image])
     end
 
     def get_portfolio
