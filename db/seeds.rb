@@ -14,5 +14,6 @@ require 'faker'
     name = first_name + " " + last_name
     displayName = name.delete(' ').downcase!
     email = Faker::Internet.email
-    User.create(first_name: first_name, last_name: last_name, display_name: displayName, email: email, password: "password", password_digest: "password")
+    image = Faker::Avatar.image
+    User.create(first_name: first_name, last_name: last_name, display_name: displayName, email: email, password: "password", password_confirmation: "password")
 end

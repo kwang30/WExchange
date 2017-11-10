@@ -1,18 +1,19 @@
-<div class="container login-container row">
-  <%= form_for(:session, url: login_path) do |f| %>
-      <div class="input-field custom-input-field col s6 offset-s3" type="text" class="validate">
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-      </div>
+<div class="login-background row">
+  <div class="container login-container col m6">
+    <%= form_for(:session, url: login_path) do |f| %>
+        <div class="input-field custom-input-field col m12" type="text" class="validate">
+          <%= f.label :email, class: 'form-label' %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
 
-      <div class="input-field custom-input-field col s6 offset-s3" type="text" class="validate">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-      </div>
+        <div class="input-field custom-input-field col m12" type="text" class="validate">
+          <%= f.label :password, class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
 
-      <div class="col s12 center">
-        <%= f.submit "Log In", target: "_self", class: "active waves-effect waves-light btn" %>
-        New user? <%= link_to "Sign up now!", signup_path %>
-      </div>
-    <% end %>
+        <div class="col s12 center">
+          <%= f.submit "Log In", target: "_self", class: "active waves-effect waves-light btn" %>
+        </div>
+      <% end %>
+  </div>
 </div>
