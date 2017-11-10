@@ -38,7 +38,7 @@ class TransactionsController < ApplicationController
 
   private
      def request_params
-       params.require(:transaction).permit(:request_message)
+       params.require(:transaction).permit(:request_message, :transaction_title, :deadline)
      end
 
      def get_request

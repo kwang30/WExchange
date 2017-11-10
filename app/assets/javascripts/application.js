@@ -22,4 +22,11 @@
 
 $(document).ready( function(){
   $('.modal').modal();
+  $('.datepicker').pickadate({
+    selectMonths: true,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 });
