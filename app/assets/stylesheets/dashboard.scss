@@ -30,12 +30,19 @@ body {
 
 .dashboard-sidebar-items {
   height: 300px;
+  margin: 0;
   overflow:hidden;
   overflow-y:scroll;
 }
 
+.dashboard-side-bar-item-link-wrapper {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
 .dashboard-sidebar-item {
-  height: 70px;
+  height: 50px;
   color: #d5d5d5;
 }
 
@@ -69,4 +76,16 @@ body {
 
 .deadline-card-item {
   height: 30px;
+}
+
+
+// _dashboard_request_approval_modal.html.erb
+
+.request-approval-wrapper {
+
+  .message-text-area {
+    display: none;
+  }
+
+
 }

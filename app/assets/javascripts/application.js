@@ -29,4 +29,12 @@ $(document).ready( function(){
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
+
+  $('#include_message').change(function() {
+    if ($(this).is(':checked')) {
+      $('.message-text-area').toggle()
+    } else {
+      $('.message-text-area').toggle()
+    }
+  });
 });

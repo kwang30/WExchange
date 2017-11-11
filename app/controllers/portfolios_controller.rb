@@ -14,8 +14,7 @@ class PortfoliosController < ApplicationController
     if @portfolio.save!
       params[:images].each do |image|
           @portfolio.photos.create!(:image => image)
-       end
-
+      end
       redirect_to current_user # change hardcoding
     else
       redirect_to current_user # TEMP: To avoid crashing out on failture to create
@@ -37,14 +36,10 @@ class PortfoliosController < ApplicationController
 
   def show
     @portfolio = Portfolio.find(params[:id])
-
   end
-
-
 
   def edit
     @portfolio = Portfolio.find(params[:id])
-
   end
 
   def delete

@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
     @request = Transaction.new(request_params)
     @request.recipient_id = current_user.id
     @request.creator_id = params[:transaction][:creator_id]
+    @request.status = 1
     if @request.save
       Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "Sent you", notifiable: @request)
     else
@@ -22,6 +23,19 @@ class TransactionsController < ApplicationController
 
   def edit
     @request = Transaction.find(params[:id])
+  end
+
+  def update
+    @request = Transaction.find_by(id: params[:id])
+    puts @request.inspect
+    if params["accept_status"] == "accept"
+      @request.update_attribute(:status, 2)
+      #TODO: SEND MESSAGE
+    elsif params["accept_status"] == "decline"
+      @request.update_attribute(:status, -1)
+      #TODO: SEND MESSAGE
+    end
+    redirect_to dashboard_path
   end
 
   def remove
@@ -38,7 +52,7 @@ class TransactionsController < ApplicationController
 
   private
      def request_params
-       params.require(:transaction).permit(:request_message, :transaction_title, :deadline)
+       params.require(:transaction).permit(:request_message, :transaction_title, :deadline, :status)
      end
 
      def get_request

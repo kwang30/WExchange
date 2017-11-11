@@ -3,28 +3,33 @@
     <div class="deadlines card">
       <div class="card-content">
         <div class="carddashboard-sidebar-items-container">
-          <h1 class="dashboard-sidebar-header">Open Requests</h1>
+          <h1 class="dashboard-sidebar-header">Incoming Requests</h1>
+          <div class="divider"></div>
           <ul class="dashboard-sidebar-items">
             <% @incoming_requests.each do |request| %>
-            <li class="dashboard-sidebar-item">
-              <a href="#" class="dashboard-sidebar-item-name"><%= request.transaction_title %></a>
-              </br>
-              <span class="dashboard-sidebar-item-requester">Requested By: <a><%= User.find_by(id: request.recipient_id).display_name %></a></span>
-              <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request.deadline %></a></span>
-              <div class="divider"></div>
-            </li>
+              <li class="dashboard-sidebar-item">
+                <%= link_to "#dashboard-request-approval-modal", class: "dashboard-side-bar-item-link-wrapper modal-trigger" do %>
+                <span class="dashboard-sidebar-item-name"><%= request.transaction_title %></span>
+                </br>
+                <span class="dashboard-sidebar-item-requester">Requested By: <%= User.find_by(id: request.recipient_id).display_name %></span>
+                <span class="dashboard-sidebar-item-deadline">Deadline: <%= request.deadline %></span>
+                <% end %>
+                <div class="divider"></div>
+              </li>
+              <%= render partial: 'dashboard/dashboard_request_approval_modal', locals: { request: request } %>
             <% end %>
           </ul>
         </div>
         <div class="dashboard-sidebar-items-container">
-          <h1 class="dashboard-sidebar-header">My Transactions</h1>
+          <h1 class="dashboard-sidebar-header">Outgoing Requests</h1>
+          <div class="divider"></div>
           <ul class="dashboard-sidebar-items">
             <% @outgoing_requests.each do |request| %>
             <li class="dashboard-sidebar-item">
-              <a href="#" class="dashboard-sidebar-item-name"><%= request["name"] %></a>
+              <span class="dashboard-sidebar-item-name"><%= request.transaction_title %></span>
               </br>
-              <span class="dashboard-sidebar-item-requester">Requested By: <a><%= request["recipient"] %></a></span>
-              <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request["deadline"] %></a></span>
+              <span class="dashboard-sidebar-item-requester">Requested By: <a><%= User.find_by(id: request.recipient_id).display_name %></a></span>
+              <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request.deadline %></a></span>
               <div class="divider"></div>
             </li>
             <% end %>
@@ -40,7 +45,7 @@
         <ul class="deadline-card-items">
           <% @requests.each do |request| %>
           <li class="deadline-card-item">
-            <span class="">Deadline: <a><%= request["deadline"] %></a></span>
+            <span class="">Deadline: <a><%= request.deadline %></a></span>
             <div class="divider"></div>
           </li>
           <% end %>
