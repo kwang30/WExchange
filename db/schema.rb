@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111040400) do
+ActiveRecord::Schema.define(version: 20171111191030) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20171111040400) do
     t.string "notifiable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "destination_url"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -102,9 +103,9 @@ ActiveRecord::Schema.define(version: 20171111040400) do
     t.integer "recipient_id"
     t.integer "creator_id"
     t.string "request_message"
-    t.string "transaction_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "transaction_title"
     t.datetime "deadline"
     t.integer "status"
   end

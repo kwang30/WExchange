@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
     @request.creator_id = params[:transaction][:creator_id]
     @request.status = 1
     if @request.save
-      Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "Sent you", notifiable: @request)
+      Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "Sent you", notifiable: @request, destination_url: dashboard_path)
     else
       #TODO: Display error message
     end
