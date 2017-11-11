@@ -8,7 +8,7 @@
           <ul class="dashboard-sidebar-items">
             <% @incoming_requests.each do |request| %>
               <li class="dashboard-sidebar-item">
-                <%= link_to "#dashboard-request-approval-modal", class: "dashboard-side-bar-item-link-wrapper modal-trigger" do %>
+                <%= link_to "#dashboard-request-approval-modal-#{request.id}", class: "dashboard-side-bar-item-link-wrapper modal-trigger" do %>
                 <span class="dashboard-sidebar-item-name"><%= request.transaction_title %></span>
                 </br>
                 <span class="dashboard-sidebar-item-requester">Requested By: <%= User.find_by(id: request.recipient_id).display_name %></span>
