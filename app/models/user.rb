@@ -7,6 +7,7 @@ has_secure_password
     has_many :photos
     has_many :notifications, foreign_key: :recipient_id
     has_many :chats, foreign_key: :sender_id # paul
+    acts_as_taggable
 
     before_save { email.downcase! }
     validates :first_name, :last_name,  presence: true, length: {maximum: 50 }

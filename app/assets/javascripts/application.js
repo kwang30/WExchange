@@ -16,6 +16,9 @@
 //= require jquery-fileupload
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/basic-plus
+//= require select2
+//= require select2-full
+
 //= require jquery.slick
 //= require materialize-sprockets
 //= require_tree .

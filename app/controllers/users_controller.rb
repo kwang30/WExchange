@@ -18,6 +18,8 @@ class UsersController < ApplicationController
     @reviews = @user.reviews
     @portfolio=Portfolio.new
     @portfolio.photos.build
+    @tags = ActsAsTaggableOn::Tag.all
+
   end
 
 
@@ -64,6 +66,6 @@ class UsersController < ApplicationController
  private
    def user_params
      params.require(:user).permit(:username, :first_name, :last_name, :email, :biography,
-                                  :display_name, :password, :password_confirmation, :image)
+                                  :display_name, :password, :password_confirmation, :image, tag_list: [])
    end
 end

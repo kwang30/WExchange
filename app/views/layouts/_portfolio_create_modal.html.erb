@@ -2,7 +2,7 @@
   <div class="modal-content portfolio-modal-wrapper">
     <p class="title">Create Portfolio</p>
     <div class="container">
-      <%= form_for @portfolio, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+      <%= simple_form_for @portfolio, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
       <div class="col s12">
         <%= f.label :name %>
         <%= f.text_field :name, placeholder: "Ex. Graphic Design" %>
@@ -12,6 +12,9 @@
         <%= f.text_area :description, class: "materialize-textarea" %>
       </div>
       <%=render 'layouts/uploads', f:f %>
+      <%= f.input :tag_list, label: false, multiple: 'multiple' %><br />
+
+
       <div class="button-wrapper col s3">
         <%= hidden_field(:user_id, current_user.id.to_i) %>
         <%= f.submit "Create", class: "waves-effect waves-light btn" %>
@@ -20,3 +23,10 @@
     </div>
   </div>
 </div>
+
+<script>
+
+$(function() {
+  $('.input-row #user_tags_list').select2({tags:[]})
+});
+</script>
