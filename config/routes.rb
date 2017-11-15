@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   controller :dashboard do
     get '/dashboard', to: 'dashboard#show'
+    get '/update', to: 'dashboard#update_progress_tracker'
+    get '/add_marker', to: 'dashboard#add_marker'
   end
 
   controller :users do

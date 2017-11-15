@@ -1,0 +1,11 @@
+<div id="dashboard-request-progress-marker-modal-<%= request.id %>" class="transaction-marker-modal modal">
+  <div class="modal-content">
+    <%= form_for :progress, method: 'get',  :url => { :action => :update_progress_tracker }, remote: true do |f| %>
+      <%= f.label "New Marker" %>
+      <%= f.text_field :progress, disabled: false, placeholder: "Ex. Preliminary Draft" %>
+      <%= f.hidden_field :request_id, value: request.id %>
+      <%= f.submit class: "waves-effect waves-light btn", value: "add" %>
+    <% end %>
+
+  </div>
+</div>

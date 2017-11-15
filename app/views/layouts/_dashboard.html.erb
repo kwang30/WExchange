@@ -8,7 +8,7 @@
           <ul class="dashboard-sidebar-items">
             <% @incoming_requests.each do |request| %>
               <li class="dashboard-sidebar-item">
-                <%= link_to "#dashboard-request-approval-modal-#{request.id}", class: "dashboard-side-bar-item-link-wrapper modal-trigger" do %>
+                <%= link_to update_path(:id => request.id), class: "dashboard-side-bar-item-link-wrapper", remote: true do %>
                 <span class="dashboard-sidebar-item-name"><%= request.transaction_title %></span>
                 </br>
                 <span class="dashboard-sidebar-item-requester">Requested By: <%= User.find_by(id: request.recipient_id).display_name %></span>
@@ -17,6 +17,7 @@
                 <div class="divider"></div>
               </li>
               <%= render partial: 'dashboard/dashboard_request_approval_modal', locals: { request: request } %>
+              <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
             <% end %>
           </ul>
         </div>
@@ -54,19 +55,14 @@
     </div>
   </div>
 
-  <div class="col l3 m4 s12">
+  <div class="col l5 m4 s12">
     <div class="deadlines card">
       <div class="card-content">
-        <span class="card-title">Upcoming Deadlines</span>
-        <%= bar_chart ({"Football" => 10}) %>
-      </div>
-    </div>
-  </div>
-
-  <div class="col l2 m4 s12">
-    <div class="deadlines card">
-      <div class="card-content">
-        <span class="card-title">Upcoming Deadlines</span>
+        <span class="card-title">Progress Tracker</span>
+        <div id="transaction_progress_tracker">
+          <%= render "layouts/transaction_progress_tracker" %>
+        </div>
+        <!-- <%= bar_chart ({"Football" => 10}) %> -->
       </div>
     </div>
   </div>

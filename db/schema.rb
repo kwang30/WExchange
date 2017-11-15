@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111191030) do
+ActiveRecord::Schema.define(version: 20171114174645) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20171111191030) do
     t.string "transaction_title"
     t.datetime "deadline"
     t.integer "status"
+    t.text "progress"
   end
 
   create_table "users", force: :cascade do |t|

@@ -40,4 +40,12 @@ $(document).ready( function(){
       $('.message-text-area').toggle()
     }
   });
+
+  $('.transaction-marker-modal').on('submit', function() {
+    $('.transaction-marker-modal').modal();
+  });
+
+  $('#marker-check').change(function() {
+    console.log("hello")
+  })
 });

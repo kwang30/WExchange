@@ -1,0 +1,20 @@
+<div class="row">
+  <% if @markers.any? %>
+    <% @markers.each do |marker| %>
+        <li class="deadline-card-item">
+          <p>
+          <input type="checkbox" id="marker-check-<%= marker[0] %>"/>
+          <label for="marker-check-<%= marker[0] %>"><%= marker[0] %></label>
+          </p>
+        </li>
+    <% end %>
+  <% end %>
+  <% @selected_request.each do |request| %>
+    <%= link_to "#dashboard-request-progress-marker-modal-#{request.id}", class: "dashboard-side-bar-item-link-wrapper modal-trigger" do%>
+
+    <div class="btn col l6 offset-l3">
+      Add Marker
+    </div>
+    <% end %>
+  <% end %>
+</div>
