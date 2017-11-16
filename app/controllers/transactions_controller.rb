@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
     @request = Transaction.find_by(id: params[:id])
     puts @request.inspect
     if params["accept_status"] == "accept"
-      @request.update_attribute(:status, 2)
+      @request.update_attribute(:status, 1)
       #TODO: SEND MESSAGE
     elsif params["accept_status"] == "decline"
       @request.update_attribute(:status, -1)
