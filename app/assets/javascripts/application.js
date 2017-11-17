@@ -45,7 +45,7 @@ $(document).ready( function(){
     $('.transaction-marker-modal').modal();
   });
 
-  $('#marker-check').change(function() {
+  $('#marker_complete').change(function() {
     console.log("hello")
-  })
+  });
 });

@@ -18,17 +18,17 @@ class DashboardController < ApplicationController
     else
       @selected_request = Transaction.where(id: params[:progress]["request_id"])
     end
-    @request = @selected_request[0]
-    if @request.progress.nil?
+    @@request = @selected_request[0]
+    if @@request.progress.nil?
       @markers = Hash.new
     else
-      @markers = @request.progress
+      @markers = @@request.progress
     end
     if params[:progress]
       @markers[params[:progress]["progress"]] = false
       @request_to_save = Transaction.find_by(id: params[:progress]["request_id"])
-        @request_to_save.progress = @markers
-        @request_to_save.save
+      @request_to_save.progress = @markers
+      @request_to_save.save
     end
 
     respond_to do |format|
@@ -39,7 +39,21 @@ class DashboardController < ApplicationController
     end
   end
 
-  def add_marker
+  def update_marker
+    marker_id = params[:id].sub!("marker-check-", "")
+    @selected_request = Transaction.find_by(id: @@request.id)
+    @markers_to_update = @selected_request.progress
+    puts @markers_to_update
+    if @markers_to_update[params[:id]] == false
+      @markers_to_update[params[:id]] = true
+    else
+      @markers_to_update[params[:id]] = false
+    end
+    @selected_request.progress = @markers_to_update
+    @selected_request.save
+    puts Transaction.find_by(id: @@request.id).progress
+    # @selected_request.save
+    # puts Transaction.where(id: @@request.id).first.progress
 
   end
 
