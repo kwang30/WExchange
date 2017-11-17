@@ -1,37 +1,28 @@
 <div class="container-fluid row">
-  <div class="col l4 m4 s12">
-    <div class="deadlines card">
+  <div class="requests col l4 m4 s12">
+    <div class="card">
       <div class="card-content">
-        <div class="carddashboard-sidebar-items-container">
-          <h1 class="dashboard-sidebar-header">Incoming Requests</h1>
-          <div class="divider"></div>
+        <h1 class="dashboard-sidebar-header">Requests</h1>
+        <ul class="tabs tabs-fixed-width dashboard-sidebar-request-tabs">
+          <li class="tab col s3"><a class="active" href="#dashboard-sidebar-incoming-requests" onclick="Materialize.showStaggeredList('#dashboard-sidebar-incoming-requests')">Incoming</a></li>
+          <li class="tab col s3"><a href="#dashboard-sidebar-outgoing-requests" onclick="Materialize.showStaggeredList('#dashboard-sidebar-outgoing-requests')">Outgoing</a></li>
+        </ul>
+        <div class="dashboard-sidebar-items-container incoming-request-wrapper" id="dashboard-sidebar-incoming-requests">
           <ul class="dashboard-sidebar-items">
             <% @incoming_requests.each do |request| %>
               <li class="dashboard-sidebar-item">
-                <%= link_to update_path(:id => request.id), class: "dashboard-side-bar-item-link-wrapper", remote: true do %>
-                <span class="dashboard-sidebar-item-name"><%= request.transaction_title %></span>
-                </br>
-                <span class="dashboard-sidebar-item-requester">Requested By: <%= User.find_by(id: request.recipient_id).display_name %></span>
-                <span class="dashboard-sidebar-item-deadline">Deadline: <%= request.deadline %></span>
-                <% end %>
-                <div class="divider"></div>
+                <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
               </li>
               <%= render partial: 'dashboard/dashboard_request_approval_modal', locals: { request: request } %>
               <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
             <% end %>
           </ul>
         </div>
-        <div class="dashboard-sidebar-items-container">
-          <h1 class="dashboard-sidebar-header">Outgoing Requests</h1>
-          <div class="divider"></div>
+        <div class="dashboard-sidebar-items-container outgoing-request-wrapper" id="dashboard-sidebar-outgoing-requests">
           <ul class="dashboard-sidebar-items">
             <% @outgoing_requests.each do |request| %>
             <li class="dashboard-sidebar-item">
-              <span class="dashboard-sidebar-item-name"><%= request.transaction_title %></span>
-              </br>
-              <span class="dashboard-sidebar-item-requester">Requested By: <a><%= User.find_by(id: request.recipient_id).display_name %></a></span>
-              <span class="dashboard-sidebar-item-deadline">Deadline: <a><%= request.deadline %></a></span>
-              <div class="divider"></div>
+              <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
             </li>
             <% end %>
           </ul>
@@ -54,7 +45,6 @@
       </div>
     </div>
   </div>
-
   <div class="col l5 m4 s12">
     <div class="deadlines card">
       <div class="card-content">
@@ -66,5 +56,4 @@
       </div>
     </div>
   </div>
-
 </div>

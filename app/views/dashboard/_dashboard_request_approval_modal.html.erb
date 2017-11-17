@@ -7,11 +7,11 @@
       <%= f.text_area :request_message, disabled: true, class: "materialize-textarea col-s12", size: "12x12"  %>
       <%= f.label "Deadline" %>
       <%= f.text_field :deadline, disabled: true, class: "datepicker" %>
-      <p class="checkbox-wrapper">
+      <div class="checkbox-wrapper">
         <%= check_box_tag :include_message, class:"include-message-check-box" %>
         <%= label_tag :include_message, "Include Message to Sender" %>
-        <%= text_area_tag :message, "", class:"message-text-area materialize-textarea" %>
-      </p>
+      </div>
+      <%= text_area_tag :response_message, "", class:"message-text-area materialize-textarea" %>
       <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "accept_status", value: "accept" %>
       <%= f.submit "Decline", class: "waves-effect waves-light btn", name: "accept_status", value: "decline" %>
     <% end %>
