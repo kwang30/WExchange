@@ -1,8 +1,12 @@
 <div class="container row" id="profile-wrapper">
   <div class="left-side col s5 l4">
+
     <div class="profile-img">
       <%= image_tag @user.image.url(:large)%>
+      <%= link_to '<i class="fa fa-pencil fa-lg"></i>'.html_safe, '#profile', class: "modal-trigger", id: "edit"%>
+      <%= render 'layouts/profile' %>
     </div>
+    
     <p class="name"><%= @name %></p>
     <p class="display-name">@<%= @user.display_name %></p>
     <%if current_user.id!=params[:id].to_i%>
@@ -35,3 +39,34 @@
     <% end %>
   </div>
 </div>
+
+<style>.profile-img {
+	position: relative;
+	display: inline-block;
+}
+
+.profile-img:hover #edit {
+	display: block;
+}
+
+#edit {
+	padding-top: 7px;
+	padding-right: 7px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: none;
+}
+
+#edit a {
+	color: #000;
+}
+</style>
+
+<script>
+
+$(document).ready(function(){
+   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+   $('.modal-trigger').leanModal();
+ });
+</script>
