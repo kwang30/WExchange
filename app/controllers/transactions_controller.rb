@@ -12,9 +12,9 @@ class TransactionsController < ApplicationController
     @request = Transaction.new(request_params)
     @request.recipient_id = current_user.id
     @request.creator_id = params[:transaction][:creator_id]
-    @request.status = 1
+    @request.status = 0
     if @request.save
-      Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "Sent you", notifiable: @request, destination_url: dashboard_path)
+      Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "sent you a request", notifiable: @request, destination_url: dashboard_path)
     else
       #TODO: Display error message
     end
@@ -27,13 +27,18 @@ class TransactionsController < ApplicationController
 
   def update
     @request = Transaction.find_by(id: params[:id])
-    puts @request.inspect
-    if params["accept_status"] == "accept"
-      @request.update_attribute(:status, 2)
-      #TODO: SEND MESSAGE
-    elsif params["accept_status"] == "decline"
-      @request.update_attribute(:status, -1)
-      #TODO: SEND MESSAGE
+    if params["creator_accept"]
+      creator_accept_request @request
+    elsif params["creator_decline"]
+      creator_decline_request @request
+    elsif params["send_content"]
+      creator_send_content @request
+    elsif params["client_accept"]
+      client_accept_content @request
+    elsif params["request_edits"]
+      client_request_edits @request
+    elsif params["cancel"]
+      cancel @request
     end
     redirect_to dashboard_path
   end
@@ -48,6 +53,41 @@ class TransactionsController < ApplicationController
 
   def show
     @request = Transaction.find_by :transaction_id
+  end
+
+  def creator_accept_request(request)
+    request.update_attribute(:status, 1)
+    Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "accepted your request", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def creator_decline_request(request)
+    request.update_attribute(:status, -1)
+    Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "declined your request", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def creator_send_content(request)
+    request.update_attribute(:status, 2)
+    Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "sent content for your request", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def client_accept_content(request)
+    request.update_attribute(:status, 3)
+    Notification.create(recipient: User.find_by(id: request.creator_id), actor:User.find_by(id: request.recipient_id), action: "accepted your work", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def client_request_edits(request)
+    request.update_attribute(:status, 3)
+    Notification.create(recipient: User.find_by(id: request.creator_id), actor:User.find_by(id: request.recipient_id), action: "requested edits to your work", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def cancel(request)
+    if request.recipient_id == current_user.id
+      request.update_attribute(:status, -2)
+      Notification.create(recipient: User.find_by(id: request.creator_id), actor:User.find_by(id: request.recipient_id), action: "cancelled their request", notifiable: @request, destination_url: dashboard_path)
+    elsif request.creator_id == current_user.id
+      request.update_attribute(:status, -3)
+      Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "cancelled your request", notifiable: @request, destination_url: dashboard_path)
+    end
   end
 
   private

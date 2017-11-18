@@ -1,11 +1,11 @@
 <div class="container-fluid row">
-  <div class="requests col l4 m4 s12">
+  <div class="col l5 m4 s12">
     <div class="card">
       <div class="card-content">
         <h1 class="dashboard-sidebar-header">Requests</h1>
         <ul class="tabs tabs-fixed-width dashboard-sidebar-request-tabs">
-          <li class="tab col s3"><a class="active" href="#dashboard-sidebar-incoming-requests" onclick="Materialize.showStaggeredList('#dashboard-sidebar-incoming-requests')">Incoming</a></li>
-          <li class="tab col s3"><a href="#dashboard-sidebar-outgoing-requests" onclick="Materialize.showStaggeredList('#dashboard-sidebar-outgoing-requests')">Outgoing</a></li>
+          <li class="tab col s3"><a class="active" href="#dashboard-sidebar-incoming-requests">Incoming</a></li>
+          <li class="tab col s3"><a href="#dashboard-sidebar-outgoing-requests">Outgoing</a></li>
         </ul>
         <div class="dashboard-sidebar-items-container incoming-request-wrapper" id="dashboard-sidebar-incoming-requests">
           <ul class="dashboard-sidebar-items">
@@ -13,7 +13,7 @@
               <li class="dashboard-sidebar-item">
                 <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
               </li>
-              <%= render partial: 'dashboard/dashboard_request_approval_modal', locals: { request: request } %>
+              <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
               <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
             <% end %>
           </ul>
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <div class="col l3 m4 s12">
+  <div class="col l4 m4 s12">
     <div class="deadlines card">
       <div class="card-content">
         <span class="card-title">Upcoming Deadlines</span>

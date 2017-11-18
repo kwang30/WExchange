@@ -1,1 +1,12 @@
 $("#transaction_progress_tracker").html("<%= raw escape_javascript(render(:partial => 'layouts/transaction_progress_tracker')) %>")
+
+$('input:checkbox').change(
+  function(){
+        $.ajax({
+          url: '/update_marker',
+          data: { id: this.id },
+          // success: function(data) {
+          //   $("#someid").append(data.sometext);
+          // }
+        });
+  });

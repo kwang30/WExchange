@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   controller :dashboard do
     get '/dashboard', to: 'dashboard#show'
     get '/update', to: 'dashboard#update_progress_tracker'
-    get '/add_marker', to: 'dashboard#add_marker'
+    get '/update_marker', to: 'dashboard#update_marker'
   end
 
   controller :users do
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   controller :transactions do
     get      '/transactions',         to: 'transactions#index'
     get      '/transactions',         to: 'transactions#new'
-    post     '/transactions/create',         to: 'transactions#create'
+    post     '/transactions/create',  to: 'transactions#create'
   end
 
   controller :discover do
