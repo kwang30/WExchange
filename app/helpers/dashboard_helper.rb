@@ -3,6 +3,10 @@ module DashboardHelper
   def badge_for_request(request)
     badge = ""
     case request.status
+    when -3
+      badge = "<span class=\"new badge grey\" data-badge-caption=\"\">Cancelled by Creator</span>"
+    when -2
+      badge = "<span class=\"new badge grey\" data-badge-caption=\"\">Cancelled by Client</span>"
     when -1
       badge = "<span class=\"new badge grey\" data-badge-caption=\"\">Declined</span>"
     when 0

@@ -5,7 +5,7 @@
 <div class="dashboard-request-header-wrapper row">
   <span class="dashboard-sidebar-item-name col m10"><%= request.transaction_title %></span>
   <%= link_to "View","#dashboard-request-approval-modal-#{request.id}", class: "dashboard-request-view-button waves-effect waves-light btn col m2 modal-trigger" %>
-  <%= render partial: 'dashboard/dashboard_request_approval_modal', locals: { request: request } %>
+  <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
   <!-- <a class="dashboard-request-view-button waves-effect waves-light btn col m2">View</a> -->
 </div>
 <div class="dashboard-request-content-wrapper row">
