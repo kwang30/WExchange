@@ -11,6 +11,10 @@
         </div>
         <p class="short-description"><%= portfolio.description %></p>
       </div>
+      <p>Tags: <%= raw portfolio.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+
+
+
       <div class="collapsible-body">
         <p class="long-description">More detailed information about the service goes here.</p>
       </div>

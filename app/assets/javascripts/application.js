@@ -49,3 +49,7 @@ $(document).ready( function(){
     console.log("hello")
   });
 });
+
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
+});
