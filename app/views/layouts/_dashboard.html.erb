@@ -1,5 +1,5 @@
 <div class="container-fluid row">
-  <div class="col l5 m4 s12">
+  <div class="col l4 m4 s12">
     <div class="card">
       <div class="card-content">
         <h1 class="dashboard-sidebar-header">Requests</h1>
@@ -44,8 +44,30 @@
         </ul>
       </div>
     </div>
+    <div class="notifications-card card">
+      <div class="card-content">
+        <span class="card-title">Notifications</span>
+        <% @notifications.each do |notification| %>
+        <ul class="dashboard-notification-list">
+          <li class="dashboard-notification-item">
+            <% if notification.notifiable_type == "Transaction" %>
+              <%= link_to notification.destination_url, class: "notification-link-wrapper" do %>
+                <%= render partial: 'dashboard/dashboard_notification_request', locals: { request: notification.notifiable, notification: notification } %>
+              <% end %>
+            <% end %>
+            <% if notification.notifiable_type == "Chat" %>
+              <%= link_to notification.destination_url, class: "notification-link-wrapper" do %>
+                <%= render partial: 'dashboard/dashboard_notification_message', locals: { request: notification.notifiable, notification: notification } %>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+        <div class="divider"></div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="col l5 m4 s12">
+  <div class="col l4 m4 s12">
     <div class="deadlines card">
       <div class="card-content">
         <span class="card-title">Progress Tracker</span>
