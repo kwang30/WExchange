@@ -10,6 +10,7 @@ class DashboardController < ApplicationController
     @requests = @incoming_requests + @outgoing_requests
     @selected_request = Array.new
     @markers = Hash.new
+    @notifications = Notification.where(recipient: current_user)
   end
 
   def update_progress_tracker
