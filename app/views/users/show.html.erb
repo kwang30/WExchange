@@ -10,7 +10,7 @@
 <p>Tags:
   <% @user.tags.each do |tag| %>
   <div class="chip">
-      <%= link_to tag.name, discover_path, :tag=>tag.name %>
+      <%= link_to tag.name, discover_path(tags:tag.name )%>
     </div>
     <%end %>
 
