@@ -11,7 +11,14 @@
         </div>
         <p class="short-description"><%= portfolio.description %></p>
       </div>
-      <p>Tags: <%= raw portfolio.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+      <p>Tags:
+        <% portfolio.tags.each do |tag| %>
+          <div class="chip">
+          <%= link_to tag.name, discover_path, :tag=>tag.name %>
+          </div>
+        <% end %>
+
+
 
 
 
