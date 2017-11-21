@@ -11,6 +11,7 @@ gem 'acts-as-taggable-on'
 gem "select2-rails"
 gem 'devise'
 gem 'activeadmin'
+gem 'activesupport'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
 gem "aws-sdk" , '<2.0'
