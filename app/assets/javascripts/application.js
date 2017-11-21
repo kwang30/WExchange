@@ -49,9 +49,14 @@ $(document).ready( function(){
     console.log("hello")
   });
 
-  var sortable = Sortable.create($('#request-markers')[0]);
-});
+  $('.dropdown-button').dropdown({
+    belowOrigin: true
+  })
 
-$( "#dropdown" ).select2({
-    theme: "bootstrap"
+  var sortable = Sortable.create($('#request-markers')[0]);
+
+  $(".dropdown").select2({
+      theme: "bootstrap"
+  });
+
 });

@@ -3,31 +3,32 @@
     <%= link_to "WExchange", root_path, target: "_self" %>
 
     <% if !logged_in? %>
-
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to "Log In", login_path, target: "_self" %></li>
       <li class="divider"></li>
       <li><%= link_to "Sign Up", signup_path, target: "_self" %></li>
     </ul>
-
     <% else %>
-
-    <!-- My Account DROPDOWN MENU -->
-    <ul id="my-account-dropdown" class="dropdown-content">
-      <% puts current_user.id%>
-      <% puts current_portfolios.first %>
-      <li><%= link_to "My Profile", current_user, target: "_self", id: current_user.id %></li>
-      <li><%= link_to "Settings", settings_path, target: "_self" %></li>
-      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-    </ul>
 
     <!-- NAVIGATION BAR ITEMS -->
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><%= link_to "Dashboard", dashboard_path, target: "_self", class: "active" %></li>
       <li><%= link_to "Discover", discover_path, target: "_self" %></li>
       <li><%= link_to "Messages", chats_path, target: "_self" %></li>
-      <li><a class="dropdown-button nav-dropdown" data-beloworigin="true" href="#!" data-activates="my-account-dropdown">My Account<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li>
+        <a class="dropdown-button nav-dropdown" href="#!" data-activates="my-account-dropdown">
+          My Account<i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
     </ul>
+
+    <!-- My Account DROPDOWN MENU -->
+    <ul id="my-account-dropdown" class="dropdown-content">
+      <li><%= link_to "My Profile", current_user, target: "_self", id: current_user.id %></li>
+      <li><%= link_to "Settings", settings_path, target: "_self" %></li>
+      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+    </ul>
+
     <% end %>
   </div>
 </nav>
