@@ -63,17 +63,26 @@ class DashboardController < ApplicationController
     old_index = params[:old_index].to_i
     new_index = params[:new_index].to_i
     @selected_request = Transaction.find_by(id: @@request.id)
-    @markers_to_update = @selected_request.progress
-    puts @markers_to_update
-    old_index_item = @markers_to_update.select{ |k, v| v[:order] == old_index }
-    new_index_item = @markers_to_update.select{ |k, v| v[:order] == new_index }
-    if old_index_item.count == 1 && new_index_item.count == 1
-      old_index_item[old_index_item.keys[0]][:order] = new_index
-      new_index_item[new_index_item.keys[0]][:order] = old_index
+    @markers_to_update = @selected_request.progress.sort_by{ |k, v| v[:order]}
+    item = @markers_to_update.select{ |k, v| v[:order] == old_index }
+    item[0][1][:order] = new_index
+    @markers_to_update.each do |x|
+      if x[1][:order] >= new_index && x[0] != item[0][0]
+        x[1][:order] = x[1][:order].to_i + 1
+      end
     end
+    puts '______________________'
+    puts @markers_to_update
     @selected_request.progress = @markers_to_update
     @selected_request.save
-    puts @markers_to_update
+    # old_index_item = @markers_to_update.select{ |k, v| v[:order] == old_index }
+    # new_index_item = @markers_to_update.select{ |k, v| v[:order] == new_index }
+    # if old_index_item.count == 1 && new_index_item.count == 1
+    #   old_index_item[old_index_item.keys[0]][:order] = new_index
+    #   new_index_item[new_index_item.keys[0]][:order] = old_index
+    # end
+    # @selected_request.progress = @markers_to_update
+    # @selected_request.save
   end
 
 

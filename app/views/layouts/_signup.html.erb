@@ -1,25 +1,27 @@
-<div class="container signup-container row">
-    <div class="col-md-6 col-md-offset-3">
+<div class="sign-up-background row">
+  <div class="container">
+    <div class="sign-up-form col m6 offset-m3">
       <%= form_for(@user) do |f| %>
 
-        <%= f.label :first_name %>
+        <%= f.label :first_name, class: 'form-control-text' %>
         <%= f.text_field :first_name, class: 'form-control' %>
 
-        <%= f.label :last_name %>
+        <%= f.label :last_name, class: 'form-control-text'  %>
         <%= f.text_field :last_name, class: 'form-control' %>
 
-        <%= f.label :email %>
+        <%= f.label :email, class: 'form-control-text'  %>
         <%= f.text_field :email, class: 'form-control' %>
 
-        <%= f.label :display_name %>
+        <%= f.label :display_name, class: 'form-control-text'  %>
         <%= f.text_field :display_name, class: 'form-control' %>
 
-        <%= f.label :password %>
+        <%= f.label :password, class: 'form-control-text'  %>
         <%= f.password_field :password, class: 'form-control' %>
 
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, class: 'form-control-text'  %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
 
         <%= f.submit "Sign Up", target: "_self", class: "active waves-effect waves-light btn"  %>
       <% end %>
+    </div>
 </div>
