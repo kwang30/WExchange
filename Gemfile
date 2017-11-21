@@ -39,7 +39,7 @@ gem 'ransack'
 # Use for rendering dates and times
 gem 'local_time'
 
-# Use for Stripe payments
+# Use for Stripe payment
 gem 'stripe'
 gem 'stripe_event'
 
