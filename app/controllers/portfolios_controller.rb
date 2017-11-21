@@ -12,8 +12,10 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new(portfolio_params)
     @portfolio.user = current_user
     if @portfolio.save!
-      params[:images].each do |image|
-          @portfolio.photos.create!(:image => image)
+      if !params[:images].nil?
+        params[:images].each do |image|
+            @portfolio.photos.create!(:image => image)
+        end
       end
       redirect_to current_user # change hardcoding
     else
@@ -59,7 +61,7 @@ class PortfoliosController < ApplicationController
 
     private
     def portfolio_params
-      params.require(:portfolio).permit(:name, :description, :user_id, :tag_list, photos_attributes: [:image])
+      params.require(:portfolio).permit(:name, :description, :user_id, tag_list: [], photos_attributes: [:image])
     end
 
     def get_portfolio

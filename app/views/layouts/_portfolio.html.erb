@@ -11,6 +11,17 @@
         </div>
         <p class="short-description"><%= portfolio.description %></p>
       </div>
+      <p>Tags:
+        <% portfolio.tags.each do |tag| %>
+          <div class="chip">
+          <%= link_to tag.name, discover_path, :tag=>tag.name %>
+          </div>
+        <% end %>
+
+
+
+
+
       <div class="collapsible-body">
         <p class="long-description">More detailed information about the service goes here.</p>
       </div>

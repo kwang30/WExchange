@@ -1,32 +1,34 @@
 <div id="portfolio-create-modal" class="modal">
   <div class="modal-content portfolio-modal-wrapper">
     <p class="title">Create Portfolio</p>
-    <div class="container">
-      <%= simple_form_for @portfolio, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
-      <div class="col s12">
-        <%= f.label :name %>
-        <%= f.text_field :name, placeholder: "Ex. Graphic Design" %>
-      </div>
-      <div class="col s12">
-        <%= f.label :description %>
-        <%= f.text_area :description, class: "materialize-textarea" %>
-      </div>
-      <%=render 'layouts/uploads', f:f %>
-      <%= f.input :tag_list, label: false, multiple: 'multiple' %><br />
+      <div class="container">
+        <%= simple_form_for @portfolio, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+          <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s12" %>
+          <%= f.input :description, class: "materialize-textarea col s12" %>
 
+          <%=render 'layouts/uploads', f:f %>
+          <%=   f.input :tag_list , collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>
 
-      <div class="button-wrapper col s3">
-        <%= hidden_field(:user_id, current_user.id.to_i) %>
-        <%= f.submit "Create", class: "waves-effect waves-light btn" %>
+          <div class="button-wrapper col s3">
+            <%= hidden_field(:user_id, current_user.id.to_i) %>
+            <%= f.submit "Create", class: "waves-effect waves-light btn" %>
+          </div>
+
+        <% end %>
       </div>
-      <% end %>
-    </div>
   </div>
 </div>
 
+
+
+
 <script>
 
-$(function() {
-  $('.input-row #user_tags_list').select2({tags:[]})
+$(document).ready(function(){
+  $('.tags').select2({
+    tags: [],
+    placeholder: 'Add Tags',
+  });
 });
+
 </script>

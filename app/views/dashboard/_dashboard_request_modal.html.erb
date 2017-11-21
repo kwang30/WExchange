@@ -1,0 +1,44 @@
+<div id="dashboard-request-modal-<%= request.id %>" class="modal request-approval-wrapper">
+  <div class="modal-content">
+    <%= form_for request do |f| %>
+      <%= f.label "Request Title" %>
+      <%= f.text_field :transaction_title, disabled: true, placeholder: "Ex. Business Logo" %>
+      <%= f.label "Request Message" %>
+      <%= f.text_area :request_message, disabled: true, class: "materialize-textarea col-s12", size: "12x12"  %>
+      <%= f.label "Deadline" %>
+      <%= f.text_field :deadline, disabled: true, class: "datepicker" %>
+
+      <!-- CREATOR ACCEPTING / DECLINING REQUEST -->
+      <% if request.status == 0 && request.creator_id == current_user.id %>
+      <div class="checkbox-wrapper">
+        <%= check_box_tag :include_message, class:"include-message-check-box" %>
+        <%= label_tag :include_message, "Include Message to Sender" %>
+      </div>
+      <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "creator_accept" %>
+      <%= f.submit "Decline", class: "waves-effect waves-light btn", name: "creator_decline" %>
+      <% end %>
+
+      <!-- CREATOR SUBMIT & CANCEL "IN PROGRESS" BUTTONS -->
+      <% if request.status == 1 && request.creator_id == current_user.id %>
+      <%= f.submit "Send", class: "waves-effect waves-light btn", name: "send_content"  %>
+      <%= f.submit "Cancel Request", class: "waves-effect waves-light btn", name: "cancel" %>
+      <% end %>
+
+      <!-- CLIENT CANCEL REQUEST BUTTON -->
+      <% if ((request.status == 0 || request.status == 1) && request.recipient_id == current_user.id) %>
+      <%= f.submit "Cancel Request", class: "waves-effect waves-light btn", name: "cancel" %>
+      <% end %>
+
+      <!-- CLIENT ACCEPT / REQUEST EDIT -->
+      <% if request.status == 2 && request.recipient_id == current_user.id %>
+      <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "client_accept" %>
+      <%= f.submit "Request Edits", class: "waves-effect waves-light btn", name: "request_edits" %>
+      <% end %>
+
+      <!-- CLIENT COMPLETED REQUEST RATING -->
+      <% if request.status == 3 && request.recipient_id == current_user %>
+      <!-- TODO: Put star ratings here -->
+      <% end %>
+    <% end %>
+  </div>
+</div>

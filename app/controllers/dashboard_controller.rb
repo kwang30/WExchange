@@ -4,10 +4,13 @@ class DashboardController < ApplicationController
 
   def show
     @incoming_requests = Transaction.where(creator_id: current_user.id)
+    @incoming_requests = @incoming_requests.sort_by {|request| request.deadline}
     @outgoing_requests = Transaction.where(recipient_id: current_user.id)
+    @outgoing_requests = @outgoing_requests.sort_by {|request| request.deadline}
     @requests = @incoming_requests + @outgoing_requests
     @selected_request = Array.new
     @markers = Hash.new
+    @notifications = Notification.where(recipient: current_user)
   end
 
   def update_progress_tracker

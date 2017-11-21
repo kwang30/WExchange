@@ -1,17 +1,33 @@
 <div class="container row" id="profile-wrapper">
   <div class="left-side col s5 l4">
+
+
     <div class="profile-img">
       <%= image_tag @user.image.url(:large)%>
+      <%= link_to '<i class="fa fa-pencil fa-lg"></i>'.html_safe, '#profile', class: "modal-trigger", id: "edit"%>
+      <%= render 'layouts/profile' %>
+<%-#      <%= render 'layouts/edit_user_tags' %>
+<p>Tags:
+  <% @user.tags.each do |tag| %>
+  <div class="chip">
+      <%= link_to tag.name, discover_path(tags:tag.name )%>
     </div>
+    <%end %>
+
+</p>
+
+
+    </div>
+
     <p class="name"><%= @name %></p>
     <p class="display-name">@<%= @user.display_name %></p>
     <%if current_user.id!=params[:id].to_i%>
       <%= link_to "Request Job", '#transaction-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "transaction-create-button" %>
       <%= render 'layouts/transaction_create_modal' %>
     <%end%>
-    <%= render 'reviews/form' %>
-    <%= render 'reviews/list' %>
   </div>
+
+
   <div class="right-side col s7 l8">
     <div class="card about-me-wrapper">
         <span class="card-header">
@@ -27,11 +43,13 @@
     <% User.find_by(id: params[:id]).portfolios.each do |portfolio| %>
       <%= render partial: 'layouts/portfolio', locals: { portfolio: portfolio } %>
     <% end %>
+
     <% if current_user.id == params['id'].to_i %>
       <div id="add-button-wrapper">
         <%= link_to "+ Add Portfolio", '#portfolio-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "add-portfolio-button" %>
         <%= render 'layouts/portfolio_create_modal' %>
       </div>
     <% end %>
+
   </div>
 </div>

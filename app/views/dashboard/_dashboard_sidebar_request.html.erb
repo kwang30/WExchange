@@ -1,0 +1,15 @@
+<%= link_to update_path(:id => request.id), class: "dashboard-side-bar-item-link-wrapper", remote: true do %>
+<div class="dashboard-request-badge-wrapper">
+  <%= badge_for_request(request) %>
+</div>
+<div class="dashboard-request-header-wrapper row">
+  <span class="dashboard-sidebar-item-name col m10"><%= request.transaction_title %></span>
+  <%= link_to "View","#dashboard-request-modal-#{request.id}", class: "dashboard-request-view-button waves-effect waves-light btn col m2 modal-trigger" %>
+  <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
+</div>
+<div class="dashboard-request-content-wrapper row">
+  <span class="dashboard-sidebar-item-requester col m5">Requested By: <%= User.find_by(id: request.recipient_id).display_name %></span>
+  <span class="dashboard-sidebar-item-deadline col m7">Deadline: <%= request.deadline %></span>
+</div>
+<% end %>
+<div class="divider"></div>

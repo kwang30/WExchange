@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   controller :transactions do
     get      '/transactions',         to: 'transactions#index'
     get      '/transactions',         to: 'transactions#new'
-    post     '/transactions/create',         to: 'transactions#create'
+    post     '/transactions/create',  to: 'transactions#create'
   end
 
   controller :discover do

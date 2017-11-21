@@ -1,0 +1,5 @@
+<%= link_to "#dashboard-request-modal-#{request.id}", class: "notification-link-wrapper modal-trigger" do %>
+  <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
+  <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+<% end %>
+<%= render partial: 'dashboard/dashboard_request_modal', locals: { request: notification.notifiable } %>

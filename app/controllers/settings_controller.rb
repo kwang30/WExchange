@@ -20,11 +20,7 @@ class SettingsController < ApplicationController
     @user=current_user
   end
 
-  private
-    def setting_params()
-    end
 
-  end
 
 
 end

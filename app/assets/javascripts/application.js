@@ -51,3 +51,7 @@ $(document).ready( function(){
 
   var sortable = Sortable.create($('#request-markers')[0]);
 });
+
+$( "#dropdown" ).select2({
+    theme: "bootstrap"
+});
