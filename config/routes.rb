@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'home#show'
 
   controller :dashboard do
+    get '/swap_marker', to: 'dashboard#swap_marker'
     get '/dashboard', to: 'dashboard#show'
     get '/update', to: 'dashboard#update_progress_tracker'
     get '/update_marker', to: 'dashboard#update_marker'

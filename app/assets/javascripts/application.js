@@ -48,4 +48,6 @@ $(document).ready( function(){
   $('#marker_complete').change(function() {
     console.log("hello")
   });
+
+  var sortable = Sortable.create($('#request-markers')[0]);
 });

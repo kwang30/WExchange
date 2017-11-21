@@ -9,4 +9,21 @@ $('input:checkbox').change(
           //   $("#someid").append(data.sometext);
           // }
         });
-  });
+});
+
+var sortable = Sortable.create($('#request-markers')[0],{
+  onEnd: function (/**Event*/evt) {
+		var itemEl = evt.item;  // dragged HTMLElement
+		evt.oldIndex;  // element's old index within old parent
+		evt.newIndex;  // element's new index within new parent
+    console.log(evt.oldIndex);
+    console.log(evt.newIndex);
+    $.ajax({
+      url: '/swap_marker',
+      data: { old_index: evt.oldIndex, new_index: evt.newIndex },
+      // success: function(data) {
+      //   $("#someid").append(data.sometext);
+      // }
+    });
+	},
+});
