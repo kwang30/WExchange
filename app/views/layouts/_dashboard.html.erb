@@ -51,14 +51,10 @@
         <ul class="dashboard-notification-list">
           <li class="dashboard-notification-item">
             <% if notification.notifiable_type == "Transaction" %>
-              <%= link_to notification.destination_url, class: "notification-link-wrapper" do %>
-                <%= render partial: 'dashboard/dashboard_notification_request', locals: { request: notification.notifiable, notification: notification } %>
-              <% end %>
+              <%= render partial: 'dashboard/dashboard_notification_request', locals: { request: notification.notifiable, notification: notification } %>
             <% end %>
             <% if notification.notifiable_type == "Chat" %>
-              <%= link_to notification.destination_url, class: "notification-link-wrapper" do %>
                 <%= render partial: 'dashboard/dashboard_notification_message', locals: { request: notification.notifiable, notification: notification } %>
-              <% end %>
             <% end %>
           </li>
         </ul>

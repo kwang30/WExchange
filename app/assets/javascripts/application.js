@@ -51,12 +51,19 @@ $(document).ready( function(){
 
   $('.dropdown-button').dropdown({
     belowOrigin: true
-  })
+  });
 
   var sortable = Sortable.create($('#request-markers')[0]);
 
   $(".dropdown").select2({
       theme: "bootstrap"
   });
-
 });
+
+function displayDashboardTab(tabName) {
+  if (tabName == "outgoing") {
+    $('ul.tabs').tabs('select_tab', 'dashboard-sidebar-outgoing-requests');
+  } else if (tabName == "incoming") {
+    $('ul.tabs').tabs('select_tab', 'dashboard-sidebar-incoming-requests');
+  }
+}
