@@ -1,9 +1,14 @@
 <div class="container row" id="profile-wrapper">
   <div class="left-side col s5 l4">
     <div class="profile-img">
+      <%= link_to "#profile_edit_picture_modal", class: "modal-trigger", id: "profile-edit-picture-link" do %>
+      <div class="edit-picture-text-wrapper">
+        <p class="profile-picture-hover-text">Update Profile Picture</p>
+      </div>
       <%= image_tag @user.image.url(:large)%>
-      <%= link_to '<i class="fa fa-pencil fa-lg"></i>'.html_safe, '#profile', class: "modal-trigger", id: "edit"%>
-      <%= render 'layouts/profile' %>
+
+      <% end %>
+      <%= render 'layouts/profile_edit_picture_modal' %>
       <%# render 'layouts/edit_user_tags' %>
       <p>Tags:
         <% @user.tags.each do |tag| %>

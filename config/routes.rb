@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   end
 
   controller :users do
-    get     '/profile/addPic',         to: 'users#addPic'
     patch    '/profile/addPic',         to: 'users#update'
     get     '/signup',                  to: 'users#new'
     get     '/',                 to: 'users#show'

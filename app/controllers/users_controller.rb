@@ -40,20 +40,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def addPic
-    @user=current_user
-  end
-
-  def update
-    @user = current_user;
-    if @user.update_attribute(:image, params[:user][:image])
-          flash[:success] = "Profile picture updated."
-          redirect_to @user
-      else
-          flash[:danger] = "Failed to update profile picture."
-      end
-  end
-
   def update
     @user = current_user
     if @user.update_attributes(user_params)

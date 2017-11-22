@@ -1,0 +1,13 @@
+<div id="profile_edit_picture_modal" class="modal">
+  <div class="modal-content edit_picture_wrapper">
+    <%= image_tag @user.image.url(:medium)%>
+    <%= form_for @user do |f| %>
+      <div class="image-input-wrapper">
+        <%= f.file_field :image, required: true %>
+      </div>
+      <div class="upload-wrapper">
+        <%= f.submit 'Upload', class: "waves-effect waves-teal btn"%>
+      </div>
+    <% end %>
+  </div>
+</div>
