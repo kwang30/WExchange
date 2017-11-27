@@ -58,6 +58,9 @@ $(document).ready( function(){
   $(".dropdown").select2({
       theme: "bootstrap"
   });
+
+    $('select').material_select();
+    $('select').material_select('destroy');
 });
 
 function displayDashboardTab(tabName) {

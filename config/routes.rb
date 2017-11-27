@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get     '/signup',                  to: 'users#new'
     get     '/',                 to: 'users#show'
     post    '/profile',                 to: 'users#update'
+    post    '/delete',                 to: 'users#destroy'
   end
 
   controller :sessions do

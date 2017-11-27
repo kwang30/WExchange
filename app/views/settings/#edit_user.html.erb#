@@ -1,0 +1,11 @@
+<%= f.password_field :password_confirmation, class: 'form-control' %>
+</div>
+
+<%= f.submit "Update", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to "Delete Account", delete_path, class:"waves-effect waves-light red btn", method: :post %>
+
+</div>
+</div>
+</div>

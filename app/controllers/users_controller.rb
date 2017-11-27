@@ -49,6 +49,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = current_user;
+    log_out # not sure if necessary
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.json { head :no_content }
+    end
+  end
+
  private
    def user_params
      params.require(:user).permit(:username, :first_name, :last_name, :email, :biography,
