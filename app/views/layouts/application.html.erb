@@ -13,6 +13,11 @@
   </head>
   <%= render 'layouts/navigation' %>
   <body>
+    <div class="flash-wrapper">
+      <% flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, class: 'error-message' %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

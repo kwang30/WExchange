@@ -1,8 +1,6 @@
 // Place all the styles related to the login controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.login-container {
-}
 
 .custom-input-field {
   background-color: transparent!important;
@@ -10,32 +8,30 @@
 
 .login-background {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100% !important;
   height: 100%;
-  max-height: 870px;
-  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("home_backdrop.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("home_backdrop.jpeg") no-repeat center center fixed;
+  margin: 0;
+}
+
+.login-form-title {
+  color: white;
 }
 
 .login-container {
-  margin-top: -50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 400px;
-}
 
-.form-control {
-  background-color: transparent !important;
-  color: white !important;
-  padding-left: 10px !important;
-}
+  .input-field {
+    input {
+      color: white;
+    }
 
-.form-label{
-  color: white !important;
-  margin-bottom: 5px !important;
+    input:focus {
+      color: white;
+    }
+  }
 }

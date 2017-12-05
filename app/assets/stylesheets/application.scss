@@ -57,3 +57,23 @@ body {
     margin-right: 0;
   }
 }
+
+.input-field input:focus {
+  background-color: transparent !important;
+}
+
+// Flash Messages
+
+.flash-wrapper {
+  position: absolute;
+  left: 50%;
+}
+.error-message {
+  position: relative;
+  left: -50%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid red;
+  background-color: #ed7d7d;
+  margin: 20px auto;
+}

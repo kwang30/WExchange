@@ -53,14 +53,12 @@ $(document).ready( function(){
     belowOrigin: true
   });
 
-  var sortable = Sortable.create($('#request-markers')[0]);
-
   $(".dropdown").select2({
       theme: "bootstrap"
   });
 
-    $('select').material_select();
-    $('select').material_select('destroy');
+  $('select').material_select();
+  $('select').material_select('destroy');
 });
 
 function displayDashboardTab(tabName) {

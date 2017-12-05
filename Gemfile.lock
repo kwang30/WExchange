@@ -319,7 +319,6 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   chartkick
-  cocaine
   coffee-rails (~> 4.2)
   dotenv-rails
   faker!

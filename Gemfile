@@ -22,7 +22,6 @@ gem 'chartkick'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem "jquery-slick-rails"
 
-
 # Use for materalize and ui
 gem 'materialize-sass'
 gem 'will_paginate'
