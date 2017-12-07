@@ -18,6 +18,7 @@
 //= require jquery-fileupload/basic-plus
 //= require select2
 //= require select2-full
+//= require pusher.min.js
 
 //= require jquery.slick
 //= require materialize-sprockets

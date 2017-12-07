@@ -21,6 +21,7 @@ gem "jquery-fileupload-rails"
 gem 'chartkick'
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem "jquery-slick-rails"
+gem 'pusher'
 
 # Use for materalize and ui
 gem 'materialize-sass'

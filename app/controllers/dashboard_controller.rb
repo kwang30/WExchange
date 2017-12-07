@@ -45,7 +45,7 @@ class DashboardController < ApplicationController
 
   def update_marker
     marker_id = params[:id].sub!("marker-check-", "")
-    @selected_request = Transaction.find_by(id: @@request.id)
+    @selected_request = Transaction.find_by(id: @request.id)
 
     @markers_to_update = @selected_request.progress
     puts @markers_to_update
@@ -83,6 +83,18 @@ class DashboardController < ApplicationController
     # end
     # @selected_request.progress = @markers_to_update
     # @selected_request.save
+  end
+
+  def refresh_notifications
+    @notifications = Notification.where(recipient: current_user)
+    @incoming_requests = Transaction.where(creator_id: current_user.id)
+    @incoming_requests = @incoming_requests.sort_by {|request| request.deadline}
+    @outgoing_requests = Transaction.where(recipient_id: current_user.id)
+    @outgoing_requests = @outgoing_requests.sort_by {|request| request.deadline}
+    puts @notifications.length
+    respond_to do |format|
+      format.js { render '../views/dashboard/refresh_dashboard_notifications.js.erb' }
+    end
   end
 
 

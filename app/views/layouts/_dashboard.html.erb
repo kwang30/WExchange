@@ -47,19 +47,18 @@
     <div class="notifications-card card">
       <div class="card-content">
         <span class="card-title">Notifications</span>
-        <% @notifications.each do |notification| %>
         <ul class="dashboard-notification-list">
+          <% @notifications.reverse.each do |notification| %>
           <li class="dashboard-notification-item">
             <% if notification.notifiable_type == "Transaction" %>
               <%= render partial: 'dashboard/dashboard_notification_request', locals: { request: notification.notifiable, notification: notification } %>
-            <% end %>
-            <% if notification.notifiable_type == "Chat" %>
+            <% elsif notification.notifiable_type == "Chat" %>
                 <%= render partial: 'dashboard/dashboard_notification_message', locals: { request: notification.notifiable, notification: notification } %>
             <% end %>
           </li>
+          <div class="divider"></div>
+          <% end %>
         </ul>
-        <div class="divider"></div>
-        <% end %>
       </div>
     </div>
   </div>
@@ -75,3 +74,21 @@
     </div>
   </div>
 </div>
+
+<%= javascript_tag do %>
+
+  var pusher = new Pusher('<%= ENV['PUSHER_KEY'] %>', {
+    cluster: '<%= ENV['PUSHER_CLUSTER'] %>'
+  });
+
+  var channel = pusher.subscribe('user_<%= current_user.id %>');
+  console.log("Listening on channel user_<%= current_user.id %>");
+
+  channel.bind('new_notificaiton', function(data) {
+    $.ajax({
+      url: '/notifications/update',
+      type: "POST"
+    });
+  });
+
+<% end %>

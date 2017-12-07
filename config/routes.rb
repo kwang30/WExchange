@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#show'
     get '/update', to: 'dashboard#update_progress_tracker'
     get '/update_marker', to: 'dashboard#update_marker'
+    post '/notifications/update', to: 'dashboard#refresh_notifications'
   end
 
   controller :users do
