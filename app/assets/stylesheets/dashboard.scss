@@ -41,6 +41,15 @@ body {
     font-size: 12px;
     color: gray;
   }
+
+  .unread {
+    font-weight: bold;
+  }
+
+  .read {
+    font-weight: normal;
+    color: gray;
+  }
 }
 
 .dashboard-request-content-wrapper {

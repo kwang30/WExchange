@@ -15,10 +15,9 @@ class Notification < ApplicationRecord
       cluster: ENV['PUSHER_CLUSTER']
     )
     channel = "user_#{recipient_id}"
-    puts "Channel = #{channel}"
 
     pusher.trigger(channel, 'new_notificaiton', {
-        message: 'hello world'
+        message: 'New Notification'
     })
   end
 end

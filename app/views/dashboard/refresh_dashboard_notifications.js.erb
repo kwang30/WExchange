@@ -3,11 +3,7 @@ var html = "";
 
 <% @notifications.reverse.each do |notification| %>
 html += "<li class='dashboard-notification-item'>";
-  <% if notification.notifiable_type == "Transaction" %>
-    html += `<%= render partial: 'dashboard/dashboard_notification_request', locals: { request: notification.notifiable, notification: notification } %>`;
-  <% elsif notification.notifiable_type == "Chat" %>
-    html += `<%= render partial: 'dashboard/dashboard_notification_message', locals: { request: notification.notifiable, notification: notification } %>`;
-  <% end %>
+html +=   `<%= render partial: 'dashboard/dashboard_notification', locals: { request: notification.notifiable, notification: notification } %>`;
 html += "</li>";
 html += "<div class='divider'></div>";
 <% end %>

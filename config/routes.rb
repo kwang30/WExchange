@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   root 'home#show'
 
+  controller :home do
+    post '/navigation/update', to: 'home#update_navigation'
+  end
+
   controller :dashboard do
     get '/swap_marker', to: 'dashboard#swap_marker'
     get '/dashboard', to: 'dashboard#show'
@@ -27,7 +31,7 @@ Rails.application.routes.draw do
   end
 
   controller :notifications do
-
+    post    '/notifications/mark_as_read', to: 'notifications#mark_as_read'
   end
 
   controller :settings do

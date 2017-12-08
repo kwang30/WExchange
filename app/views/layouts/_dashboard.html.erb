@@ -49,12 +49,8 @@
         <span class="card-title">Notifications</span>
         <ul class="dashboard-notification-list">
           <% @notifications.reverse.each do |notification| %>
-          <li class="dashboard-notification-item">
-            <% if notification.notifiable_type == "Transaction" %>
-              <%= render partial: 'dashboard/dashboard_notification_request', locals: { request: notification.notifiable, notification: notification } %>
-            <% elsif notification.notifiable_type == "Chat" %>
-                <%= render partial: 'dashboard/dashboard_notification_message', locals: { request: notification.notifiable, notification: notification } %>
-            <% end %>
+          <li class="dashboard-notification-item" data-id="<%= notification.id %>">
+            <%= render partial: 'dashboard/dashboard_notification', locals: { request: notification.notifiable, notification: notification } %>
           </li>
           <div class="divider"></div>
           <% end %>
@@ -82,7 +78,6 @@
   });
 
   var channel = pusher.subscribe('user_<%= current_user.id %>');
-  console.log("Listening on channel user_<%= current_user.id %>");
 
   channel.bind('new_notificaiton', function(data) {
     $.ajax({

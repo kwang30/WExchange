@@ -1,4 +1,0 @@
-<%= link_to chats_path, class: "notification-link-wrapper modal-trigger" do %>
-  <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
-  <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
-<% end %>

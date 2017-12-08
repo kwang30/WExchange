@@ -12,7 +12,15 @@
 
     <!-- NAVIGATION BAR ITEMS -->
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><%= link_to "Dashboard", dashboard_path, target: "_self", class: "active" %></li>
+      <li>
+        <%= link_to dashboard_path do %>
+          <span>Dashboard</span>
+          <% notifications = Notification.where(recipient: current_user).unread  %>
+          <% if !notifications.blank? %>
+            <span class="badge nav-dashboard-badge"><%= notifications.length %></span>
+          <% end %>
+        <% end %>
+      </li>
       <li><%= link_to "Discover", discover_path, target: "_self" %></li>
       <li><%= link_to "Messages", chats_path, target: "_self" %></li>
       <li>

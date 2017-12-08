@@ -20,3 +20,21 @@
     <%= yield %>
   </body>
 </html>
+
+<%= javascript_tag do %>
+
+  var pusher = new Pusher('<%= ENV['PUSHER_KEY'] %>', {
+    cluster: '<%= ENV['PUSHER_CLUSTER'] %>'
+  });
+
+  var channel = pusher.subscribe('user_<%= current_user.id %>');
+
+  channel.bind('new_notificaiton', function(data) {
+    $.ajax({
+      url: '/navigation/update',
+      type: "POST"
+    });
+    console.log('Was the navigation updated?');
+  });
+
+<% end %>

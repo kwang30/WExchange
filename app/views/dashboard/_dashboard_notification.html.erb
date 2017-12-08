@@ -1,0 +1,24 @@
+<% if notification.read_at.blank? %>
+  <% class_list = "notification-link-wrapper unread" %>
+<% else %>
+  <% class_list = "notification-link-wrapper read" %>
+<% end %>
+
+<% if notification.notifiable_type == "Transaction" %>
+  <% class_list += " modal-trigger" %>
+  <% if @outgoing_requests.include?(request) %>
+    <% tabName= "outgoing" %>
+  <% elsif @incoming_requests.include?(request) %>
+    <% tabName = "incoming" %>
+  <% end %>
+
+  <%= link_to "#dashboard-request-modal-#{request.id}", class: class_list, onclick:"displayDashboardTab('#{tabName}')" do %>
+    <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
+    <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+  <% end %>
+<% elsif notification.notifiable_type == "Chat" %>
+  <%= link_to chats_path, class: class_list do %>
+    <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
+    <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+  <% end %>
+<% end %>

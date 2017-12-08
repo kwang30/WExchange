@@ -37,7 +37,7 @@ body {
 }
 
 .nav-wrapper {
-  height: 45px !important;
+  height: 64px !important;
 }
 
 
@@ -62,12 +62,21 @@ body {
   background-color: transparent !important;
 }
 
+// Navigation Bar
+
+.nav-dashboard-badge {
+  background-color: white;
+  border-radius: 100%;
+  min-width: 22px !important;
+}
+
 // Flash Messages
 
 .flash-wrapper {
   position: absolute;
   left: 50%;
 }
+
 .error-message {
   position: relative;
   left: -50%;
