@@ -50,9 +50,7 @@ $(document).ready( function(){
     console.log("hello")
   });
 
-  $('.dropdown-button').dropdown({
-    belowOrigin: true
-  });
+  $('.dropdown-button').dropdown();
 
   $(".dropdown").select2({
       theme: "bootstrap"

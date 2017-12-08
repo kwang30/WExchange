@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper container">
-    <%= link_to "WExchange", root_path, target: "_self" %>
+    <%= link_to "WExchange", root_path, class: "nav-title" %>
 
     <% if !logged_in? %>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -24,7 +24,7 @@
       <li><%= link_to "Discover", discover_path, target: "_self" %></li>
       <li><%= link_to "Messages", chats_path, target: "_self" %></li>
       <li>
-        <a class="dropdown-button nav-dropdown" href="#!" data-activates="my-account-dropdown">
+        <a class="dropdown-button nav-dropdown" href="#!" data-beloworigin="true" data-activates="my-account-dropdown">
           My Account<i class="material-icons right">arrow_drop_down</i>
         </a>
       </li>
