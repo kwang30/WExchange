@@ -150,6 +150,19 @@ body {
 
   .response-textarea {
     display: none;
+    color: black;
+  }
+
+  .creator-response-wrapper {
+    background-color: #EBEBEB;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .creator-response-textarea {
+    margin-bottom: 0;
+    color: black !important;
   }
 
 }

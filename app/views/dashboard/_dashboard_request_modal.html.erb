@@ -8,13 +8,23 @@
       <%= f.label "Deadline" %>
       <%= f.text_field :deadline, disabled: true, class: "datepicker" %>
 
+      <!-- REQUEST DECLINED -->
+      <% if request.status == -1 %>
+        <% if !request.response_message.nil? %>
+        <div class="creator-response-wrapper">
+          <%= f.label "Creator Response" %>
+          <%= f.text_area :response_message, disabled: true, class: "materialize-textarea col-s12 creator-response-textarea" %>
+        </div>
+        <% end %>
+      <% end %>
+
       <!-- CREATOR ACCEPTING / DECLINING REQUEST -->
       <% if request.status == 0 && request.creator_id == current_user.id %>
       <div class="checkbox-wrapper">
         <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
         <%= label_tag :include_message, "Include Message to Sender" %>
       </div>
-      <%= f.text_area :response_message, disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
+      <%= f.text_area :response_message, placeholder: "Message", disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
       <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "creator_accept" %>
       <%= f.submit "Decline", class: "waves-effect waves-light btn", name: "creator_decline" %>
       <% end %>
@@ -27,6 +37,10 @@
 
       <!-- CLIENT CANCEL REQUEST BUTTON -->
       <% if ((request.status == 0 || request.status == 1) && request.recipient_id == current_user.id) %>
+        <% if !request.response_message.nil? %>
+        <%= f.label "Creator Response" %>
+        <%= f.text_area :response_message, disabled: true, class: "materialize-textarea col-s12" %>
+        <% end %>
       <%= f.submit "Cancel Request", class: "waves-effect waves-light btn", name: "cancel" %>
       <% end %>
 

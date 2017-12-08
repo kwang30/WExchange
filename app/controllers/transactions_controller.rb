@@ -57,11 +57,13 @@ class TransactionsController < ApplicationController
 
   def creator_accept_request(request)
     request.update_attribute(:status, 1)
+    request.update_attribute(:response_message, params[:transaction][:response_message])
     Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "accepted your request", notifiable: @request, destination_url: dashboard_path)
   end
 
   def creator_decline_request(request)
     request.update_attribute(:status, -1)
+    request.update_attribute(:response_message, params[:transaction][:response_message])
     Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "declined your request", notifiable: @request, destination_url: dashboard_path)
   end
 
