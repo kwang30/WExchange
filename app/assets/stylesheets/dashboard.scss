@@ -141,11 +141,15 @@ body {
 
 // _dashboard_request_approval_modal.html.erb
 
-.request-approval-wrapper {
+.request-modal-wrapper {
 
   .message-text-area {
     display: none;
     width: 100%;
+  }
+
+  .response-textarea {
+    display: none;
   }
 
 }

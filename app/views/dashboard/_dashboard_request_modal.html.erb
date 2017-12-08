@@ -1,4 +1,4 @@
-<div id="dashboard-request-modal-<%= request.id %>" class="modal request-approval-wrapper">
+<div id="dashboard-request-modal-<%= request.id %>" class="modal request-modal-wrapper">
   <div class="modal-content">
     <%= form_for request do |f| %>
       <%= f.label "Request Title" %>
@@ -11,9 +11,10 @@
       <!-- CREATOR ACCEPTING / DECLINING REQUEST -->
       <% if request.status == 0 && request.creator_id == current_user.id %>
       <div class="checkbox-wrapper">
-        <%= check_box_tag :include_message, class:"include-message-check-box" %>
+        <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
         <%= label_tag :include_message, "Include Message to Sender" %>
       </div>
+      <%= f.text_area :response_message, disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
       <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "creator_accept" %>
       <%= f.submit "Decline", class: "waves-effect waves-light btn", name: "creator_decline" %>
       <% end %>

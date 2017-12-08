@@ -18,4 +18,9 @@ $(document).ready(function() {
         }
     });
   });
+
+  $(".include-message-check-box").change(function() {
+    $(".response-textarea").toggle();
+  });
+
 });
