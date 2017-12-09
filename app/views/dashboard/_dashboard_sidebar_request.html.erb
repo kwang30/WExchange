@@ -4,7 +4,10 @@
 </div>
 <div class="dashboard-request-header-wrapper row">
   <span class="dashboard-sidebar-item-name col m10"><%= request.transaction_title %></span>
-  <%= link_to "View","#dashboard-request-modal-#{request.id}", class: "dashboard-request-view-button waves-effect waves-light btn col m2 modal-trigger" %>
+  <div class="dashboard-sidebar-header-view-button-wrapper col m2">
+    <%= link_to "View","#dashboard-request-modal-#{request.id}", class: "dashboard-request-view-button waves-effect waves-light btn modal-trigger" %>
+  </div>
+
   <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
 </div>
 <div class="dashboard-request-content-wrapper row">

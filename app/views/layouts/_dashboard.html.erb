@@ -1,35 +1,33 @@
 <div class="container-fluid row dashboard-wrapper">
-  <div class="col l9 m9 s12">
-    <div class="card">
-      <div class="card-content">
-        <ul class="tabs tabs-fixed-width dashboard-sidebar-request-tabs">
-          <li class="tab col s3"><a class="active" href="#dashboard-sidebar-incoming-requests">Incoming Requests</a></li>
-          <li class="tab col s3"><a href="#dashboard-sidebar-outgoing-requests">Outgoing Requests</a></li>
-        </ul>
-        <div class="dashboard-sidebar-items-container incoming-request-wrapper" id="dashboard-sidebar-incoming-requests">
-          <ul class="dashboard-sidebar-items">
-            <% @incoming_requests.each do |request| %>
-              <li class="dashboard-sidebar-item">
-                <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
-              </li>
-              <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
-              <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
-            <% end %>
-          </ul>
-        </div>
-        <div class="dashboard-sidebar-items-container outgoing-request-wrapper" id="dashboard-sidebar-outgoing-requests">
-          <ul class="dashboard-sidebar-items">
-            <% @outgoing_requests.each do |request| %>
+  <div class="requests-column col l9 m9 s12">
+    <div class="card card-content">
+      <ul class="tabs tabs-fixed-width dashboard-sidebar-request-tabs">
+        <li class="tab col s3"><a class="active" href="#dashboard-sidebar-incoming-requests">Incoming Requests</a></li>
+        <li class="tab col s3"><a href="#dashboard-sidebar-outgoing-requests">Outgoing Requests</a></li>
+      </ul>
+      <div class="dashboard-sidebar-items-container incoming-request-wrapper" id="dashboard-sidebar-incoming-requests">
+        <ul class="dashboard-sidebar-items">
+          <% @incoming_requests.each do |request| %>
             <li class="dashboard-sidebar-item">
               <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
             </li>
-            <% end %>
-          </ul>
-        </div>
+            <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
+            <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="dashboard-sidebar-items-container outgoing-request-wrapper" id="dashboard-sidebar-outgoing-requests">
+        <ul class="dashboard-sidebar-items">
+          <% @outgoing_requests.each do |request| %>
+          <li class="dashboard-sidebar-item">
+            <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
+          </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
-  <div class="col l3 m3 s12">
+  <div class="notifications-column col l3 m3 s12">
     <div class="notifications-card card">
       <div class="card-content">
         <span class="card-title">Notifications</span>
