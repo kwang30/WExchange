@@ -9,7 +9,20 @@
 </div>
 <div class="dashboard-request-content-wrapper row">
   <span class="dashboard-sidebar-item-requester col m5">Requested By: <%= User.find_by(id: request.recipient_id).display_name %></span>
-  <span class="dashboard-sidebar-item-deadline col m7">Deadline: <%= request.deadline %></span>
+  <span class="dashboard-sidebar-item-deadline col m7">Deadline: <%= request.deadline.strftime("%B %d, %Y") %></span>
+</div>
+<div class="progress-tracker-wrapper row">
+  <div class ="progress-tracker-header-wrapper col s12">
+    <span class="progress-title">Progress Tracker</span>
+    <% if request.creator_id == current_user.id %>
+      <%= link_to "#dashboard-request-progress-marker-modal-#{request.id}", class: "dashboard-side-bar-add-marker modal-trigger" do%>
+      <div class="btn btn-small">Add Marker</div>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="transaction-progress-tracker col s12">
+    <%= render partial: "layouts/transaction_progress_tracker", locals: { request: request } %>
+  </div>
 </div>
 <% end %>
 <div class="divider"></div>

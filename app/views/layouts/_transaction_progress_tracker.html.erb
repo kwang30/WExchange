@@ -1,25 +1,16 @@
-<div class="row">
-  <ul id="request-markers">
-  <% if @markers.any? %>
-    <% @markers_to_show.each do |marker| %>
-        <li class="deadline-card-item">
-            <p>
-              <% if marker[1][:completed] == false %>
-                <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" class="marker-check"/>
-              <% else %>
-                <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" checked class="marker-check"/>
-              <% end %>
-            <label for="marker-check-<%= marker[0] %>"><%= marker[0] %></label>
-            </p>
-        </li>
-    <% end %>
+<ul class="marker-list">
+<% if !request.progress.nil? %>
+  <% request.progress.each do |marker| %>
+    <li class="progress-marker">
+      <p>
+        <% if marker[1][:completed] == false %>
+          <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" class="marker-check"/>
+        <% else %>
+          <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" checked class="marker-check"/>
+        <% end %>
+        <label for="marker-check-<%= marker[0] %>"><%= marker[0] %></label>
+      </p>
+    </li>
   <% end %>
-  </ul>
-  <% @selected_request.each do |request| %>
-    <%= link_to "#dashboard-request-progress-marker-modal-#{request.id}", class: "dashboard-side-bar-item-link-wrapper modal-trigger" do%>
-    <div class="btn col l6 offset-l3">
-      Add Marker
-    </div>
-    <% end %>
-  <% end %>
-</div>
+<% end %>
+</ul>

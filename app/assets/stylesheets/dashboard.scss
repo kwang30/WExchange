@@ -14,10 +14,14 @@ body {
   .requests, .card {
     height: 100%;
   }
+
+  .card-content {
+    padding-top: 10px;
+  }
 }
 
 .dashboard-request-header-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 
   .dashboard-sidebar-item-name {
     font-size: 25px;
@@ -165,4 +169,25 @@ body {
     color: black !important;
   }
 
+}
+
+// Progress Tracker
+
+.progress-title {
+  font-size: 20px;
+  font-weight: 100;
+  margin-right: 10px;
+  color: #444;
+  float: left;
+}
+.progress-tracker-header-wrapper {
+  margin-top: 20px;
+
+  .btn {
+    margin-top: 2px;
+  }
+}
+
+.marker-list {
+  margin-left: 15px;
 }
