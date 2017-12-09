@@ -5,41 +5,42 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'geocoder'
+
+
+gem 'pusher'
+gem 'dropzonejs-rails'
 gem 'acts-as-taggable-on'
 gem "select2-rails"
 gem 'activeadmin'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
+gem "delayed_paperclip"
+gem "jquery-slick-rails"
+
 gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
 gem 'figaro'
 gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'fancybox-rails'
 gem "jquery-fileupload-rails"
 gem 'chartkick'
-gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
-gem "jquery-slick-rails"
-gem 'pusher'
+gem 'filterrific', git: 'https://github.com/ayaman/filterrific.git'
 
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Use for materalize and ui
 gem 'materialize-sass'
 gem 'will_paginate'
 gem 'will_paginate-materialize'
 gem 'simple_form'
-gem 'mail_form'
-
 # Use for searching
 gem 'ransack'
-
 # Use for rendering dates and times
 gem 'local_time'
-
 # Use for Stripe payment
 gem 'stripe'
 gem 'stripe_event'
-
 gem "bcrypt"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -61,8 +62,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'bootstrap-sass', '~> 3.3.6' # added for messenger
-
+gem 'jquery-raty-rails', github: 'bmc/jquery-raty-rails'
+gem 'paperclip-av-transcoder'
+gem "paperclip-ffmpeg"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do # <<<< :development, not devlopment
@@ -77,9 +79,7 @@ end
 
 
 
-group :assets do
-  gem 'jquery-ui-rails'
-end
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

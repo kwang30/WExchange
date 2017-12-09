@@ -19,18 +19,44 @@
         <% end %>
 
 
-
-
-
       <div class="collapsible-body">
         <p class="long-description">More detailed information about the service goes here.</p>
       </div>
-      <div class="collapsible-footer">
-        <%portfolio.photos.each do |photo| %>
-          <%= image_tag photo.image.url, :alt => "Portfolio Image", id:"portfolio-picture"%>
-        <%end %>
+
+      <%= render partial: 'layouts/portfolio_media', locals: { portfolio: portfolio } %>
+
         <%= link_to "Add" , {action: "addPhoto", controller: "portfolios",  id: portfolio.id}, class: "active waves-effect waves-light btn"%>
         <%= link_to "Delete" , {action: "delete", controller: "portfolios",  id: portfolio.id}, method: "delete", class: "active waves-effect waves-light btn"%>
     </li>
   </ul>
 </div>
+
+
+
+
+<script>
+$(".various").fancybox({
+    maxWidth: 800,
+    maxHeight: 600,
+    fitToView: false,
+    width: '70%',
+    height: '70%',
+    autoSize: false,
+    closeClick: false,
+    openEffect: 'elastic',
+    closeEffect: 'none'
+});
+
+$(".fancybox").fancybox({
+    loop : true,
+
+    afterLoad: function(current, previous) {
+        console.info( 'Current: ' + current.href );
+        console.info( 'Previous: ' + (previous ? previous.href : '-') );
+
+        if (previous) {
+            console.info( 'Navigating: ' + (current.index > previous.index ? 'right' : 'left') );
+        }
+    }
+});
+</script>
