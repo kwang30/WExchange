@@ -52,7 +52,6 @@ body {
     padding: 0 0.5rem;
 }
 
-
 .file-buttons {
   display: inline-block;
 }
@@ -88,7 +87,7 @@ body {
   left: 50%;
 }
 
-.error-message {
+.flash-error {
   position: relative;
   left: -50%;
   padding: 10px;
@@ -96,4 +95,5 @@ body {
   border: 1px solid red;
   background-color: #ed7d7d;
   margin: 20px auto;
+  list-style-type: disc;
 }
