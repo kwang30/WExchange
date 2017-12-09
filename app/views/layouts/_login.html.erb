@@ -1,18 +1,18 @@
-<div class="login-background row">
-  <div class="container login-container col m6">
-    <h1 class="login-form-title">Log In</h1>
-    <%= form_for(:session, url: login_path, class: "login-form")  do |f| %>
-        <div class="input-field col m12 validate">
-          <%= f.email_field :email %>
-          <%= f.label :email %>
-        </div>
-        <div class="input-field col m12 validate">
-          <%= f.password_field :password, required: true %>
-          <%= f.label :password %>
-        </div>
-        <div class="col s12 center">
-          <%= f.submit "Log In", class: "active waves-effect waves-light btn" %>
-        </div>
-      <% end %>
-  </div>
+<div class="landing-page-background row home-form-wrapper">
+  <h1 class="home-form-title">Log In</h1>
+  <div class="col m6 offset-m3">
+  <%= form_for(:session, url: login_path, class: "col m6 offset-m3")  do |f| %>
+      <div class="input-field col m12 validate">
+        <%= f.email_field :email %>
+        <%= f.label :email %>
+      </div>
+      <div class="input-field col m12 validate">
+        <%= f.password_field :password, required: true %>
+        <%= f.label :password %>
+      </div>
+      <div class="input-field col m12 center">
+        <%= f.submit "Log In", class: "active waves-effect waves-light btn" %>
+      </div>
+    <% end %>
+    </div>
 </div>

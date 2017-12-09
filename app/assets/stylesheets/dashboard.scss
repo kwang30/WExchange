@@ -9,15 +9,59 @@ body {
 }
 
 .container-fluid {
-  height: calc(100% - 90px) ;
+  height: calc(100% - 85px);
+  overflow-y: hidden;
+
+  .row {
+    margin-bottom: 0;
+  }
 
   .requests, .card {
     height: 100%;
   }
+
+  .card-content {
+    padding-top: 10px;
+  }
+}
+
+.requests-column {
+  height: 98%;
+  .card {
+    height: 100%;
+    .dashboard-sidebar-items-container {
+      height: 100%;
+      .badge {
+        margin-top: 10px;
+        float: left;
+      }
+      .dashboard-sidebar-items {
+        width: 100% !important;
+        height: calc(100% - 50px);
+        margin: 0;
+        overflow:hidden;
+        overflow-y:scroll;
+      }
+    }
+  }
+}
+
+.notifications-column {
+  height: 98%;
+  .card {
+    height: 100%;
+    .card-content {
+      height: 100%;
+    }
+  }
+  .dashboard-notification-list {
+    height: calc(100% - 32px);
+    overflow-y: scroll;
+  }
 }
 
 .dashboard-request-header-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 
   .dashboard-sidebar-item-name {
     font-size: 25px;
@@ -61,8 +105,10 @@ body {
 
 }
 
-.dashboard-request-view-button {
-  float: right;
+.dashboard-sidebar-header-view-button-wrapper {
+  .dashboard-request-view-button {
+    float: right;
+  }
 }
 
 .dashboard-sidebar-container {
@@ -79,21 +125,6 @@ body {
   line-height: 20px;
   margin-top: 0;
   color: #d5d5d5;
-}
-
-.dashboard-sidebar-items-container {
-  width: 100% !important;
-
-  .badge {
-    margin-top: 10px;
-    float: left;
-  }
-}
-
-.dashboard-sidebar-items {
-  margin: 0;
-  overflow:hidden;
-  overflow-y:scroll;
 }
 
 .dashboard-side-bar-item-link-wrapper {
@@ -165,4 +196,25 @@ body {
     color: black !important;
   }
 
+}
+
+// Progress Tracker
+
+.progress-title {
+  font-size: 20px;
+  font-weight: 100;
+  margin-right: 10px;
+  color: #444;
+  float: left;
+}
+.progress-tracker-header-wrapper {
+  margin-top: 20px;
+
+  .btn {
+    margin-top: 2px;
+  }
+}
+
+.marker-list {
+  margin-left: 15px;
 }

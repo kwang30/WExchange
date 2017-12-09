@@ -2,26 +2,55 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#search {
-  padding-left: 40px;
-}
-
 .search-form {
   height: 300px;
+
+  .label-icon {
+    color: white !important;
+  }
+
+  input {
+    color: white !important;
+    padding-left: 25px !important;
+  }
 }
 
-.home-background {
-  color: white;
-  font-size: 15vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100% !important;
+.landing-page-background {
   height: 100%;
-  max-height: 870px !important;
-  margin-top: -15px;
+  width:100%;
+  margin: 0;
   background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("home_backdrop.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.home-header {
+  &:focus {
+    color: white;
+  }
+  text-align: center;
+  padding-top: 50px;
+  font-size: 150px;
+  color: white;
+}
+
+.home-form-title {
+  color: white;
+  margin: 0;
+  text-align: center;
+}
+
+.home-form-wrapper {
+
+  padding-top: 100px;
+
+  .input-field {
+    input {
+      color: white;
+    }
+
+    input:focus {
+      color: white;
+    }
+  }
 }

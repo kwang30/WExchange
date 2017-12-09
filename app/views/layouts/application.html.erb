@@ -13,8 +13,14 @@
   <%= render 'layouts/navigation' %>
   <body>
     <div class="flash-wrapper">
-      <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: 'error-message' %>
+      <% flash.each do |name, msg| %>
+        <div class="flash-<%= name %> flash-error-messages" list-style-type=square>
+          <% if msg.class == String %>
+            <%= msg %>
+          <% else %>
+            <%= msg.map{|item| '- '+item}.join("<br/>").html_safe %>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <%= yield %>
