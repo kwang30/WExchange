@@ -59,7 +59,8 @@ class UsersController < ApplicationController
       format.html { redirect_to root_path }
       format.json { head :no_content }
     end
-  render
+  end
+
 
   def autocomplete
     render json: ["test"]
@@ -72,9 +73,9 @@ class UsersController < ApplicationController
     #   }).map(&:full_name)
   end
 
- private
-   def user_params
-     params.require(:user).permit(:username, :first_name, :last_name, :email, :biography,
-                                  :display_name, :password, :password_confirmation, :image, tag_list: [])
-   end
+  private
+    def user_params
+      params.require(:user).permit(:username, :first_name, :last_name, :email, :biography,
+                                   :display_name, :password, :password_confirmation, :image, tag_list: [])
+    end
 end
