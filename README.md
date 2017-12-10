@@ -1,3 +1,6 @@
+![alt text](https://github.com/abubatjargal/WExchange/blob/master/app/assets/images/wexchange_logo.png "WExchange Logo")
+
+
 # WExchange
 
 ### What is it?
