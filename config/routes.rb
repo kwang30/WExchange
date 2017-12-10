@@ -69,9 +69,7 @@ Rails.application.routes.draw do
     get '/chats', to: 'chats#index'
   end
 
-  resources :users do
-    resources :reviews
-  end
+
 
   resources :notifications do
     collection do
@@ -91,5 +89,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:create]
   end
   resources :tags, only: [:index, :show]
+
+    resources :users do
+      get :autocomplete
+    end
 
 end

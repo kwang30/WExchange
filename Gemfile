@@ -7,6 +7,7 @@ end
 
 
 gem 'searchkick'
+gem 'twitter-typeahead-rails'
 gem 'pusher'
 gem 'dropzonejs-rails'
 gem 'acts-as-taggable-on'

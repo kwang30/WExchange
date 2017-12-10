@@ -58,6 +58,17 @@ class UsersController < ApplicationController
       format.html { redirect_to root_path }
       format.json { head :no_content }
     end
+  render
+
+  def autocomplete
+    render json: ["test"]
+    # User.search(params[:search_query], {
+    #   fields: ["first_name, full_name, last_name, email"],
+    #   match: :word_start,
+    #   limit: 10,
+    #   load: false,
+    #   misspellings: {below: 5}
+    #   }).map(&:full_name)
   end
 
  private

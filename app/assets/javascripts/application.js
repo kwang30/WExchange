@@ -21,6 +21,7 @@
 //= require pusher.min.js
 
 //= require jquery.slick
+//= require twitter/typeahead
 //= require materialize-sprockets
 //= require dropzone
 //= require_tree .

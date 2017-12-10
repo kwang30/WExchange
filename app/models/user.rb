@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-has_secure_password
+    has_secure_password
     has_many :transactions
     has_many :portfolios
     has_many :messages
@@ -22,11 +22,25 @@ has_secure_password
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
 
-    searchkick
-    
+    searchkick 
+
+
+
+
 
     def User.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)
     end
-end
+
+    def search_data
+      {
+      first_name: self.first_name,
+      last_name: self.last_name,
+      full_name: self.full_name,
+      email: self.email
+    }
+    end
+
+
+  end
