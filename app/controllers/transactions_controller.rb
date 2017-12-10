@@ -31,6 +31,10 @@ class TransactionsController < ApplicationController
       creator_accept_request @request
     elsif params["creator_decline"]
       creator_decline_request @request
+    elsif params["client_accept_price"]
+      client_accept_price @request
+    elsif params["client_decline_price"]
+      client_decline_price @request
     elsif params["send_content"]
       creator_send_content @request
     elsif params["client_accept"]
@@ -67,18 +71,32 @@ class TransactionsController < ApplicationController
     Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "declined your request", notifiable: @request, destination_url: dashboard_path)
   end
 
-  def creator_send_content(request)
+  def client_accept_price(request)
     request.update_attribute(:status, 2)
+    Notification.create(recipient: User.find_by(id: request.creator_id), actor: User.find_by(id: request.recipient_id), action: "accepted your price", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def client_decline_price(request)
+    request.update_attribute(:status, -4)
+    Notification.create(recipient: User.find_by(id: request.creator_id), actor: User.find_by(id: request.recipient_id), action: "declined your price", notifiable: @request, destination_url: dashboard_path)
+  end
+
+  def creator_send_content(request)
+    request.update_attribute(:status, 3)
     Notification.create(recipient: User.find_by(id: request.recipient_id), actor: User.find_by(id: request.creator_id), action: "sent content for your request", notifiable: @request, destination_url: dashboard_path)
   end
 
   def client_accept_content(request)
-    request.update_attribute(:status, 3)
-    Notification.create(recipient: User.find_by(id: request.creator_id), actor:User.find_by(id: request.recipient_id), action: "accepted your work", notifiable: @request, destination_url: dashboard_path)
+    request.update_attribute(:status, 4)
+    creator = User.find_by(id: request.creator_id)
+    client = User.find_by(id: request.recipient_id)
+    creator.update_attribute(:balance, creator.balance + request.price)
+    client.update_attribute(:balance, client.balance - request.price)
+    Notification.create(recipient: creator, actor: client, action: "accepted your work", notifiable: @request, destination_url: dashboard_path)
   end
 
   def client_request_edits(request)
-    request.update_attribute(:status, 3)
+    request.update_attribute(:status, 4)
     Notification.create(recipient: User.find_by(id: request.creator_id), actor:User.find_by(id: request.recipient_id), action: "requested edits to your work", notifiable: @request, destination_url: dashboard_path)
   end
 
@@ -94,7 +112,7 @@ class TransactionsController < ApplicationController
 
   private
      def request_params
-       params.require(:transaction).permit(:request_message, :transaction_title, :deadline, :status)
+       params.require(:transaction).permit(:request_message, :transaction_title, :deadline, :status, :price)
      end
 
      def get_request

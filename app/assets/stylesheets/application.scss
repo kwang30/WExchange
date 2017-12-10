@@ -21,10 +21,13 @@
  *= require_tree .
 
  */
-
+@import "materialize/components/color";
+$primary-color: color("blue", "base") !default;
+$secondary-color: color("blue", "lighten-1") !default;
 @import "materialize";
 
 $background-color: #f6f6f6;
+
 
 html {
   height: 100%;
@@ -46,6 +49,15 @@ body {
     margin: 0;
   }
 
+}
+
+i.btn {
+  padding: 0;
+  .waves-button-input {
+    height: 100%;
+    width: 100%;
+    padding: 0 28px;
+  }
 }
 
 .btn-small {

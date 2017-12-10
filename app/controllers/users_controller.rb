@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.balance = 0;
     if @user.save
       log_in @user
       redirect_to dashboard_path

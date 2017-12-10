@@ -169,10 +169,16 @@ body {
   list-style: none;
 }
 
-
 // _dashboard_request_approval_modal.html.erb
 
 .request-modal-wrapper {
+
+  color: black;
+
+  .request-title {
+    font-size: 50px;
+    margin-top: 0;
+  }
 
   .message-text-area {
     display: none;
@@ -182,6 +188,7 @@ body {
   .response-textarea {
     display: none;
     color: black;
+    margin-bottom: 0;
   }
 
   .creator-response-wrapper {
@@ -191,9 +198,39 @@ body {
     border-radius: 10px;
   }
 
-  .creator-response-textarea {
-    margin-bottom: 0;
-    color: black !important;
+  .client-accept-decline-price {
+    font-size: 30px;
+    span {
+
+    }
+
+  }
+
+  .creator-accept-decline-input-wrapper {
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid gray;
+
+    .price-input {
+
+      margin-top: 0;
+
+      .price-label {
+        float: left;
+      }
+
+      .price-text-field {
+        float: left;
+        width: 50px;
+        font-size: 20px;
+      }
+
+      .input-field {
+        margin-top: 0;
+      }
+
+    }
+
   }
 
 }
