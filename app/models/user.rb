@@ -22,6 +22,9 @@ has_secure_password
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
 
+    searchkick
+    
+
     def User.digest(string)
       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)

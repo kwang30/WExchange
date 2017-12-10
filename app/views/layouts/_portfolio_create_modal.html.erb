@@ -9,6 +9,7 @@
           <%=render 'layouts/uploads', f:f %>
           <%=   f.input :tag_list , collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>
 
+
           <div class="button-wrapper col s3">
             <%= hidden_field(:user_id, current_user.id.to_i) %>
             <%= f.submit "Create", class: "waves-effect waves-light btn" %>
@@ -30,5 +31,25 @@ $(document).ready(function(){
     placeholder: 'Add Tags',
   });
 });
+</script>
+
+
+<script>
+Dropzone.options.imgUpload = {
+    clickable: true,
+	  addRemoveLinks: true,
+    dictDefaultMessage: "Click/Drag images here to upload",
+    init: function() {
+                this.on("complete", function(file, response) {
+                		debugger;
+                    $('.dz-progress').hide();
+                    $('.dz-size').hide();
+                    $('.dz-error-mark').show();
+                    console.log(response);
+                    console.log(file);
+                    cd = response;
+                });
+            }
+};
 
 </script>

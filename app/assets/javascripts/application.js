@@ -22,6 +22,7 @@
 
 //= require jquery.slick
 //= require materialize-sprockets
+//= require dropzone
 //= require_tree .
 
 $(document).ready( function(){

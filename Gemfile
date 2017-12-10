@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
-
+gem 'searchkick'
 gem 'pusher'
 gem 'dropzonejs-rails'
 gem 'acts-as-taggable-on'
@@ -14,6 +14,7 @@ gem "select2-rails"
 gem 'activeadmin'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
+gem 'delayed_job_active_record'
 gem "delayed_paperclip"
 gem "jquery-slick-rails"
 
