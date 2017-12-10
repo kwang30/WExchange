@@ -2,14 +2,9 @@
   <form class="discover-search-form">
     <div class="input-field col m6 offset-m3">
 
-      <%= text_field_tag :search,
-             autocomplete: :on,
-             placeholder: 'Search',
-             class: 'form-control' %>
 
-      <input id="search" type="search" name="search_query" placeholder="Search..." required>
-      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
 
+  <%= text_field_tag :search_query, params[:search_query], class: 'form-control', placeholder: "Search", id: "user_search" %>
 
 
     </div>
@@ -22,3 +17,12 @@
   <% end %>
   </div>
 </div>
+
+
+
+<script>
+$("#user_search").autocomplete(
+  source:"/discover/autocomplete",
+  minlength: 1
+)
+</script>

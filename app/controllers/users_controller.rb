@@ -61,9 +61,21 @@ class UsersController < ApplicationController
     end
   end
 
- private
-   def user_params
-     params.require(:user).permit(:username, :first_name, :last_name, :email, :biography,
-                                  :display_name, :password, :password_confirmation, :image, tag_list: [])
-   end
+
+  def autocomplete
+    render json: ["test"]
+    # User.search(params[:search_query], {
+    #   fields: ["first_name, full_name, last_name, email"],
+    #   match: :word_start,
+    #   limit: 10,
+    #   load: false,
+    #   misspellings: {below: 5}
+    #   }).map(&:full_name)
+  end
+
+  private
+    def user_params
+      params.require(:user).permit(:username, :first_name, :last_name, :email, :biography,
+                                   :display_name, :password, :password_confirmation, :image, tag_list: [])
+    end
 end
