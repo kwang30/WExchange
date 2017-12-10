@@ -52,6 +52,7 @@ body {
     height: 100%;
     .card-content {
       height: 100%;
+      padding: 10px;
     }
   }
   .dashboard-notification-list {
@@ -200,10 +201,6 @@ body {
 
   .client-accept-decline-price {
     font-size: 30px;
-    span {
-
-    }
-
   }
 
   .creator-accept-decline-input-wrapper {
@@ -228,11 +225,8 @@ body {
       .input-field {
         margin-top: 0;
       }
-
     }
-
   }
-
 }
 
 // Progress Tracker
@@ -254,4 +248,24 @@ body {
 
 .marker-list {
   margin-left: 15px;
+}
+
+// Notifications
+
+.notification-link-wrapper {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+
+  .notification-profile-picture-wrapper {
+    float: left;
+    margin-right: 5px;
+    min-height: 100%;
+    display: block;
+  }
+
+  .notification-text-wrapper {
+    display: block;
+    margin-top: 5px;
+  }
 }
