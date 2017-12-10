@@ -3,6 +3,8 @@ module DashboardHelper
   def badge_for_request(request)
     badge = ""
     case request.status
+    when -4
+      badge = "<span class=\"new badge grey\" data-badge-caption=\"\">Price Declined by Client</span>"
     when -3
       badge = "<span class=\"new badge grey\" data-badge-caption=\"\">Cancelled by Creator</span>"
     when -2
@@ -12,10 +14,12 @@ module DashboardHelper
     when 0
       badge = "<span class=\"new badge orange\" data-badge-caption=\"\">Awaiting Creator Approval</span>"
     when 1
-      badge = "<span class=\"new badge green\" data-badge-caption=\"\">In Progress</span>"
+      badge = "<span class=\"new badge orange\" data-badge-caption=\"\">Awaiting Price Approval</span>"
     when 2
-      badge = "<span class=\"new badge orange\" data-badge-caption=\"\">Awaiting Client Approval</span>"
+      badge = "<span class=\"new badge green\" data-badge-caption=\"\">In Progress</span>"
     when 3
+      badge = "<span class=\"new badge orange\" data-badge-caption=\"\">Awaiting Client Approval</span>"
+    when 4
       badge = "<span class=\"new badge green\" data-badge-caption=\"\">Completed</span>"
     end
     badge.html_safe

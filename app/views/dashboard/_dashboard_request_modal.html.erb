@@ -1,12 +1,16 @@
 <div id="dashboard-request-modal-<%= request.id %>" class="modal request-modal-wrapper">
   <div class="modal-content">
     <%= form_for request do |f| %>
-      <%= f.label "Request Title" %>
-      <%= f.text_field :transaction_title, disabled: true, placeholder: "Ex. Business Logo" %>
+      <% if request.transaction_title.blank? %>
+        <%= f.label "Request Title" %>
+        <%= f.text_field :transaction_title, disabled: true, placeholder: "Ex. Business Logo" %>
+      <% else %>
+        <p class="request-title"><%= request.transaction_title %></p>
+      <% end %>
       <%= f.label "Request Message" %>
       <%= f.text_area :request_message, disabled: true, class: "materialize-textarea col-s12", size: "12x12"  %>
       <%= f.label "Deadline" %>
-      <%= f.text_field :deadline, disabled: true, class: "datepicker" %>
+      <%= f.text_field :deadline, value: request.deadline.strftime("%B %d, %Y"), disabled: true, class: "datepicker" %>
 
       <!-- REQUEST DECLINED -->
       <% if request.status == -1 %>
@@ -20,23 +24,50 @@
 
       <!-- CREATOR ACCEPTING / DECLINING REQUEST -->
       <% if request.status == 0 && request.creator_id == current_user.id %>
-      <div class="checkbox-wrapper">
-        <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
-        <%= label_tag :include_message, "Include Message to Sender" %>
+      <div class="creator-accept-decline-input-wrapper">
+        <div class="checkbox-wrapper">
+          <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
+          <%= label_tag :include_message, "Include Message to Sender" %>
+        </div>
+        <%= f.text_area :response_message, placeholder: "Message", disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
+        <div class="input-field inline row price-input">
+          <div class="col s12">
+            Price($):
+            <div class="input-field inline">
+              <%= f.text_field :price, class: "price-text-field" %>
+            </div>
+          </div>
+        </div>
+        <div class="input-field row">
+          <%= f.submit "Accept", class: "waves-effect waves-light btn blue", name: "creator_accept" %>
+          <%= f.submit "Decline", class: "waves-effect waves-light btn red", name: "creator_decline" %>
+        </div>
       </div>
-      <%= f.text_area :response_message, placeholder: "Message", disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
-      <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "creator_accept" %>
-      <%= f.submit "Decline", class: "waves-effect waves-light btn", name: "creator_decline" %>
       <% end %>
 
+       <!-- CLIENT ACCEPTING / DECLINING PRICE -->
+       <% if request.status == 1 && request.recipient_id == current_user.id %>
+       <div class="creator-accept-decline-input-wrapper">
+         <%= puts "========== ALEC19" %>
+         <%= puts request.inspect %>
+        <div class="client-accept-decline-price">
+          Price: <span>$<%= request.price %></span>
+        </div>
+         <div class="input-field row">
+           <%= f.submit "Accept", class: "waves-effect waves-light btn blue", name: "client_accept_price" %>
+           <%= f.submit "Decline", class: "waves-effect waves-light btn red", name: "client_decline_price" %>
+         </div>
+       </div>
+       <% end %>
+
       <!-- CREATOR SUBMIT & CANCEL "IN PROGRESS" BUTTONS -->
-      <% if request.status == 1 && request.creator_id == current_user.id %>
+      <% if request.status == 2 && request.creator_id == current_user.id %>
       <%= f.submit "Send", class: "waves-effect waves-light btn", name: "send_content"  %>
       <%= f.submit "Cancel Request", class: "waves-effect waves-light btn", name: "cancel" %>
       <% end %>
 
       <!-- CLIENT CANCEL REQUEST BUTTON -->
-      <% if ((request.status == 0 || request.status == 1) && request.recipient_id == current_user.id) %>
+      <% if ((request.status == 0 || request.status == 2) && request.recipient_id == current_user.id) %>
         <% if !request.response_message.nil? %>
         <%= f.label "Creator Response" %>
         <%= f.text_area :response_message, disabled: true, class: "materialize-textarea col-s12" %>
@@ -45,13 +76,13 @@
       <% end %>
 
       <!-- CLIENT ACCEPT / REQUEST EDIT -->
-      <% if request.status == 2 && request.recipient_id == current_user.id %>
+      <% if request.status == 3 && request.recipient_id == current_user.id %>
       <%= f.submit "Accept", class: "waves-effect waves-light btn", name: "client_accept" %>
       <%= f.submit "Request Edits", class: "waves-effect waves-light btn", name: "request_edits" %>
       <% end %>
 
       <!-- CLIENT COMPLETED REQUEST RATING -->
-      <% if request.status == 3 && request.recipient_id == current_user %>
+      <% if request.status == 4 && request.recipient_id == current_user %>
       <!-- TODO: Put star ratings here -->
       <% end %>
     <% end %>
