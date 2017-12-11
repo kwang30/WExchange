@@ -22,7 +22,7 @@ class User < ApplicationRecord
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
 
-    searchkick 
+    searchkick suggest: [:first_name]
 
 
 
@@ -35,11 +35,23 @@ class User < ApplicationRecord
 
     def search_data
       {
-      first_name: self.first_name,
-      last_name: self.last_name,
-      full_name: self.full_name,
-      email: self.email
+      first_name: first_name,
+      last_name: last_name,
+      full_name: full_name,
+      email: email,
+      reviews: reviews,
+      tag: tag_list,
+      tags:portfolio.tag_list
+
     }
+    end
+
+    def search
+      if params[:search_query].nil?
+        @users = []
+      else
+        @users = Article.search params[:search_query], fields: [:first_name], highlight:  true
+      end
     end
 
 

@@ -1,0 +1,15 @@
+<% if @users.size==0 %>
+<p>
+<% puts @users.suggestions.first%>
+<p>
+  why
+</p>
+
+</p>
+<% else %>
+  <% @users.each do |user| %>
+    <div class="col s10 m3 l3">
+      <%= render 'layouts/discover_card', locals: {user: user} %>
+    </div>
+  <% end %>
+<% end %>

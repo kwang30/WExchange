@@ -23,12 +23,7 @@ class UsersController < ApplicationController
   end
 
 
-  def profile
-  end
 
-  def index
-    @users=User.all
-  end
 
   def create
     @user = User.new(user_params)
@@ -47,7 +42,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       redirect_to @user
     else
-      puts "FAIL"
+      flash.now[:error] = @user.errors.full_messages
     end
   end
 

@@ -1,28 +1,26 @@
 <div class="discover-wrapper container row">
-  <form class="discover-search-form">
+  <%= form_tag('/discover', method: :get, role: 'form', :id=>"discover-search-form", remote: true) do %>
     <div class="input-field col m6 offset-m3">
-
-
-
-  <%= text_field_tag :search_query, params[:search_query], class: 'form-control', placeholder: "Search", id: "user_search" %>
-
-
+      <%= text_field_tag :search_query, params[:search_query], class: 'form-control', placeholder: "Search", id: "user_search" %>
     </div>
-  </form>
-  <div class="row search-results-wrapper">
-  <% @users.each do |user| %>
-    <div class="col s10 m3 l3">
-      <%= render 'layouts/discover_card', locals: {user: user} %>
-    </div>
-  <% end %>
-  </div>
+  <%end %>
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <div class="user_results"></div>
 </div>
 
 
 
 <script>
-$("#user_search").autocomplete(
-  source:"/discover/autocomplete",
-  minlength: 1
-)
+
+$(function () {
+  $("#user_search").on('keyup', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
 </script>

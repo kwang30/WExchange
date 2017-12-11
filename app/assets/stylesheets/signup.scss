@@ -23,6 +23,10 @@
   background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6) ), url("home_backdrop.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
+  -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
 }
 
 .form-control-text {

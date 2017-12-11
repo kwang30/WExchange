@@ -1,8 +1,12 @@
-<p class="title">Edit User Tags</p>
-<%= simple_form_for current_user do |f| %>
-  <%= f.input :tag_list, collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>
-  <div class="button-wrapper col s12">
-    <%= hidden_field(:user_id, current_user.id.to_i) %>
-    <%= f.submit "Update", class: "waves-effect waves-light btn" %>
+<div id="edit-user-tags-modal" class="modal">
+  <div class="modal-content edit-user-tags-wrapper">
+    <p class="title">Edit User Tags</p>
+    <%= simple_form_for current_user do |f| %>
+      <%= f.input :tag_list, collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>
+      <div class="button-wrapper col s12">
+        <%= hidden_field(:user_id, current_user.id.to_i) %>
+        <%= f.submit "Update", class: "waves-effect waves-light btn" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
