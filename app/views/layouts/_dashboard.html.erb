@@ -7,23 +7,33 @@
       </ul>
       <div class="dashboard-sidebar-items-container incoming-request-wrapper" id="dashboard-sidebar-incoming-requests">
         <ul class="dashboard-sidebar-items">
-          <% @incoming_requests.each do |request| %>
-            <li class="dashboard-sidebar-item">
-              <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
-            </li>
-            <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
-            <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
+          <% if @incoming_requests.any? %>
+            <% @incoming_requests.each do |request| %>
+              <li class="dashboard-sidebar-item">
+                <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
+              </li>
+              <%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>
+              <%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>
+            <% end %>
+          <% else %>
+            <div class="no-requests">You have not received any requests yet!</div>
           <% end %>
+
         </ul>
       </div>
       <div class="dashboard-sidebar-items-container outgoing-request-wrapper" id="dashboard-sidebar-outgoing-requests">
         <ul class="dashboard-sidebar-items">
-          <% @outgoing_requests.each do |request| %>
-          <li class="dashboard-sidebar-item">
-            <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
-          </li>
+          <% if @outgoing_requests.any? %>
+            <% @outgoing_requests.each do |request| %>
+            <li class="dashboard-sidebar-item">
+              <%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>
+            </li>
+            <% end %>
+          <% else %>
+            <div class="no-requests">You have not sent any requests yet!</div>
           <% end %>
         </ul>
+
       </div>
     </div>
   </div>
@@ -32,12 +42,17 @@
       <div class="card-content">
         <span class="card-title">Notifications</span>
         <ul class="dashboard-notification-list">
-          <% @notifications.reverse.each do |notification| %>
-          <li class="dashboard-notification-item" data-id="<%= notification.id %>">
-            <%= render partial: 'dashboard/dashboard_notification', locals: { request: notification.notifiable, notification: notification } %>
-          </li>
-          <div class="divider"></div>
+          <% if @notifications.any? %>
+            <% @notifications.reverse.each do |notification| %>
+            <li class="dashboard-notification-item" data-id="<%= notification.id %>">
+              <%= render partial: 'dashboard/dashboard_notification', locals: { request: notification.notifiable, notification: notification } %>
+            </li>
+            <div class="divider"></div>
+            <% end %>
+          <% else %>
+            <div class="no-notifications">No Notifications</div>
           <% end %>
+
         </ul>
       </div>
     </div>
