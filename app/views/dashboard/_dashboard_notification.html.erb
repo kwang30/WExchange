@@ -4,6 +4,7 @@
   <% class_list = "notification-link-wrapper read" %>
 <% end %>
 
+
 <% if notification.notifiable_type == "Transaction" %>
   <% class_list += " modal-trigger" %>
   <% if @outgoing_requests.include?(request) %>
@@ -23,7 +24,12 @@
   <% end %>
 <% elsif notification.notifiable_type == "Chat" %>
   <%= link_to chats_path, class: class_list do %>
-    <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
-    <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+    <div class="notification-profile-picture-wrapper">
+      <%= image_tag(notification.actor.image.url, width: 50, height: 50, class: "circle-img") %>
+    </div>
+    <div class="notification-text-wrapper">
+      <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
+      <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+    </div>
   <% end %>
 <% end %>
