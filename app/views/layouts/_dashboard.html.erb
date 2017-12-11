@@ -32,7 +32,6 @@
       <div class="card-content">
         <span class="card-title">Notifications</span>
         <ul class="dashboard-notification-list">
-
           <% @notifications.reverse.each do |notification| %>
           <li class="dashboard-notification-item" data-id="<%= notification.id %>">
             <%= render partial: 'dashboard/dashboard_notification', locals: { request: notification.notifiable, notification: notification } %>

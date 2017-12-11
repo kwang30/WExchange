@@ -9,10 +9,9 @@
       <li><%= link_to "Sign Up", signup_path, target: "_self" %></li>
     </ul>
     <% else %>
-
     <!-- NAVIGATION BAR ITEMS -->
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li>
+      <li class="dashboard-link">
         <%= link_to dashboard_path do %>
           <span>Dashboard</span>
           <% notifications = Notification.where(recipient: current_user).unread  %>

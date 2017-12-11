@@ -11,13 +11,15 @@
   <% elsif @incoming_requests.include?(request) %>
     <% tabName = "incoming" %>
   <% end %>
-  <%@user=notification.actor%>
-  <%= link_to image_tag(notification.actor.image.url,:width => 50, :height => 50), notification.actor %>
 
   <%= link_to "#dashboard-request-modal-#{request.id}", class: class_list, onclick:"displayDashboardTab('#{tabName}')" do %>
-    <p class="notification-text">
-      <%= link_to notification.actor.display_name, notification.actor %> <%= notification.action %></p>
-    <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+    <div class="notification-profile-picture-wrapper">
+      <%= image_tag(notification.actor.image.url, width: 50, height: 50, class: "circle-img") %>
+    </div>
+    <div class="notification-text-wrapper">
+      <p class="notification-text"><%= notification.actor.display_name %> <%= notification.action %></p>
+      <p class="notification-time-ago"><%= time_ago_in_words(notification.created_at) %> ago</p>
+    </div>
   <% end %>
 <% elsif notification.notifiable_type == "Chat" %>
   <%= link_to chats_path, class: class_list do %>

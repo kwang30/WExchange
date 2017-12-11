@@ -89,7 +89,11 @@ i.btn {
 // Navigation Bar
 
 .nav-dashboard-badge {
-  background-color: white;
+  position: absolute;
+  top: 10px;
+  right: 335px;
+  background-color: red;
+  color: white !important;
   border-radius: 100%;
   min-width: 22px !important;
 }
@@ -110,4 +114,10 @@ i.btn {
   background-color: #ed7d7d;
   margin: 20px auto;
   list-style-type: disc;
+}
+
+// Helper styles
+
+.circle-img {
+  border-radius: 100%;
 }
