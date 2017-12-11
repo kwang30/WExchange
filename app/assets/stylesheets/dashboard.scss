@@ -8,6 +8,17 @@ body {
   // height: 100%;
 }
 
+.tab {
+  background-color: #eeeeee !important;
+  a {
+    color: #9e9e9e !important;
+  }
+  .active {
+    background-color: white !important;
+    color: #2196f3 !important;
+  }
+}
+
 .container-fluid {
   height: calc(100% - 85px);
   overflow-y: hidden;

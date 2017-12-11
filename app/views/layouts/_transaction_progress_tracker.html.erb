@@ -3,10 +3,12 @@
   <% request.progress.each do |marker| %>
     <li class="progress-marker">
       <p>
-        <% if marker[1][:completed] == false %>
-          <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" class="marker-check"/>
-        <% else %>
-          <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" checked class="marker-check"/>
+        <% if request.creator_id == current_user.id %>
+          <% if marker[1][:completed] == false %>
+            <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" class="marker-check"/>
+          <% else %>
+            <input type="checkbox" id="marker-check-<%= marker[0] %>" type="checkbox" checked class="marker-check"/>
+          <% end %>
         <% end %>
         <label for="marker-check-<%= marker[0] %>"><%= marker[0] %></label>
       </p>

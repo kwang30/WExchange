@@ -1,24 +1,7 @@
-# README
+# WExchange
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### What is it?
+WExchange is a platform where users can hire content creators to complete work for them. With WExchange, users can find and request work from content creators in a secure environment, and content creators can be sure they will get proper compensation.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Who is it for?
+WExchange is for everyone. Whether you are a content-creator looking for clients, a marketing agency looking for a free-lance graphic designer or a just someone searching for custom content, our service allows you to connect with other users and securely exchange completed works for financial compensation.
