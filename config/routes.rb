@@ -38,9 +38,7 @@ Rails.application.routes.draw do
     get     '/profile/edit',            to: 'settings#edit_user'
     get     '/settings',                to: 'settings#index'
     get     '/settings/profile',        to: 'settings#edit_user'
-    get     '/settings/billing',        to: 'settings#edit_billing'
     get     '/settings/advanced',       to: 'settings#edit_advanced'
-    get     '/settings/notifications',  to: 'settings#edit_notifications'
   end
 
   controller :portfolios do

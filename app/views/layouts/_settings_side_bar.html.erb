@@ -1,14 +1,10 @@
 <div class="container">
   <ul id="slide-out" class="side-nav fixed">
-      <li><div class="userView">
-          <a href="#!user"><img class="circle" src="http://placehold.it/350x300"></a>
-
-      </div></li>
+      <li>
+        <%= image_tag(@user.image.url, width: 100, height: 100, class: "circle-img settings-profile-picture") %>
+      </li>
       <%-# commented line -%>
-
-          <li class="sidebar_account"><%= link_to "Account", '/settings/profile' %></li>
-          <li class="sidebar_account"><%= link_to "Notifications", '/settings/notifications' %></li>
-          <li class="sidebar_billing"><%= link_to "Billing", '/settings/billing' %></li>
-          <li class="sidebar_account"><%= link_to "Advanced", '/settings/advanced' %></li>
+      <li class="sidebar_account"><%= link_to "Account", '/settings/profile' %></li>
+      <li class="sidebar_account"><%= link_to "Advanced", '/settings/advanced' %></li>
   </ul>
 </div>
