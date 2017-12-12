@@ -11,3 +11,6 @@ WExchange is for everyone. Whether you are a content-creator looking for clients
 * Secure request flow ensures that content creators receive compensation while clients receive the work they paid for
 * Clean and simple user interface using Materialize
 * Realtime messaging and notifications with Pusher
+
+### Creators
+Abu Batjargal (@abubatjargal), Alec Rodgers (@AlecR), Kevin Wang (@kwang30) & Paul Cabrera (@paulcabrera93).
