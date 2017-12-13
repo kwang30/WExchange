@@ -1,14 +1,12 @@
 <li class="chat-wrapper">
   <div class="data-wrapper" data-chat-id="<%= chat.id %>">
-    <div class="chat-heading">
-      <%= link_to chat.opposed_user(user).display_name, '', class: 'toggle-window chat-display-name' %>
-    </div>
     <div class="chat-body" style="display: none;">
       <div class="messages-list">
         <ul>
           <%= render 'chats/chat_content', messages: chat.messages, user: user %>
         </ul>
       </div>
+      <div class="divider"></div>
       <%= form_for [chat, chat.messages.new], html: {class: "message-form row"}, remote: true do |f| %>
         <%= f.hidden_field :user_id, value: user.id %>
         <%= f.text_area :content, class: "message-input col m10" %>

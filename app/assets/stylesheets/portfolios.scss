@@ -1,15 +1,6 @@
 // Place all the styles related to the Portfolios controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.thumbnail:hover {
-    position:relative;
-    top:-25px;
-    left:-35px;
-    width:500px;
-    height:auto;
-    display:block;
-    z-index:999;
-}
 
 .portfolio-modal-wrapper {
   color: black;
@@ -74,4 +65,17 @@
 		margin: 0;
 		font-size: 2em;
 	}
+}
+
+.portfolio-modal-header-wrapper {
+  width: 100%;
+  height: 60px;
+
+  .title {
+    float: left;
+  }
+
+  .edit-portfolio-delete-button {
+    margin-top: 12px;
+  }
 }

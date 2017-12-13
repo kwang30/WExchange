@@ -1,21 +1,19 @@
 <div class="messages-wrapper">
-  <div class="row">
-    <div class="col m3 message-user-column">
-      <div class="user-list-heading">
-        <h3 class="user-list-title">User List</h3>
-      </div>
-      <div class="user-list-body">
-        <ul>
-          <% @users.each do |user| %>
-            <li class="user-list-item">
-              <%= render partial: 'chats/user_cell.html.erb', locals: {user: user} %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-    <div class="col m9 message-content-column">
-      <ul id="chats-list"></ul>
-    </div>
+  <ul class="side-nav fixed message-users">
+    <li class="user-list-heading">
+      <p class="user-list-title">Messages</p>
+      <i class="material-icons user-list-send-button">send</i>
+    </li>
+    <% @users.each do |user| %>
+      <% chat = Chat.get(current_user.id, user.id) %>
+      <% if chat.messages.length > 0 %>
+      <li class="user-list-item">
+        <%= render partial: 'chats/user_cell.html.erb', locals: {user: user, chat: chat} %>
+      </li>
+      <% end %>
+    <% end %>
+  </ul>
+  <div class="message-content-column">
+    <ul id="chats-list"></ul>
   </div>
 </div>
