@@ -1,8 +1,8 @@
-<li>
-  <div class="row">
-    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
-      <p><%=message.created_at.strftime("%d %b. %H:%M") %></p>
-      <%= message.content %>
+<li class="message-wrapper">
+  <div class="message-bubble-wrapper">
+    <div class="<%= user.id == message.user_id ? 'message message-sent' : 'message message-received' %>">
+      <p class="message-content"><%= message.content %></p>
     </div>
   </div>
+  <div class="message-sent-time <%= user.id == message.user_id ? 'align-right' : 'align-left' %>"><%=message.created_at.strftime("%b %e,  %l:%M %p") %></div>
 </li>
