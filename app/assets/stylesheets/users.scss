@@ -135,6 +135,7 @@
 
 	.title {
 		font-size: 25px;
+		float: left;
 	}
 
 }
@@ -159,4 +160,27 @@
 
 #edit a {
 	color: #000;
+}
+
+// ==================================
+// portfolio_create_modal.html.erb
+// ==================================
+
+.select2 {
+	margin-left: 0;
+	width: 100% !important;
+	margin-bottom: 10px;
+}
+
+.select2-container--default .select2-selection--multiple {
+	background-color: transparent;
+}
+
+// ==================================
+// portfolio_edit_modal.html.erb
+// ==================================
+
+.edit-portfolio-delete-button {
+	float: right;
+	width: 100px !important;
 }

@@ -1,7 +1,10 @@
 <div id="portfolio-edit-modal" class="modal">
   <div class="modal-content portfolio-modal-wrapper">
-    <p class="title">Edit Portfolio</p>
-    <%= simple_form_for portfolio do |f| %>
+    <div class="portfolio-modal-header-wrapper">
+      <p class="title">Edit Portfolio</p>
+      <%= link_to "Delete" , {action: "delete", controller: "portfolios",  id: portfolio.id}, method: "delete", class: "active waves-effect waves-light btn edit-portfolio-delete-button"%>
+    </div>
+    <%= simple_form_for(portfolio, class: "portfolio-modal") do |f| %>
         <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s12" %>
         <%= f.input :description, class: "materialize-textarea col s12" %>
       <div class="field">
