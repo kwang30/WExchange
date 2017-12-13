@@ -23,4 +23,15 @@ $(document).ready(function() {
     $(".response-textarea").toggle();
   });
 
+  $(".creator-accept-button").click(function() {
+    $(".price-text-field").attr("required", "true");
+    console.log("Set TRUE");
+  });
+
+  $(".creator-decline-button").click(function() {
+    $(".price-text-field").removeAttr("required");
+    console.log("Set FALSE");
+  });
+
+
 });
