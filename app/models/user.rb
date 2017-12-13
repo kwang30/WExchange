@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :portfolios
     has_many :messages
     has_many :reviews
+    has_many :searches
     has_many :photos
     has_many :notifications, foreign_key: :recipient_id
     has_many :chats, foreign_key: :sender_id # paul
@@ -21,6 +22,7 @@ class User < ApplicationRecord
     has_attached_file :image, styles: {small: '50X50', thumb: '100x100>', square: '200x200#', medium: '300x300>', large: '600x600>'}, :default_url => "default.jpeg"
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
+    scope :search_import, -> { includes(:tags) }
 
     searchkick suggest: [:first_name]
 
@@ -40,19 +42,10 @@ class User < ApplicationRecord
       full_name: full_name,
       email: email,
       reviews: reviews,
-      tag: tag_list,
-      tags:portfolio.tag_list
-
+      tag: tag_list
     }
     end
 
-    def search
-      if params[:search_query].nil?
-        @users = []
-      else
-        @users = Article.search params[:search_query], fields: [:first_name], highlight:  true
-      end
-    end
 
 
   end

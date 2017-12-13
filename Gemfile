@@ -18,6 +18,7 @@ gem "paperclip",'4.3.6' #last stable version
 gem 'delayed_job_active_record'
 gem "delayed_paperclip"
 gem "jquery-slick-rails"
+gem 'mixitup_rails'
 
 gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
@@ -28,7 +29,7 @@ gem 'jquery-ui-rails'
 gem 'fancybox-rails'
 gem "jquery-fileupload-rails"
 gem 'chartkick'
-gem 'filterrific', git: 'https://github.com/ayaman/filterrific.git'
+gem 'nouislider-rails'
 
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Use for materalize and ui
@@ -76,6 +77,8 @@ group :development, :test do # <<<< :development, not devlopment
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem "rails-erd"
+
 end
 
 

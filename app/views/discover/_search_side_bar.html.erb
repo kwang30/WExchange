@@ -1,0 +1,104 @@
+<div id="container">
+  <div class="row">
+    <div class="col s12 m12 l3">
+      <nav class="search-title-filter">
+        <div class="nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="search" type="search" required>
+              <label for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
+
+
+      <ul class="collapsible" data-collapsible="expandable">
+        <li class="">
+          <div class="collapsible-header active"><i class="material-icons">event_note</i>Date</div>
+          <div class="collapsible-body filter-container" style="display: none; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+            <form action="#">
+              <ul>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="Today" />
+                  <label for="Today">Today</label>
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="week" />
+                  <label for="week">This week</label>
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="month" selected />
+                  <label for="month">This month</label>
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="year" />
+                  <label for="year">This year</label>
+                </li>
+                <li>
+                  <input class="with-gap" name="group1" type="radio" id="Custom" />
+                  <label for="Custom">Custom date</label>
+                </li>
+              </ul>
+
+
+            </form>
+          </div>
+        </li>
+
+
+        <li class="">
+          <div class="collapsible-header active"><i class="material-icons">local_activity</i>Styles</div>
+          <div class="collapsible-body " style="display: none; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+            <p>
+              <select multiple>
+              <!--<option value="" disabled selected>Choose your option</option>-->
+              <option value="1" selected>Lindy Hop</option>
+              <option value="2" selected>Blues</option>
+              <option value="3" selected>Balboa</option>
+              <option value="3" selected>Jazz</option>
+              <option value="3" selected>Shag</option>
+              <option value="3" selected>Charleston</option>
+              <option value="3" selected>Other</option>
+            </select>
+              <label>Materialize Select</label>
+            </p>
+          </div>
+        </li>
+
+
+        <li>
+          <div class="collapsible-header active"><i class="material-icons">pin_drop</i>Country</div>
+          <div class="collapsible-body">
+            <p><select id="country-select"></select>
+              <label>Optgroups</label></p>
+          </div>
+        </li>
+        <li>
+
+
+
+          <div class="collapsible-header active"><i class="material-icons">label</i>Event type</div>
+          <div class="collapsible-body filter-container">
+
+            <ul>
+              <li>
+                <input type="checkbox" name="event-type-filter" class="event-type-filter filled-in" id="socials" checked="checked" value="social" />
+                <label for="socials">Socials</label>
+              </li>
+              <li>
+                <input type="checkbox" name="event-type-filter" class="event-type-filter  filled-in" id="classes" checked="checked" value="class" />
+                <label for="classes">Classes</label>
+              </li>
+              <li>
+                <input type="checkbox" name="event-type-filter" class="event-type-filter filled-in" id="festival-event" checked="checked" value="festival" />
+                <label for="festival-event">Festivals & events</label>
+              </li>
+            </ul>
+
+          </div>
+        </li>
+      </ul>
+
+    </div>

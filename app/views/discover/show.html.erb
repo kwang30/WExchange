@@ -1,19 +1,88 @@
-<div class="discover-wrapper container row">
-  <%= form_tag('/discover', method: :get, role: 'form', :id=>"discover-search-form", remote: true) do %>
-    <div class="input-field col m6 offset-m3">
-      <%= text_field_tag :search_query, params[:search_query], class: 'form-control', placeholder: "Search", id: "user_search" %>
-    </div>
-  <%end %>
-  <br />
-  <br />
-  <br />
-  <br />
+<div id="container">
+  <div class="col s3">
+      <%= form_tag('/discover', method: :get, role: 'form', :id=>"discover-search-form", remote: true) do %>
+      <div class="row">
+            <nav class="search-title-filter">
+              <div class="nav-wrapper">
+                <div class="input-field">
+                  <%= text_field_tag :search_query, params[:search_query] , type: 'search', id: "user_search", :icon=>"material-icons" %>
+                  <label for="search"><i class="material-icons">search</i></label>
 
-  <div class="user_results"></div>
-</div>
+                  <%= select_tag :tags, options_from_collection_for_select(@tags, 'name', 'name'), {:multiple=>true, :class => 'myselect', id: "tag_search", placeholder: "search"} %>
+                </div>
+
+              </div>
+            </nav>
+        </div>
+      </div>
+      <br />
+      <br />
+
+      <br />
+      <br />
+
+        <ul class="collapsible" data-collapsible="expandable">
+          <li class="">
+            <div class="collapsible-header active"><i class="material-icons">event_note</i>Most Popular aTag</div>
+            <div class="collapsible-body " style="display: none; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+
+                <% for tag in ActsAsTaggableOn::Tag.all do %>
+                <li>
+                  <%= check_box_tag "tag_name[]", tag.name, {:multiple => true, checked:"false"}, id: tag.id, class: "check-marks"%>
+                  <%= label_tag tag.id, tag.name %>
+                </li>
+                <%end %>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="collapsible" data-collapsible="expandable">
+          <li class="">
+            <div class="collapsible-header active"><i class="material-icons">event_note</i>Review</div>
+            <div class="collapsible-body " style="display: none; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+              <form class="col s6">
+                <div class="row">
+
+                  <div class="range-field col s6">
+
+                    <%= range_field_tag 'ranger',min: 1, max: 5, step: 1 %>
+                    <div id='target'></div>
+
+                  </div>
+                </div>
+            </div>
+          </li>
+        </ul>
 
 
 
+
+
+    <%end %>
+      <div class="user_results"></div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+      $(".myselect").select2();
+</script>
+<script>
+
+$(document).ready(function() {
+  $('select#box_assoc_items').select2({
+    placeholder: 'choose items',
+    multiple: true
+  });
+});
+</script>
+</script>
 <script>
 
 $(function () {
@@ -23,4 +92,23 @@ $(function () {
   });
 });
 
-</script>
+$(function () {
+  $("#tag_search").on('change', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+$(function () {
+  $(".check-marks").on('change', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+
+$(function () {
+  $(".review_range").on('change', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+  });
+});
