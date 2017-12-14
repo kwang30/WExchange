@@ -2,12 +2,18 @@
   <div class="modal-content transaction-create-wrapper">
     <p class="modal-title">Create Request</p>
     <%= form_for Transaction.new do |f| %>
-      <%= f.label "Request Title" %>
-      <%= f.text_field :transaction_title, placeholder: "Ex. Business Logo" %>
-      <%= f.label "Request Message" %>
-      <%= f.text_area :request_message, class: "materialize-textarea col-s12", size: "12x12"  %>
-      <%= f.label "Deadline" %>
-      <%= f.text_field :deadline, class: "datepicker" %>
+      <div class="input-field">
+        <%= f.label "Request Title" %>
+        <%= f.text_field :transaction_title %>
+      </div>
+      <div class="input-field">
+        <%= f.label "Request Message" %>
+        <%= f.text_area :request_message, class: "materialize-textarea col-s12", size: "12x12"  %>
+      </div>
+      <div class="deadline-field">
+        <%= f.label "Deadline" %>
+        <%= f.date_field :deadline %>
+      </div>
       <%= f.hidden_field :creator_id, value: params[:id] %>
       <%= f.submit "Send", url: {controller: 'transactions', action: 'create'}, class: "waves-effect waves-light btn" %>
     <% end %>
