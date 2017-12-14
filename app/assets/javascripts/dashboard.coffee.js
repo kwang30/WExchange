@@ -103,3 +103,55 @@ $(".select2").select2({
     }
   }
 });
+
+
+$('input.review_status').on('change', function() {
+    $('input.review_status').not(this).prop('checked', false);
+});
+
+$(function () {
+  $(".review_status").on('change', function () {
+
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+$('input.review').on('change', function() {
+    $('input.review').not(this).prop('checked', false);
+});
+
+$(".myselect").select2();
+$(document).ready(function() {
+  $('select#box_assoc_items').select2({
+    placeholder: 'choose items',
+    multiple: true
+  });
+});
+$(function () {
+  $("#user_search").on('keyup', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+$(function () {
+  $("#tag_search").on('change', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+$(function () {
+  $(".check-marks").on('change', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+
+$(function () {
+  $(".review_range").on('change', function () {
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+  });
+});

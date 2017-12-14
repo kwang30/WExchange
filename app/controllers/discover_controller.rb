@@ -5,15 +5,9 @@ class DiscoverController < ApplicationController
       # @users = User.all
     else
         query=params.fetch(:search_query) || "*"
-        # @users = User.search(params[:search_query], fields: ["first_name"], suggest: true)
-        @users=User.tagged_with(params[:tag_name], :any => true)
-
-        # @users=User.tagged_with(params[:tag_name], :any => true)
-        puts params[:tag_name]
-        puts "LOL"
-        puts @users.size
-
-       # @users1 = User.search(params[:tags], fields: [:tag])
+        name = User.search(params[:search_query], fields: [:first_name, :last_name, :full_name, :display_name, :email], suggest: true)
+        tags= User.tagged_with(params[:tags], :any => true)
+        @users =name || tags
 
 
     end

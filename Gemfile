@@ -7,6 +7,8 @@ end
 
 
 gem 'searchkick'
+gem 'predictor'
+gem 'redis'
 gem 'twitter-typeahead-rails'
 gem 'pusher'
 gem 'dropzonejs-rails'
