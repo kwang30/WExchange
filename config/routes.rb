@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get '/update', to: 'dashboard#update_progress_tracker'
     get '/update_marker', to: 'dashboard#update_marker'
     post '/notifications/update', to: 'dashboard#refresh_notifications'
+    post '/requests/update', to: 'dashboard#refresh_requests'
   end
 
   controller :users do

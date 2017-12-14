@@ -15,6 +15,17 @@ class TransactionsController < ApplicationController
     @request.status = 0
     if @request.save
       Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "sent you a request", notifiable: @request, destination_url: dashboard_path)
+
+      pusher = Pusher::Client.new(
+        app_id: ENV['PUSHER_APP_ID'],
+        key: ENV['PUSHER_KEY'],
+        secret: ENV['PUSHER_SECRET'],
+        cluster: ENV['PUSHER_CLUSTER'],
+      )
+
+      pusher.trigger("user_#{params[:transaction][:creator_id]}" , 'request_update', {
+          message: 'Request Updated'
+      })
     else
       #TODO: Display error message
     end
@@ -27,23 +38,49 @@ class TransactionsController < ApplicationController
 
   def update
     @request = Transaction.find_by(id: params[:id])
+
     if params["creator_accept"]
+      pusherID = @request.recipient_id;
       creator_accept_request @request
     elsif params["creator_decline"]
+      pusherID = @request.recipient_id;
       creator_decline_request @request
     elsif params["client_accept_price"]
+      pusherID = @request.creator_id;
       client_accept_price @request
     elsif params["client_decline_price"]
+      pusherID = @request.creator_id;
       client_decline_price @request
     elsif params["send_content"]
+      pusherID = @request.recipient_id;
       creator_send_content @request
     elsif params["client_accept"]
+      pusherID = @request.creator_id;
       client_accept_content @request
     elsif params["request_edits"]
+      pusherID = @request.creator_id;
       client_request_edits @request
     elsif params["cancel"]
+      if request.recipient_id == current_user.id
+        pusherID = @request.creator_id;
+      elsif request.creator_id == current_user.id
+        pusherID = @request.recipient_id;
+      end
       cancel @request
     end
+
+    pusher = Pusher::Client.new(
+      app_id: ENV['PUSHER_APP_ID'],
+      key: ENV['PUSHER_KEY'],
+      secret: ENV['PUSHER_SECRET'],
+      cluster: ENV['PUSHER_CLUSTER'],
+    )
+
+    puts "SENDING request_update ON CHANNEL user_#{pusherID}"
+    pusher.trigger("user_#{pusherID}", 'request_update', {
+        message: 'Request Updated'
+    });
+
     redirect_to dashboard_path
   end
 

@@ -1,0 +1,34 @@
+$(".incoming-request-wrapper > .dashboard-sidebar-items").empty();
+$(".outgoing-request-wrapper > .dashboard-sidebar-items").empty();
+var outgoingHtml = "";
+var incomingHtml = "";
+
+console.log("REFRESHING REQUESTS");
+
+<% if @incoming_requests.any? %>
+  <% @incoming_requests.each do |request| %>
+  incomingHtml += "<li class='dashboard-sidebar-item'>";
+  incomingHtml +=   `<%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>`;
+  incomingHtml += "</li>";
+  incomingHtml += `<%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>`;
+  incomingHtml += `<%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>`;
+  <% end %>
+<% else %>
+  incomingHtml += "<div class='no-requests'>You have not received any requests yet!</div>";
+<% end %>
+
+<% if @outgoing_requests.any? %>
+  <% @outgoing_requests.each do |request| %>
+  outgoingHtml += "<li class='dashboard-sidebar-item'>";
+  outgoingHtml +=   `<%= render partial: 'dashboard/dashboard_sidebar_request', locals: { request: request } %>`;
+  outgoingHtml += "</li>";
+  outgoingHtml += `<%= render partial: 'dashboard/dashboard_request_modal', locals: { request: request } %>`;
+  outgoingHtml += `<%= render partial: 'dashboard/dashboard_request_progress_marker_modal', locals: { request: request } %>`;
+  <% end %>
+<% else %>
+  outgoingHtml += "<div class='no-requests'>You have not sent any requests yet!</div>";
+<% end %>
+
+$(".incoming-request-wrapper > .dashboard-sidebar-items").append(incomingHtml);
+$(".outgoing-request-wrapper > .dashboard-sidebar-items").append(outgoingHtml);
+$('.modal').modal();
