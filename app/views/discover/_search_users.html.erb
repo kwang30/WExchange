@@ -1,0 +1,16 @@
+<%= puts @users.size %>
+<% if @users.nil? || @users.size==0 %>
+  <p>
+No Users
+  </p>
+
+<% else %>
+  <% @users.each do |user| %>
+    <div class="col s10 m3 l3">
+      <%= render 'layouts/discover_card', locals: {user: user} %>
+    </div>
+  <% end %>
+  <p>
+    why
+  </p>
+<% end %>

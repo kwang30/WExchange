@@ -1,37 +1,24 @@
 class DiscoverController < ApplicationController
   def show
-    if params[:search_query].nil? && params[:tags].nil?
+    @tags = ActsAsTaggableOn::Tag.all
+    if params[:search_query].nil?  && params[:tags].nil?
       @users = User.all
     else
-      # query = SearchkickQuery.new(keywords: keywords, offset: 0, limit: 25)
-      # query.body[:query] =  { match: {name: "Tex-Mex"} }
-      query=params.fetch(:search_query) || "*"
+        # query=params.fetch(:search_query) || "*"
+        # name = User.search(params[:search_query], fields: [:first_name, :last_name, :full_name, :display_name, :email], suggest: true)
+        # tags= User.tagged_with(params[:tags], :any => true)
 
-       @users = User.search(params[:search_query], fields: ["first_name"])
-       # if @users.nil? || @users.size==0
-       #   @users = User.all
-       # end
 
     end
+    respond_to do |format|
+      format.js
+      format.html
+   end
   end
 
   def index
     render 'main'
   end
-
-  
-
-
-  # def recommend
-  #   tags=current_user
-  #   list=[]
-  #   current_user.portfolios.each do |portfolio|
-  #     portfolio.tags.each do |tag|
-  #       list<< tag
-  #     end
-  #   end
-  #   @users=User.tagged_with(tags) && User.tagged_with(list)
-  # end
 
 
 

@@ -17,6 +17,7 @@
  *= require select2-bootstrap
  *= require dropzone/basic
  *= require dropzone/dropzone
+ *= require nouislider
  *= require slick
  *= require_tree .
 
@@ -25,7 +26,6 @@
 $primary-color: color("blue", "base") !default;
 $secondary-color: color("blue", "lighten-1") !default;
 @import "materialize";
-
 $background-color: #f6f6f6;
 
 

@@ -7,6 +7,9 @@ end
 
 
 gem 'searchkick'
+gem 'redis'
+gem 'predictor'
+
 gem 'twitter-typeahead-rails'
 gem 'pusher'
 gem 'dropzonejs-rails'
@@ -18,6 +21,7 @@ gem "paperclip",'4.3.6' #last stable version
 gem 'delayed_job_active_record'
 gem "delayed_paperclip"
 gem "jquery-slick-rails"
+gem 'mixitup_rails'
 
 gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
@@ -28,7 +32,7 @@ gem 'jquery-ui-rails'
 gem 'fancybox-rails'
 gem "jquery-fileupload-rails"
 gem 'chartkick'
-gem 'filterrific', git: 'https://github.com/ayaman/filterrific.git'
+gem 'nouislider-rails'
 
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Use for materalize and ui
@@ -38,6 +42,7 @@ gem 'will_paginate-materialize'
 gem 'simple_form'
 # Use for searching
 gem 'ransack'
+
 # Use for rendering dates and times
 gem 'local_time'
 # Use for Stripe payment
@@ -46,6 +51,9 @@ gem 'stripe_event'
 gem "bcrypt"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+gem 'recommendable'
+
+gem 'redis'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -76,6 +84,8 @@ group :development, :test do # <<<< :development, not devlopment
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem "rails-erd"
+
 end
 
 

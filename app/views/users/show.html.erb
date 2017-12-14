@@ -9,21 +9,28 @@
 
       <% end %>
       <%= render 'layouts/profile_edit_picture_modal' %>
-      <%# render 'layouts/edit_user_tags' %>
+      <%= link_to "Edit Tags", '#edit-user-tags-modal', class: "modal-trigger waves-effect waves-light btn", id: "tags-edit-button" %>
+      <%= render 'layouts/edit_user_tags' %>
       <p>Tags:
         <% @user.tags.each do |tag| %>
-        <div class="chip">
-          <%= link_to tag.name, discover_path(tags:tag.name )%>
-        </div>
+          <%= link_to tag.name, discover_path(tag.name ), name: "tags", class: "waves-effect waves-light btn"%>
         <% end %>
       </p>
     </div>
-    <p class="name"><%= @name %></p>
-    <p class="display-name">@<%= @user.display_name %></p>
-    <%if current_user.id!=params[:id].to_i%>
-      <%= link_to "Request Job", '#transaction-create-modal', class: "modal-trigger waves-effect waves-light btn", id: "transaction-create-button" %>
-      <%= render 'layouts/transaction_create_modal' %>
-    <%end%>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div>
+      <p class="name"><%= @name %></p>
+      <p class="display-name">@<%= @user.display_name %></p>
+      <%if current_user.id!=params[:id].to_i%>
+        <%= link_to "Request Job", '#transaction-create-modal', class: "modal-trigger waves-effect waves-light btn-small", id: "transaction-create-button" %>
+        <%= render 'layouts/transaction_create_modal' %>
+      <%end%>
+    </div>
+
   </div>
   <div class="right-side col s7 l8">
     <div class="card about-me-wrapper">
@@ -48,3 +55,13 @@
     <% end %>
   </div>
 </div>
+
+
+<style>
+
+.btn-small {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 0.5rem;
+}
+</style>
