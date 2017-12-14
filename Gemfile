@@ -7,8 +7,9 @@ end
 
 
 gem 'searchkick'
-gem 'predictor'
 gem 'redis'
+gem 'predictor'
+
 gem 'twitter-typeahead-rails'
 gem 'pusher'
 gem 'dropzonejs-rails'
@@ -41,6 +42,7 @@ gem 'will_paginate-materialize'
 gem 'simple_form'
 # Use for searching
 gem 'ransack'
+
 # Use for rendering dates and times
 gem 'local_time'
 # Use for Stripe payment
@@ -49,6 +51,9 @@ gem 'stripe_event'
 gem "bcrypt"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+gem 'recommendable'
+
+gem 'redis'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets

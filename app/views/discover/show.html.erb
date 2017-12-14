@@ -35,8 +35,31 @@
 
           </div>
         </li>
-      </ul>
 
+        <li>
+          <div class="collapsible-header active"><i class="material-icons">label</i>Sort</div>
+          <div class="collapsible-body filter-container">
+            <ul>
+            <li>
+              <button class="sort-1" value="asc">Asc</button>
+              <button class="sort-1" value="desc">Desc</button>
+              <button class="sort-1" name="buttonName" value="clear">Clear</button>
+          </li>
+
+          <li>
+            <button class="sort-2" class="namef">Name</button>
+            <button class="sort-2" class="usernamef">Username</button>
+            <button class="sort-2" class="emailf">Email</button>
+            <button class="sort-2" class="reviewf">Reviews</button>
+
+        </li>
+
+        </ul>
+
+
+
+        </li>
+      </ul>
     </div>
     <% end %>
 
@@ -106,5 +129,19 @@ $(function () {
     $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
   });
 });
+
+(function () {
+  $(".sort-1").on('click', function () {
+
+    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
+    return false;
+  });
+});
+
+
+
+
+
+
 
 </script>

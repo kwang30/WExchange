@@ -78,7 +78,6 @@ ActiveRecord::Schema.define(version: 20171214003240) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "balance"
     t.string "long_description"
   end
 
@@ -125,9 +124,9 @@ ActiveRecord::Schema.define(version: 20171214003240) do
     t.integer "recipient_id"
     t.integer "creator_id"
     t.string "request_message"
+    t.string "transaction_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "transaction_title"
     t.datetime "deadline"
     t.integer "status"
     t.text "progress"

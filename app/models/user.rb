@@ -25,6 +25,7 @@ class User < ApplicationRecord
     scope :search_import, -> { includes(:tags) }
 
     searchkick suggest: [:first_name]
+    recommends :photos, :portfolios, :users
 
 
 
