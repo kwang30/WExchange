@@ -18,7 +18,6 @@
           <% else %>
             <div class="no-requests">You have not received any requests yet!</div>
           <% end %>
-
         </ul>
       </div>
       <div class="dashboard-sidebar-items-container outgoing-request-wrapper" id="dashboard-sidebar-outgoing-requests">
@@ -65,10 +64,18 @@
   });
 
   var channel = pusher.subscribe('user_<%= current_user.id %>');
+  console.log("LISTENING ON CHANNEL USER_<%= current_user.id %>");
 
   channel.bind('new_notificaiton', function(data) {
     $.ajax({
       url: '/notifications/update',
+      type: "POST"
+    });
+  });
+
+  channel.bind('request_update', function(data) {
+    $.ajax({
+      url: '/requests/update',
       type: "POST"
     });
   });

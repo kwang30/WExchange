@@ -90,9 +90,19 @@ class DashboardController < ApplicationController
     @incoming_requests = @incoming_requests.sort_by {|request| request.deadline}
     @outgoing_requests = Transaction.where(recipient_id: current_user.id)
     @outgoing_requests = @outgoing_requests.sort_by {|request| request.deadline}
-    puts @notifications.length
     respond_to do |format|
       format.js { render '../views/dashboard/refresh_dashboard_notifications.js.erb' }
+    end
+  end
+
+  def refresh_requests
+    @incoming_requests = Transaction.where(creator_id: current_user.id)
+    @incoming_requests = @incoming_requests.sort_by {|request| request.deadline}
+    @outgoing_requests = Transaction.where(recipient_id: current_user.id)
+    @outgoing_requests = @outgoing_requests.sort_by {|request| request.deadline}
+    @requests = @incoming_requests + @outgoing_requests
+    respond_to do |format|
+      format.js { render '../views/dashboard/refresh_dashboard_requests.js.erb' }
     end
   end
 
