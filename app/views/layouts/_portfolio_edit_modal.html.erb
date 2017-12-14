@@ -6,7 +6,8 @@
     </div>
     <%= simple_form_for(portfolio, class: "portfolio-modal") do |f| %>
         <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s12" %>
-        <%= f.input :description, class: "materialize-textarea col s12" %>
+        <%= f.input :description, label: "Tagline (a short introduction to your portfolio)", class: "materialize-textarea col s12" %>
+        <%= f.input :long_description, label: "Description", class: "materialize-textarea col s12" %>
       <div class="field">
 
         <% if !portfolio.nil? && !portfolio.photos.nil?%>

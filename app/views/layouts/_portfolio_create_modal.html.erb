@@ -2,8 +2,10 @@
   <div class="modal-content portfolio-modal-wrapper row">
     <p class="title">Create Portfolio</p>
       <%= simple_form_for @portfolio, :html => { :multipart => true, :id => "fileupload", :class => "col s12"  } do |f| %>
-        <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s10" %>
-        <%= f.input :description, class: "materialize-textarea col s10" %>
+        <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s10", required: true %>
+        <%= f.input :description, label: "Tagline (a short introduction to your portfolio)", class: "materialize-textarea col s10", required: true %>
+        <%= f.input :long_description, label: "Description", class: "materialize-textarea col s10", required: true %>
+
 
         <%=render 'layouts/uploads', f:f %>
         <%= f.input :tag_list , collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>

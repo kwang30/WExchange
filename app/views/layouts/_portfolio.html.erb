@@ -11,22 +11,19 @@
         </div>
         <p class="short-description"><%= portfolio.description %></p>
       </div>
-      <p>Tags:
+      <div class="collapsible-body">
+        <p class="long-description"><%= portfolio.long_description %></p>
+        <p>Tags:</p>
         <% portfolio.tags.each do |tag| %>
           <div class="chip">
           <%= link_to tag.name, discover_path, :tag=>tag.name %>
           </div>
         <% end %>
-
-
-      <div class="collapsible-body">
-        <p class="long-description">More detailed information about the service goes here.</p>
       </div>
 
       <%= render partial: 'layouts/portfolio_media', locals: { portfolio: portfolio } %>
 
         <%= link_to "Add" , {action: "addPhoto", controller: "portfolios",  id: portfolio.id}, class: "active waves-effect waves-light btn"%>
-        <%= link_to "Delete" , {action: "delete", controller: "portfolios",  id: portfolio.id}, method: "delete", class: "active waves-effect waves-light btn"%>
     </li>
   </ul>
 </div>
