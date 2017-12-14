@@ -7,7 +7,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get signup" do
-    get '/signup'
+    get signup_path
+    assert_template 'users/new'
+    assert_select "h1.home-form-title", "Sign Up"
     assert_response :success
   end
 
