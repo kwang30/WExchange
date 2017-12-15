@@ -1,0 +1,33 @@
+var sidebarHtml = "";
+var chatHtml = "";
+
+var activeUser = <%= params["active_user"] %>;
+
+sidebarHtml +=`
+<li class="user-list-heading">
+  <p class="user-list-title">Messages</p>
+  <i class="material-icons user-list-send-button">send</i>
+</li>`
+
+<% @users.each do |user| %>
+  <% chat = Chat.get(current_user.id, user.id) %>
+  <% if chat.messages.length > 0 %>
+  if(activeUser != null) {
+    if(activeUser == <%= user.id %>) {
+      sidebarHtml += '<li class="user-list-item active" id="<%= user.id %>">';
+    } else {
+      sidebarHtml += '<li class="user-list-item" id="<%= user.id %>">';
+    }
+  } else {
+    sidebarHtml += '<li class="user-list-item" id="<%= user.id %>">';
+  }
+  sidebarHtml +=  `<%= render partial: 'chats/user_cell.html.erb', locals: {user: user, chat: chat } %>`
+  sidebarHtml += '</li>'
+  <% end %>
+<% end %>
+
+$('.message-users').html(sidebarHtml)
+<% if Chat.find_by(id: params["chat_id"]).recipient_id.to_i == params["active_user"].to_i || Chat.find_by(id: params["chat_id"]).sender_id.to_i == params["active_user"].to_i %>
+$('#chat').html(`<%= j(render 'chats/chat', chat: Chat.find_by(id: params["chat_id"]), user: current_user) %>`);
+<% end %>
+$('.messages-list').scrollTop($('.messages-list')[0].scrollHeight);

@@ -21,16 +21,11 @@ class ChatsController < ApplicationController
                .find(session[:chats])
   end
 
-  def show
-  end
-
-  def close
-    @chat = Chat.find(params[:id])
-
-    session[:chats].delete(@chat.id)
-
+  def refresh
+    @users = User.all.where.not(id: current_user)
+    @chats = Chat.includes(:recipient, :messages).find(session[:chats])
     respond_to do |format|
-      format.js
+      format.js { render '../views/chats/refresh_chats.js.erb', locals: {chat_id: params[:chat_id]} }
     end
   end
 

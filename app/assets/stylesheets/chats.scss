@@ -126,6 +126,10 @@
 .message-content-column {
   height: 100%;
   padding-left: 350px;
+
+  #chat {
+    height: 100%;
+  }
 }
 
 // ##########################
@@ -156,7 +160,7 @@
     height: 100%;
     .messages-list {
       overflow-y: scroll;
-      height: calc(100% - 90px);
+      height: calc(100% - 110px);
       ul {
         padding-left: 0px;
         list-style: none;
@@ -164,7 +168,7 @@
     }
     .message-form {
       position: relative;
-      bottom: 0px;
+      bottom: 5px;
       right: 0px;
       left: 0px;
       height: 80px;
