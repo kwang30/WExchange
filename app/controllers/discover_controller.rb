@@ -1,13 +1,28 @@
 class DiscoverController < ApplicationController
   def show
     @tags = ActsAsTaggableOn::Tag.all
-    if params[:search_query].nil?  && params[:tags].nil?
-      @users = User.all
-    else
-        # query=params.fetch(:search_query) || "*"
-        # name = User.search(params[:search_query], fields: [:first_name, :last_name, :full_name, :display_name, :email], suggest: true)
-        # tags= User.tagged_with(params[:tags], :any => true)
+    @users= current_user.similar_raters
 
+    if (params[:search_query].nil? || params[:search_query].empty?)
+      @users= current_user.similar_raters
+    else
+        query=params.fetch(:search_query) || "*"
+        name = User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :email])
+
+        # tags= User.tagged_with(params[:tags], :any => true)
+        if !params[:review].nil?
+        # reviews=params[:review].avg
+        # users=[]
+        # User.all.map do |user|
+        #   if user.reviews.size==0
+        #     users<<user
+        #   end
+        #
+        #   puts user
+          # review=Review.average(user.reviews)
+          # puts review
+        end
+        puts @users.size
 
     end
     respond_to do |format|

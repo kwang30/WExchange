@@ -10,19 +10,15 @@ gem 'searchkick'
 gem 'redis'
 gem 'predictor'
 
-gem 'twitter-typeahead-rails'
 gem 'pusher'
-gem 'dropzonejs-rails'
 gem 'acts-as-taggable-on'
-gem "select2-rails"
 gem 'activeadmin'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
+gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem "delayed_paperclip"
-gem "jquery-slick-rails"
 gem 'mixitup_rails'
-
 gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
 gem 'figaro'
@@ -31,8 +27,13 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'fancybox-rails'
 gem "jquery-fileupload-rails"
+gem 'twitter-typeahead-rails'
+gem 'dropzonejs-rails'
+gem "select2-rails"
+
 gem 'chartkick'
 gem 'nouislider-rails'
+gem 'multi-select-rails'
 
 gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 # Use for materalize and ui

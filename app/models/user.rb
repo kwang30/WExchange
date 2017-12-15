@@ -23,19 +23,9 @@ class User < ApplicationRecord
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
     scope :search_import, -> { includes(:tags) }
-
-    searchkick suggest: [:first_name]
     recommends :photos, :portfolios, :users
 
-
-
-
-
-    def User.digest(string)
-      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-      BCrypt::Password.create(string, cost: cost)
-    end
-
+    searchkick
     def search_data
       {
       first_name: first_name,
@@ -43,10 +33,15 @@ class User < ApplicationRecord
       full_name: full_name,
       email: email,
       reviews: reviews,
-      tag: tag_list
+      tags: tag_list
+
     }
     end
 
 
+        def User.digest(string)
+          cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+          BCrypt::Password.create(string, cost: cost)
+        end
 
   end

@@ -1,5 +1,4 @@
-<%= puts @users.size %>
-<% if @users.nil? || @users.size==0 %>
+<% if @users.nil? %>
   <p>
 No Users
   </p>
@@ -10,7 +9,5 @@ No Users
       <%= render 'layouts/discover_card', locals: {user: user} %>
     </div>
   <% end %>
-  <p>
-    why
-  </p>
+
 <% end %>

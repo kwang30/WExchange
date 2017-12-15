@@ -8,20 +8,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    if params[:id].nil?
-      @user=current_user
-    else
-      @user=User.find(params[:id])
-    end
+    @user=User.find(params[:id])
     @name = @user.first_name + " " + @user.last_name
     @portfolios=Portfolio.where(" id = ?", current_user.id)
     @reviews = @user.reviews
     @portfolio=Portfolio.new
     @portfolio.photos.build
     @tags = ActsAsTaggableOn::Tag.all
-
+    current_user.like(@user)
+    Delayed::Job.enqueue Recommendable::Workers::DelayedJob.new(current_user.id), :queue => 'recommendations'
   end
-
 
 
 

@@ -1,10 +1,14 @@
 
+
+
+<br />
 <div id="container discover-wrapper">
   <div class="row">
     <div class="col s12 m12 l3">
       <nav class="search-title-filter">
         <div class="nav-wrapper">
           <%= form_tag('/discover', method: :get, role: 'form', :id=>"discover-search-form", remote: true) do %>
+
           <div class="input-field">
             <%= text_field_tag :search_query, params[:search_query] , type: 'search', id: "user_search", :icon=>"material-icons" %>
             <label for="search"><i class="material-icons">search</i></label>
@@ -12,63 +16,39 @@
         </div>
       </nav>
 
-      <ul class="collapsible" data-collapsible="expandable">
-        <li>
-          <div class="collapsible-header active"><i class="material-icons">pin_drop</i>Popular Tags</div>
-          <div class="collapsible-body">
-            <%= select_tag :tags, options_from_collection_for_select(@tags, 'name', 'name'), {:multiple=>true, :class => 'myselect', id: "tag_search", placeholder: "search"} %>
-          </div>
-        </li>
+      <select name="sort-news" id="sort-news">
+        <option value="User">Filter By</option>
 
-        <li>
-          <div class="collapsible-header active"><i class="material-icons">label</i>Reviews</div>
-          <div class="collapsible-body filter-container">
-
-            <ul>
-              <%(1..5).each do |r|  %>
-                <li>
-                  <input type="checkbox" name="review" class="review_status" id="review<%=r %>"  value=<%=r %> />
-                  <label for="review<%=r %>"><%=r %> Star</label>
-                </li>
-              <% end %>
-            </ul>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="collapsible-header active"><i class="material-icons">label</i>Sort</div>
-          <div class="collapsible-body filter-container">
-            <ul>
-            <li>
-              <button class="sort-1" value="asc">Asc</button>
-              <button class="sort-1" value="desc">Desc</button>
-              <button class="sort-1" name="buttonName" value="clear">Clear</button>
-          </li>
-
-          <li>
-            <button class="sort-2" class="namef">Name</button>
-            <button class="sort-2" class="usernamef">Username</button>
-            <button class="sort-2" class="emailf">Email</button>
-            <button class="sort-2" class="reviewf">Reviews</button>
-
-        </li>
-
-        </ul>
+        <option value="User">User</option>
+        <option value="Portfolio">Portfolio</option>
+      </select>
 
 
+      <select name="sort-news" id="sort-news">
+        <option value="Graphic Design">All Content Type</option>
 
-        </li>
-      </ul>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="Photography">Photography</option>
+        <option value="Media">Videography</option>
+      </select>
+      <select name="sort-news" id="sort-news">
+      <%(1..5).each do |r|  %>
+        <option value="Cat3"><%=r %></option>
+      <% end %>
+    </select>
+
+    <select name="sort-news" id="sort-news">
+      <option value="Cat1">Name</option>
+      <option value="Cat2">Username</option>
+      <option value="Cat3">Review</option>
+    </select>
+
     </div>
     <% end %>
 
 
-
-
     <!-- Cards container -->
     <div class="col s12 m12 l9">
-      <h4>User</h4>
       <div class="user_results">
       </div>
     </div>
@@ -78,30 +58,10 @@
 
 
 <script>
-
-$('input.review_status').on('change', function() {
-    $('input.review_status').not(this).prop('checked', false);
-});
-
-$(function () {
-  $(".review_status").on('change', function () {
-
-    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
-    return false;
-  });
-});
-
-$('input.review').on('change', function() {
-    $('input.review').not(this).prop('checked', false);
-});
-
-$(".myselect").select2();
 $(document).ready(function() {
-  $('select#box_assoc_items').select2({
-    placeholder: 'choose items',
-    multiple: true
-  });
+    $('select').material_select();
 });
+
 $(function () {
   $("#user_search").on('keyup', function () {
     $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
@@ -120,13 +80,6 @@ $(function () {
   $(".check-marks").on('change', function () {
     $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
     return false;
-  });
-});
-
-
-$(function () {
-  $(".review_range").on('change', function () {
-    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
   });
 });
 

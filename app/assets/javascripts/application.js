@@ -16,16 +16,19 @@
 //= require jquery-fileupload
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/basic-plus
-//= require select2
-//= require select2-full
 //= require pusher.min.js
 //= require nouislider
 //= require mixitup
-//= require jquery.slick
+//= require select2
+
 //= require twitter/typeahead
 //= require materialize-sprockets
 //= require dropzone
+//= require multi-select
+
 //= require_tree .
+
+
 
 $(document).ready( function(){
   $('.modal').modal();
@@ -57,8 +60,6 @@ $(document).ready( function(){
   });
 
   $('select').material_select();
-  $('select').material_select('destroy');
-});
 
 function displayDashboardTab(tabName) {
   if (tabName == "outgoing") {
@@ -92,7 +93,9 @@ $(document).ready(function() {
 });
 
 
-
+$(document).ready(function() {
+    $('select').material_select();
+});
 
 $(".select2").select2({
   tags: true,
@@ -122,4 +125,4 @@ $(".select2").select2({
       };
     }
   }
-});a
+});

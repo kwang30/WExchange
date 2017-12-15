@@ -12,7 +12,6 @@ Recommendable.configure do |config|
   config.auto_enqueue = true
 
   # The name of the queue that background jobs will be placed in
-  config.queue_name = :recommendable
   config.orm = :active_record
 
   # The number of nearest neighbors (k-NN) to check when updating
