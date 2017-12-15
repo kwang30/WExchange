@@ -84,13 +84,9 @@ group :development, :test do # <<<< :development, not devlopment
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-<<<<<<< HEAD
   gem "rails-erd"
-
-=======
   gem 'rails-controller-testing'
   gem 'minitest-reporters'
->>>>>>> paul
 end
 
 
