@@ -86,7 +86,8 @@ group :development, :test do # <<<< :development, not devlopment
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem "rails-erd"
-
+  gem 'rails-controller-testing'
+  gem 'minitest-reporters'
 end
 
 
