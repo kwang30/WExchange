@@ -1,6 +1,6 @@
 <li class="chat-wrapper">
   <div class="data-wrapper" data-chat-id="<%= chat.id %>">
-    <div class="chat-body" style="display: none;">
+    <div class="chat-body">
       <div class="messages-list">
         <ul>
           <%= render 'chats/chat_content', messages: chat.messages, user: user %>
