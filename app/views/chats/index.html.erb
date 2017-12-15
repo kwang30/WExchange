@@ -7,7 +7,7 @@
     <% @users.each do |user| %>
       <% chat = Chat.get(current_user.id, user.id) %>
       <% if chat.messages.length > 0 %>
-      <li class="user-list-item">
+      <li class="user-list-item", id=<%= user.id %>>
         <%= render partial: 'chats/user_cell.html.erb', locals: {user: user, chat: chat} %>
       </li>
       <% end %>
@@ -17,3 +17,33 @@
     <ul id="chat"></ul>
   </div>
 </div>
+
+<% if !current_user.nil? %>
+  <%= javascript_tag do %>
+
+    var pusher = new Pusher('<%= ENV['PUSHER_KEY'] %>', {
+      cluster: '<%= ENV['PUSHER_CLUSTER'] %>'
+    });
+
+    var channel = pusher.subscribe('user_<%= current_user.id %>');
+    var activeUser = -1;
+    channel.bind('refresh_chats', function(data) {
+      console.log("ACTIVE:" + activeUser);
+      $.ajax({
+        type: "POST",
+        url: '/chats/refresh',
+        data: {"chat_id": data["current_chat"], "active_user": activeUser}
+      });
+    });
+
+    $(document).ready( function(){
+      $('.message-users').on('click','li', function(){
+        if($(this).hasClass('user-list-item')) {
+          $(this).addClass('active').siblings().removeClass('active');
+          activeUser = $(this).attr('id');
+        }
+      });
+    });
+
+  <% end %>
+<% end %>

@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
   controller :chats do
     get '/chats', to: 'chats#index'
+    post '/chats/refresh', to: 'chats#refresh'
   end
 
 
