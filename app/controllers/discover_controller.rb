@@ -1,6 +1,5 @@
 class DiscoverController < ApplicationController
   def show
-    User.all.reindex
     if (params[:search_query].nil? || params[:search_query].empty?) && params[:filtertype].nil? && params[:reviews].nil?
       @users=current_user.similar_raters
    else
