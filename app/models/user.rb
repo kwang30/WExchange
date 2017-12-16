@@ -25,23 +25,79 @@ class User < ApplicationRecord
     scope :search_import, -> { includes(:tags) }
     recommends :photos, :portfolios, :users
 
-    searchkick
-    def search_data
-      {
-      first_name: first_name,
-      last_name: last_name,
-      full_name: full_name,
-      email: email,
-      reviews: reviews,
-      tags: tag_list
+    searchkick word_start: [:first_name, :last_name, :display_name, :portfolio_tags, :portfolio_names], callbacks: :queue
+    Searchkick::ProcessQueueJob.perform_later(class_name: "User")
+    after_commit :reindex
 
-    }
+    def reindex
+      self.reindex
     end
 
 
-        def User.digest(string)
-          cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-          BCrypt::Password.create(string, cost: cost)
-        end
+  def search_data
+    {
+    first_name: first_name,
+    last_name: last_name,
+    display_name: display_name,
+    reviews: reviews.average(:star),
+    user_tags: tag_list,
+    portfolio_tags: portfolio_tags(),
+    portfolio_names:portfolio_names()
+
+  }
+end
+
+def portfolio_tags
+  tags=[]
+  for portfolio in portfolios
+    for tag in portfolio.tag_list
+      tags << tag
+    end
+  end
+  return tags
+end
+
+
+def portfolio_names
+  names=[]
+  for portfolio in portfolios
+    name=portfolio.name
+    names << name
+  end
+  return names
+end
+
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+
+def search
+  if (params[:search_query].nil? || params[:search_query].empty?) && params[:filtertype].nil? && params[:reviews].nil?
+    @users=current_user.similar_raters
+
+  else
+    query=params[:search_query] || "*"
+    if !params[:filtertype].nil? || params[:filtertype]=="Both"
+      puts "HA"
+
+      users1 = User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
+      users2=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags])
+
+      @users=users1 || users2
+    elsif params[:filtertype]=="Portfolio"
+      puts "a"
+
+      @users=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags], match: :word_start, operator: "or")
+
+    elsif params[:filtertype]=="User"
+      puts "b"
+
+      @users= User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
+    end
+  end
+end
 
   end
