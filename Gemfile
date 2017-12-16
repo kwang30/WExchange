@@ -16,6 +16,7 @@ gem 'rails_real_favicon'
 gem 'pusher'
 gem 'acts-as-taggable-on'
 gem 'activeadmin'
+gem 'sidekiq'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
 gem 'delayed_job'

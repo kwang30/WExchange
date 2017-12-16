@@ -33,13 +33,6 @@
         </div>
 
         <div class="input-field col m12 center">
-          <%= image_tag 'default.jpeg', width: "50", :id=>"profile-uploader" %>
-          <br />
-          <%= f.file_field :image, class: 'photo_upload', :onchange => "readURL(this)", tite: "Upload An Image"%>
-        </div>
-
-
-        <div class="input-field col m12 center">
           <%= f.submit "Sign Up", class: "active waves-effect waves-light btn"  %>
         </div>
       <% end %>

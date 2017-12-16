@@ -8,4 +8,10 @@ class Portfolio < ApplicationRecord
   validates :description, presence: true
   acts_as_taggable_on :tags
 
+  after_commit :reindex_users
+
+
+  def reindex_users
+    user.reindex
+  end
 end
