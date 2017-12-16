@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "elasticsearch", ">= 1.0.14"
+gem 'elasticsearch-model'
 
 gem 'faraday_middleware'
 gem 'faraday_middleware-aws-signers-v4'

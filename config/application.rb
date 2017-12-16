@@ -13,7 +13,7 @@ module WExchange
     config.serve_static_files = true
     config.serve_static_assets = true
 
-    config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :dealayed_job
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
