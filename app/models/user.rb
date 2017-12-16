@@ -26,22 +26,49 @@ class User < ApplicationRecord
     recommends :photos, :portfolios, :users
 
     searchkick
-    def search_data
-      {
-      first_name: first_name,
-      last_name: last_name,
-      full_name: full_name,
-      email: email,
-      reviews: reviews,
-      tags: tag_list
 
-    }
+
+  def search_data
+    {
+    first_name: first_name,
+    last_name: last_name,
+    email: email,
+    reviews: reviews.average(:star),
+    portfolio_tags: tag_list,
+    user_tags: portfolio_tags,
+    portfolio_names:portfolio_names,
+    portfolio_descriptions:portfolio_descriptions
+  }
+end
+
+def portfolio_tags
+  tags=[]
+  for portfolio in portfolios
+    for tag in portfolio.tag_list
+      tags << tag
     end
+  end
+end
 
 
-        def User.digest(string)
-          cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-          BCrypt::Password.create(string, cost: cost)
-        end
+def portfolio_names
+  names=[]
+  for portfolio in portfolios
+    names << portfolio.name
+  end
+end
+
+def portfolio_descriptions
+  names=[]
+  for portfolio in portfolios
+    names << portfolio.description
+  end
+end
+
+
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
   end
