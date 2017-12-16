@@ -9,7 +9,7 @@ end
 gem 'searchkick'
 gem 'redis'
 gem 'predictor'
-
+gem 'rails_real_favicon'
 gem 'pusher'
 gem 'acts-as-taggable-on'
 gem 'activeadmin'
