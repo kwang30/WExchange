@@ -15,8 +15,10 @@ class UsersController < ApplicationController
     @portfolio=Portfolio.new
     @portfolio.photos.build
     @tags = ActsAsTaggableOn::Tag.all
-    current_user.like(@user)
-    Delayed::Job.enqueue Recommendable::Workers::DelayedJob.new(current_user.id), :queue => 'recommendations'
+    # current_user.like(@user)
+    puts @user.portfolio_tags
+
+    # Delayed::Job.enqueue Recommendable::Workers::DelayedJob.new(current_user.id), :queue => 'recommendations'
   end
 
 
@@ -53,16 +55,6 @@ class UsersController < ApplicationController
   end
 
 
-  def autocomplete
-    render json: ["test"]
-    # User.search(params[:search_query], {
-    #   fields: ["first_name, full_name, last_name, email"],
-    #   match: :word_start,
-    #   limit: 10,
-    #   load: false,
-    #   misspellings: {below: 5}
-    #   }).map(&:full_name)
-  end
 
   private
     def user_params

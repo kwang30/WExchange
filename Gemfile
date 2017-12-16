@@ -5,7 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "elasticsearch", ">= 1.0.14"
 
+gem 'faraday_middleware'
+gem 'faraday_middleware-aws-signers-v4'
 gem 'searchkick'
 gem 'redis'
 gem 'predictor'
