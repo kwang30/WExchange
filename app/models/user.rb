@@ -24,14 +24,9 @@ class User < ApplicationRecord
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
     scope :search_import, -> { includes(:tags) }
     recommends :photos, :portfolios, :users
-
     searchkick word_start: [:first_name, :last_name, :display_name, :portfolio_tags, :portfolio_names], callbacks: :queue
-    Searchkick::ProcessQueueJob.perform_later(class_name: "User")
-    after_commit :reindex
 
-    def reindex
-      self.reindex
-    end
+
 
 
   def search_data
@@ -74,30 +69,6 @@ end
   end
 
 
-def search
-  if (params[:search_query].nil? || params[:search_query].empty?) && params[:filtertype].nil? && params[:reviews].nil?
-    @users=current_user.similar_raters
 
-  else
-    query=params[:search_query] || "*"
-    if !params[:filtertype].nil? || params[:filtertype]=="Both"
-      puts "HA"
-
-      users1 = User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
-      users2=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags])
-
-      @users=users1 || users2
-    elsif params[:filtertype]=="Portfolio"
-      puts "a"
-
-      @users=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags], match: :word_start, operator: "or")
-
-    elsif params[:filtertype]=="User"
-      puts "b"
-
-      @users= User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
-    end
-  end
-end
 
   end
