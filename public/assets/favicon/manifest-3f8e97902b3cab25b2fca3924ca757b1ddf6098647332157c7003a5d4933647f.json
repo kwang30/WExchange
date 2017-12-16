@@ -1,0 +1,18 @@
+{
+    "name": "WExchange",
+    "icons": [
+        {
+            "src": "/assets/favicon/android-chrome-192x192-413e27ef32da92fe903acc7fb90d81a7c0c59781e45ab38423a9d6b2478b2d45.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicon/android-chrome-512x512-57836ce88e87fcd6a5442f5eee3a460d2adf9918e016316fa0072b6553891b23.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
