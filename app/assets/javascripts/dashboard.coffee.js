@@ -25,21 +25,14 @@ $(document).ready(function() {
 
   $(".creator-accept-button").click(function() {
     $(".price-text-field").attr("required", "true");
-    console.log("Set TRUE");
   });
 
   $(".creator-decline-button").click(function() {
     $(".price-text-field").removeAttr("required");
-    console.log("Set FALSE");
   });
-
-
 });
 
-<script type="text/javascript">
-      $(".myselect").select2();
-</script>
-<script>
+$(".myselect").select2();
 
 $(document).ready(function() {
   $('select#box_assoc_items').select2({
@@ -47,9 +40,6 @@ $(document).ready(function() {
     multiple: true
   });
 });
-</script>
-</script>
-<script>
 
 $(function () {
   $("#user_search").on('keyup', function () {

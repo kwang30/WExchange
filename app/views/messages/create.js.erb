@@ -1,3 +1,25 @@
-var chat = $('#chats-list').find("[data-chat-id='" + "<%= @chat.id %>" + "']");
-chat.find('.messages-list').find('ul').append("<%= j(render 'messages/message', message: @message, user: current_user) %>");
-chat.find('textarea').val('');
+$('.messages-list').find('ul').append("<%= j(render 'messages/message', message: @message, user: current_user) %>");
+$('.message-input').val('');
+$('.messages-list').scrollTop($('.messages-list')[0].scrollHeight);
+
+
+// Updates side bar when a user sends a message
+sidebarHtml = ""
+sidebarHtml +=`
+<li class="user-list-heading">
+  <p class="user-list-title">Messages</p>
+  <i class="material-icons user-list-send-button">send</i>
+</li>`
+<% User.all.where.not(id: current_user).each do |user| %>
+  <% chat = Chat.get(current_user.id, user.id) %>
+  <% if chat.messages.length > 0 %>
+    <% if chat.id == @message.chat_id %>
+    sidebarHtml += '<li class="user-list-item active" id="<%= user.id %>">'
+    <% else %>
+    sidebarHtml += '<li class="user-list-item" id="<%= user.id %>">'
+    <% end %>
+    sidebarHtml +=  `<%= render partial: 'chats/user_cell.html.erb', locals: {user: user, chat: chat} %>`
+    sidebarHtml += '</li>'
+  <% end %>
+<% end %>
+$('.message-users').html(sidebarHtml)

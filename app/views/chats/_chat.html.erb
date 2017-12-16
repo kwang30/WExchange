@@ -1,19 +1,17 @@
 <li class="chat-wrapper">
-  <div class="data-wrapper" data-chat-id="<%= chat.id %>">
-    <div class="chat-body" style="display: none;">
-      <div class="messages-list">
-        <ul>
-          <%= render 'chats/chat_content', messages: chat.messages, user: user %>
-        </ul>
-      </div>
-      <div class="divider"></div>
-      <%= form_for [chat, chat.messages.new], html: {class: "message-form row"}, remote: true do |f| %>
-        <%= f.hidden_field :user_id, value: user.id %>
-        <%= f.text_area :content, class: "message-input col m10" %>
-        <div class="message-send-button-wrapper col m2">
-          <%= f.submit "Send", class: "btn message-send-button" %>
-        </div>
-      <% end %>
+  <div class="chat-body">
+    <div class="messages-list">
+      <ul>
+        <%= render 'chats/chat_content', messages: chat.messages, user: user %>
+      </ul>
     </div>
+    <div class="divider"></div>
+    <%= form_for [chat, chat.messages.new], html: {class: "message-form row"}, remote: true do |f| %>
+      <%= f.hidden_field :user_id, value: user.id %>
+      <%= f.text_area :content, class: "message-input col m10" %>
+      <div class="message-send-button-wrapper col m2">
+        <%= f.submit "Send", class: "btn message-send-button" %>
+      </div>
+    <% end %>
   </div>
 </li>
