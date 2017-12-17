@@ -62,10 +62,6 @@ $(document).ready( function(){
 
 });
 
-
-
-
-
 function displayDashboardTab(tabName) {
   if (tabName == "outgoing") {
     $('ul.tabs').tabs('select_tab', 'dashboard-sidebar-outgoing-requests');
@@ -73,11 +69,3 @@ function displayDashboardTab(tabName) {
     $('ul.tabs').tabs('select_tab', 'dashboard-sidebar-incoming-requests');
   }
 };
-
-
-$(function () {
-  $("#user_search").on('keyup', function () {
-    $.get($("#discover-search-form").attr("action"), $("#discover-search-form").serialize(), null, "script");
-    return false;
-  });
-});

@@ -1,0 +1,19 @@
+<div id="chat-create-modal" class="modal">
+  <div class="modal-content about-me-edit-wrapper">
+    <p class="modal-title">Send Message</p>
+    <%= form_for [chat = Chat.new(id: -1), chat.messages.new], {action: "create", controller: "messages", method: "post", remote: true} do |f| %>
+      <div class="input-field">
+        <%= f.label "Recipient" %>
+        <%= f.text_field :recipient_name %>
+      </div>
+      <div class="input-field">
+        <%= f.label "Message" %>
+        <%= f.text_area :content, class: "materialize-textarea col-s12", size: "12x12"  %>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :new_chat, value: true %>
+      <%= f.submit "Send", class: "waves-effect waves-light btn send-message-button"%>
+    <% end %>
+  </div>
+  </div>
+</div>

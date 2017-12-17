@@ -7,6 +7,20 @@
   height: 100%;
 }
 
+.create-message-link {
+  float: right;
+  padding: 0 !important;
+  margin: 10px 10px 0 0 !important;
+  height: 48px;
+  width: 48px;
+}
+
+.user-list-send-button {
+  height: 100% !important;
+  width: 100% !important;
+  text-align: center;
+}
+
 // ##########################
 // views/chats/_user_cell.html.erb
 // ##########################

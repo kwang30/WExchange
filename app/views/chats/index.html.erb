@@ -2,7 +2,9 @@
   <ul class="side-nav fixed message-users">
     <li class="user-list-heading">
       <p class="user-list-title">Messages</p>
-      <i class="material-icons user-list-send-button">send</i>
+      <%= link_to "#chat-create-modal", class: "create-message-link modal-trigger" do %>
+        <i class="material-icons user-list-send-button">send</i>
+      <% end %>
     </li>
     <% @users.each do |user| %>
       <% chat = Chat.get(current_user.id, user.id) %>
@@ -17,6 +19,8 @@
     <ul id="chat"></ul>
   </div>
 </div>
+
+<%= render partial: 'chats/chat_create_modal' %>
 
 <% if !current_user.nil? %>
   <%= javascript_tag do %>

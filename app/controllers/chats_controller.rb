@@ -18,12 +18,11 @@ class ChatsController < ApplicationController
 
     @users = User.all.where.not(id: current_user)
     @chats = Chat.includes(:recipient, :messages)
-               .find(session[:chats])
   end
 
   def refresh
     @users = User.all.where.not(id: current_user)
-    @chats = Chat.includes(:recipient, :messages).find(session[:chats])
+    @chats = Chat.includes(:recipient, :messages)
     respond_to do |format|
       format.js { render '../views/chats/refresh_chats.js.erb', locals: {chat_id: params[:chat_id]} }
     end
