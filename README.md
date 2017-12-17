@@ -14,3 +14,6 @@ WExchange is for everyone. Whether you are a content-creator looking for clients
 
 ### Creators
 Abu Batjargal (@abubatjargal), Alec Rodgers (@AlecR), Kevin Wang (@kwang30) & Paul Cabrera (@paulcabrera93).
+
+###Running The Application Locally
+Since this app uses an elasticsearch server for searching, you will need to first install elasticsearch on your machine. Then, you will need run redis server on your terminal. In addition, since our app does background processing of certain jobs with dealyed jobs, you will need to run  rake jobs:work.
