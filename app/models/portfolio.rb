@@ -11,7 +11,8 @@ class Portfolio < ApplicationRecord
   after_commit :reindex_users
 
 
-  def reindex_users
-    user.reindex
-  end
+
+      def reindex_users
+        Searchkick::ProcessQueueJob.perform_later(class_name: "User")
+      end
 end

@@ -18,7 +18,6 @@
 //= require jquery-fileupload/basic-plus
 //= require pusher.min.js
 //= require nouislider
-//= require mixitup
 //= require select2
 //= require materialize
 //= require dropzone

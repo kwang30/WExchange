@@ -20,10 +20,9 @@ gem 'activeadmin'
 gem 'sidekiq'
 gem 'gon'
 gem "paperclip",'4.3.6' #last stable version
-gem 'delayed_job'
-gem 'delayed_job_active_record'
-gem "delayed_paperclip"
-gem 'mixitup_rails'
+gem 'delayed_job', '~> 4.1', '>= 4.1.3'
+gem 'delayed_job_active_record', '~> 4.1', '>= 4.1.2'
+gem "daemons"
 gem "aws-sdk" , '<2.0'
 gem 'friendly_id'
 gem 'figaro'
