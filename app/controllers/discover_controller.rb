@@ -7,15 +7,14 @@ class DiscoverController < ApplicationController
       if !params[:filtertype].nil? || params[:filtertype]=="Both"
         users1 = User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
         users2=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags])
-        @users=users1 || users2
+        @users=User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
       elsif params[:filtertype]=="Portfolio"
-        @users=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags], match: :word_start, operator: "and")
+        @users=User.search(params[:search_query], fields: [:portfolio_names, :portfolio_tags], match: :word_start, operator: "or")
       elsif params[:filtertype]=="User"
-        @users= User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "and")
+        @users= User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "or")
       end
-      puts @users.size
     end
-
+    puts @users.size
     respond_to do |format|
        format.html
        format.js

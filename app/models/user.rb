@@ -9,8 +9,6 @@ class User < ApplicationRecord
     has_many :notifications, foreign_key: :recipient_id
     has_many :chats, foreign_key: :sender_id # paul
     acts_as_taggable_on :tags
-    include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
     before_save { email.downcase! }
     validates :first_name, :last_name,  presence: true, length: {maximum: 50 }
     validates :display_name, presence: true, length: {maximum: 50}, uniqueness: { case_sensitive: false }
