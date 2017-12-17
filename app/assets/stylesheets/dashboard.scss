@@ -279,6 +279,21 @@ body {
 
 // Notifications
 
+.notifications-header-wrapper {
+  width: 100%;
+  height: 50px;
+  .notifications-title {
+    float: left;
+  }
+
+  .mark-all-read-button {
+    font-size: 2.5rem;
+    cursor: pointer;
+    float: right;
+  }
+}
+
+
 .notification-link-wrapper {
   height: 100%;
   width: 100%;
@@ -295,4 +310,5 @@ body {
     display: block;
     margin-top: 5px;
   }
+
 }

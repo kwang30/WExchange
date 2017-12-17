@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   controller :notifications do
     post    '/notifications/mark_as_read', to: 'notifications#mark_as_read'
+    post    '/notifications/mark_all_as_read', to: 'notifications#mark_all_as_read'
   end
 
   controller :settings do

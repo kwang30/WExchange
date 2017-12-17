@@ -38,7 +38,10 @@
   <div class="notifications-column col l3 m3 s12">
     <div class="notifications-card card">
       <div class="card-content">
-        <span class="card-title">Notifications</span>
+        <div class="notifications-header-wrapper">
+          <span class="card-title notifications-title">Notifications</span>
+          <i class="mark-all-read-button tooltipped material-icons" data-position="top" data-delay="50" data-tooltip="Mark all as read">playlist_add_check</i>
+        </div>
         <ul class="dashboard-notification-list">
           <% if @notifications.any? %>
             <% @notifications.reverse.each do |notification| %>
@@ -50,7 +53,6 @@
           <% else %>
             <div class="no-notifications">No Notifications</div>
           <% end %>
-
         </ul>
       </div>
     </div>
@@ -78,6 +80,21 @@
       url: '/requests/update',
       type: "POST"
     });
+  });
+
+  $('.mark-all-read-button').click(function() {
+
+    $.ajax({
+      url: '/notifications/mark_all_as_read',
+      type: "POST",
+      success: function() {
+        $.ajax({
+          url: '/navigation/update',
+          type: "POST"
+        });
+      }
+    });
+
   });
 
 <% end %>

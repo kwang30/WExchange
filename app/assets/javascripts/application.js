@@ -30,6 +30,7 @@
 
 $(document).ready( function(){
   $('.modal').modal();
+  $('.tooltipped').tooltip();
   $('.datepicker').pickadate({
     selectMonths: true,
     closeOnSelect: true
@@ -59,8 +60,6 @@ $(document).ready( function(){
 
   $('select').material_select();
   $('select').material_select('destroy');
-
-});
 
 function displayDashboardTab(tabName) {
   if (tabName == "outgoing") {
