@@ -1,6 +1,14 @@
 class MessagesController < ApplicationController
+
   def create
-    @chat = Chat.includes(:recipient).find(params[:chat_id])
+    puts "============="
+    puts params
+    if(!params[:message][:recipient_name].nil?)
+      recipient = User.find_by(display_name: params[:message][:recipient_name])
+      @chat = Chat.get(current_user.id, recipient.id)
+    else
+      @chat = Chat.includes(:recipient).find(params[:chat_id])
+    end
     @message = @chat.messages.create(message_params)
 
     if @message.user_id == @chat.sender_id
@@ -26,6 +34,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.js
     end
+
   end
 
   private

@@ -69,7 +69,9 @@ Rails.application.routes.draw do
     post '/chats/refresh', to: 'chats#refresh'
   end
 
-
+  controller :messages do
+    post '/messages/create', to: 'messages#create'
+  end
 
   resources :notifications do
     collection do
@@ -83,9 +85,6 @@ Rails.application.routes.draw do
   resources :photos
 
   resources :chats, only: [:create] do
-    member do
-      post :close
-    end
     resources :messages, only: [:create]
   end
   resources :tags, only: [:index, :show]
