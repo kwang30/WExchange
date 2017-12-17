@@ -25,7 +25,7 @@
 //= require materialize-sprockets
 //= require dropzone
 //= require multi-select
-
+//= require_self
 //= require_tree .
 
 

@@ -13,6 +13,7 @@ class DiscoverController < ApplicationController
       elsif params[:filtertype]=="User"
         @users= User.search(params[:search_query], fields: [:first_name, :last_name, :display_name, :user_tags],  match: :word_start, operator: "and")
       end
+      puts @users.size
     end
 
     respond_to do |format|
