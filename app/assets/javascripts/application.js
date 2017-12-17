@@ -20,8 +20,7 @@
 //= require nouislider
 //= require mixitup
 //= require select2
-//= require twitter/typeahead
-//= require materialize-sprockets
+//= require materialize
 //= require dropzone
 //= require multi-select
 //= require_self

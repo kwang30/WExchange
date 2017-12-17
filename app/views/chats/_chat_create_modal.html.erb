@@ -4,7 +4,7 @@
     <%= form_for [chat = Chat.new(id: -1), chat.messages.new], {action: "create", controller: "messages", method: "post", remote: true} do |f| %>
       <div class="input-field">
         <%= f.label "Recipient" %>
-        <%= f.text_field :recipient_name %>
+        <%= f.text_field :recipient_name, class: "autocomplete", id: "autocomplete-input" %>
       </div>
       <div class="input-field">
         <%= f.label "Message" %>
@@ -15,5 +15,23 @@
       <%= f.submit "Send", class: "waves-effect waves-light btn send-message-button"%>
     <% end %>
   </div>
-  </div>
 </div>
+
+<script>
+$(document).ready(function() {
+  $('input.autocomplete').autocomplete({
+      data: {
+        <% @users = User.all.where.not(id: current_user) %>
+        <% @users.each do |user| %>
+          <% if user == @users.last %>
+            "<%= user.display_name %>": null
+          <% else %>
+            "<%= user.display_name %>": null,
+          <% end %>
+        <% end %>
+      },
+      limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+      minLength: 0, // The minimum length of the input for the autocomplete to start. Default: 1.
+  });
+});
+</script>
