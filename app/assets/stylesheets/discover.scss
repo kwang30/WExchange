@@ -1,0 +1,42 @@
+@import "materialize/components/color";
+
+#user_search {
+  color: color("blue", "base")  !important;
+}
+
+.search-bar-container {
+  background-color: white !important;
+  height: 80px !important;
+}
+
+.input-field {
+  float: left;
+}
+
+.search-filter-container {
+  margin-top: 15px;
+  float: right;
+  color: color("blue", "base") ;
+}
+
+.search-result-filter {
+  z-index: 100;
+  position: fixed !important;
+  background-color: white !important;
+  float: left;
+  margin-top: 100px;
+  margin-left: 20px !important;
+}
+
+.search-result-filter p {
+  color: color("blue", "base")  !important;
+  margin-left: 10px;
+}
+
+#filter-title {
+  font-size: 20px;
+}
+
+.filter-dropdown {
+  color: color("blue", "base")  !important;
+}

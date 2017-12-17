@@ -1,56 +1,57 @@
 <br />
-<div id="container discover-wrapper">
-  <div class="row">
-    <div class="col s12 m3">
-      <nav class="search-title-filter">
-        <div class="nav-wrapper">
+<div id="discover-wrapper">
+    <div class="row">
+      <div class="search-result-filter input-field col m2">
+        <p id="filter-title">Filter Results:</p>
+        <div class="col m8">
+          <p>Avg. Review</p>
+        </div>
+        <div class="col m4">
+          <select class="filter-dropdown" name="reviewval" onchange="if (this.selectedIndex)returna searchData();">
+              <option selected disabled>-</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+          </select>
+        </div>
+      </div>
+      <div class="container">
+      <div class="search-bar-container col s1 m10 offset-m1 offset-s1">
           <%= form_tag('/discover', method: :get, role: 'form', :id=>"discover-search-form", remote: true) do %>
 
-          <div class="input-field">
-            <%= text_field_tag :search_query, params[:search_query] , type: 'search', id: "user_search", :icon=>"material-icons", :onclick=>"searchData()" %>
-            <label for="search"><i class="material-icons">search</i></label>
+          <div class="input-field col m9">
+            <%= text_field_tag :search_query, params[:search_query], placeholder: 'Search...', type: 'search', id: "user_search", :icon=>"material-icons", :onclick=>"searchData()" %>
+            <!-- <label for="search"><i class="material-icons">search</i></label> -->
           </div>
 
+          <div class="search-filter-container col m3">
             <select name="filtertype" onchange="if (this.selectedIndex) searchData();">
+                <option selected disabled>Search by</option>
                 <option value="Both">Users and Portfolios</option>
                 <option value="User">User</option>
                 <option value="Portfolio">Portfolio</option>
             </select>
-
-
-          <div class="input-field">
-            <select name="reviewval" onchange="if (this.selectedIndex)returna searchData();">
-              <option disabled selected value> Select Review </option>
-
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-
-            </select>
           </div>
 
-
-
+          <% end %>
         </div>
-      </nav>
-
-
-
-
-    </div>
-    <% end %>
-
 
     <!-- Cards container -->
-    <div class="col s12 m12 l9">
+    <div class="col m10 offset-m1" >
 
        <div class="user_results">
 
 
-    </div>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ </div>
 </div>
+
 
 
 <script>

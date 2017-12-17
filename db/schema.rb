@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 20171217051809) do
     t.string "full_name"
     t.string "display_name"
     t.string "email"
+    t.string "creator_type"
     t.integer "rating"
     t.string "phone_number"
     t.string "biography"
