@@ -9,6 +9,4 @@ if Rails.env == "production"
               service_name: 'es',
               region: ENV['AWS_REGION']
   end
-else
-  Searchkick.client = Elasticsearch::Transport::Client.new(hosts: "http://localhost:9200/")
 end

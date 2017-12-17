@@ -23,12 +23,12 @@ class User < ApplicationRecord
     validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
     scope :search_import, -> { includes(:tags) }
     recommends :photos, :portfolios, :users
-    searchkick word_start: [:first_name, :last_name, :display_name, :portfolio_tags, :portfolio_names], settings: {index: {refresh_interval: "30s"}}
+    searchkick word_start: [:first_name, :last_name, :display_name, :portfolio_tags, :portfolio_names], callbacks: :queue, settings: {index: {refresh_interval: "30s"}}
     after_commit :reindex_users
 
 
     def reindex_users
-      self.reindex(async: true)
+      Searchkick::ProcessQueueJob.perform_later(class_name: "User")
     end
 
 
