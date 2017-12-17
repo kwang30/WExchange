@@ -61,6 +61,8 @@ $(document).ready( function(){
   $('select').material_select();
   $('select').material_select('destroy');
 
+});
+
 function displayDashboardTab(tabName) {
   if (tabName == "outgoing") {
     $('ul.tabs').tabs('select_tab', 'dashboard-sidebar-outgoing-requests');

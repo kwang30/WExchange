@@ -5,11 +5,10 @@
         <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s10", required: true %>
         <%= f.input :description, label: "Tagline (a short introduction to your portfolio)", class: "materialize-textarea col s10", required: true %>
         <%= f.input :long_description, label: "Description", class: "materialize-textarea col s10", required: true %>
-
-
-        <%=render 'layouts/uploads', f:f %>
+        <%= f.input :content_type, collection: ['Audio','Video', 'Graphic Design', 'Photography', 'Other'], class: "content-type-select" %>
+        <br/>
+        <%= render 'layouts/uploads', f:f %>
         <%= f.input :tag_list , collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>
-
         <div class="create-portfolio-button-wrapper col s3">
           <%= hidden_field(:user_id, current_user.id.to_i) %>
           <%= f.submit "Create", class: "waves-effect waves-light btn" %>

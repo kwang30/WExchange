@@ -11,16 +11,15 @@
         </div>
         <p class="short-description"><%= portfolio.description %></p>
       </div>
-      <p>Tags:
+
+      <div class="collapsible-body">
+        <p class="long-description">More detailed information about the service goes here.</p>
+        <p>Tags:</p>
         <% portfolio.tags.each do |tag| %>
           <div class="chip">
           <%= link_to tag.name, discover_path, :tag=>tag.name %>
           </div>
         <% end %>
-
-
-      <div class="collapsible-body">
-        <p class="long-description">More detailed information about the service goes here.</p>
       </div>
 
       <%= render partial: 'layouts/portfolio_media', locals: { portfolio: portfolio } %>
@@ -34,7 +33,7 @@
 
 
 
-<script>
+<!-- <script>
 $(".various").fancybox({
     maxWidth: 800,
     maxHeight: 600,
@@ -59,4 +58,4 @@ $(".fancybox").fancybox({
         }
     }
 });
-</script>
+</script> -->

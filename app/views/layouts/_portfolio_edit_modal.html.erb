@@ -8,8 +8,8 @@
         <%= f.input :name, placeholder: "Ex. Graphic Design", class: "col s12" %>
         <%= f.input :description, label: "Tagline (a short introduction to your portfolio)", class: "materialize-textarea col s12" %>
         <%= f.input :long_description, label: "Description", class: "materialize-textarea col s12" %>
-      <div class="field">
-
+        <%= f.input :content_type, collection: ['Audio','Video', 'Graphic Design', 'Photography', 'Other'], class: "content-type-select" %>
+        <div class="field">
         <% if !portfolio.nil? && !portfolio.photos.nil?%>
             <%portfolio.photos.each do |photo| %>
                 <%= image_tag photo.image.url, :alt => "Portfolio Image", id:"portfolio-picture"%>
@@ -17,11 +17,9 @@
                 <%= label_tag "start", "Delete" %>
             <% end %>
         <% end %>
-
         <%=   f.input :tag_list, collection: @tags, value_method: :name, label_method: :name, input_html: { multiple: true, class: 'tags' }%>
       <%=render 'layouts/uploads', f:f %>
-    </div>
-
+      </div>
       <div class="button-wrapper col s12">
         <%= hidden_field(:user_id, current_user.id.to_i) %>
         <%= f.submit "Save", class: "waves-effect waves-light btn" %>
