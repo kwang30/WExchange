@@ -17,6 +17,7 @@ class DiscoverController < ApplicationController
     end
 
     puts @users.size
+    puts "LOLLOL"
     puts User.search("kevin", fields: [:first_nam]).size
     respond_to do |format|
        format.html
