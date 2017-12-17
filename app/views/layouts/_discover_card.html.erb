@@ -1,13 +1,14 @@
-<div class="card discover-card">
-  <div class="card-image">
-    <%= image_tag locals[:user].image.url, :size => '150x200'%>
+<%= link_to locals[:user], class: 'card discover-card' do %>
+  <div class="card discover-card">
+    <div class="card-image">
+      <div class="card-image-wrapper row">
+        <%= image_tag locals[:user].image.url, class: "col m12" %>
+      </div>
+    </div>
+    <div class="card-content">
+      <span class="card-title"><%= locals[:user].first_name + " " + locals[:user].last_name %></span>
+      <span class="card-subtitle"><%= "@" + locals[:user].display_name %></span>
+      <span class="card-about-me"><%= locals[:user].biography %></span>
+    </div>
   </div>
-  <div class="card-content">
-    <span class="card-title"><%= locals[:user].first_name + " " + locals[:user].last_name %></span>
-    <span class="card-subtitle"><%= "@" + locals[:user].display_name %></span>
-    <span class="card-about-me"><%= locals[:user].biography %></span>
-  </div>
-  <div class="card-action">
-    <%= link_to 'View Profile', locals[:user], class: 'view-profile-link' %>
-  </div>
-</div>
+<% end %>
