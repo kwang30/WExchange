@@ -19,9 +19,9 @@
 //= require pusher.min.js
 //= require nouislider
 //= require select2
-//= require twitter/typeahead
-//= require materialize-sprockets
+//= require materialize
 //= require dropzone
+//= require fancybox
 //= require multi-select
 //= require_self
 //= require_tree .
@@ -30,6 +30,7 @@
 $(document).ready( function(){
   $('.modal').modal();
   $('.tooltipped').tooltip();
+  $('a.fancybox').fancybox();
   $('.datepicker').pickadate({
     selectMonths: true,
     closeOnSelect: true

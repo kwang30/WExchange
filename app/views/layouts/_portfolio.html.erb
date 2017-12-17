@@ -21,11 +21,7 @@
           </div>
         <% end %>
       </div>
-
       <%= render partial: 'layouts/portfolio_media', locals: { portfolio: portfolio } %>
-
-        <%= link_to "Add" , {action: "addPhoto", controller: "portfolios",  id: portfolio.id}, class: "active waves-effect waves-light btn"%>
-        <%= link_to "Delete" , {action: "delete", controller: "portfolios",  id: portfolio.id}, method: "delete", class: "active waves-effect waves-light btn"%>
     </li>
   </ul>
 </div>

@@ -1,16 +1,16 @@
 <div class="collapsible-footer">
-  <div class="carousel">
+  <div class="media-wrapper row">
   <%portfolio.photos.each do |photo| %>
-      <a class="fancybox" rel="portfolio"+"<%portfolio.id%> href="<%= photo.image.url %>">
+      <a class="fancybox col m4" rel="portfolio"+"<%portfolio.id%> href="<%= photo.image.url %>">
           <% if photo.is_image_type? %>
               <%= image_tag photo.image.url(:medium) %>
           <%elsif photo.is_video_type? %>
               <%= video_tag  photo.image.url, :size => "320x240", controls: true %>
           <%elsif photo.is_audio_type? %>
             <%= audio_tag photo.image.url, controls: true, autoplay: false %>
-          <%end %>
+          <% end %>
       </a>
-      <%end %>
+    <%end %>
   </div>
 </div>
 
