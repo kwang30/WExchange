@@ -5,7 +5,10 @@
       <div class="edit-picture-text-wrapper">
         <p class="profile-picture-hover-text">Update Profile Picture</p>
       </div>
-      <%= image_tag @user.image.url(:large)%>
+<p>
+
+  <%= image_tag @user.image.url %>
+</p>
 
       <% end %>
       <%= render 'layouts/profile_edit_picture_modal' %>
