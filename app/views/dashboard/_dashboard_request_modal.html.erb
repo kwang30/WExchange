@@ -25,11 +25,16 @@
       <!-- CREATOR ACCEPTING / DECLINING REQUEST -->
       <% if request.status == 0 && request.creator_id == current_user.id %>
       <div class="creator-accept-decline-input-wrapper">
+
+    
         <div class="checkbox-wrapper">
           <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
           <%= label_tag :include_message, "Include Message to Sender" %>
         </div>
         <%= f.text_area :response_message, placeholder: "Message", disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
+
+
+
         <div class="input-field inline row price-input">
           <div class="col s12">
             Price($):
@@ -48,8 +53,6 @@
        <!-- CLIENT ACCEPTING / DECLINING PRICE -->
        <% if request.status == 1 && request.recipient_id == current_user.id %>
        <div class="creator-accept-decline-input-wrapper">
-         <%= puts "========== ALEC19" %>
-         <%= puts request.inspect %>
         <div class="client-accept-decline-price">
           Price: <span>$<%= request.price %></span>
         </div>
@@ -62,6 +65,7 @@
 
       <!-- CREATOR SUBMIT & CANCEL "IN PROGRESS" BUTTONS -->
       <% if request.status == 2 && request.creator_id == current_user.id %>
+
       <%= f.submit "Send", class: "waves-effect waves-light btn", name: "send_content"  %>
       <%= f.submit "Cancel Request", class: "waves-effect waves-light btn", name: "cancel" %>
       <% end %>
@@ -83,11 +87,9 @@
 
       <!-- CLIENT COMPLETED REQUEST RATING -->
       <% if request.status == 4 && request.recipient_id == current_user %>
-        <%= @user=User.where("id = "+ request.recipient_id) %>
+        <%= @user=User.where("id = "+ request.creator_id) %>
         <%= form_for([@user, @user.reviews.new]) do |f| %>
-        	<div id="user_stars">
-        		<%= f.text_area :text, rows: 3, class: "form-control" %>
-        	</div>
+          <div id="user_stars"> </div>
         	<div class="actions">
         		<%= f.submit "Create", class: "btn btn-primary" %>
         	</div>
@@ -102,7 +104,7 @@
 
       <script>
       $('#user_stars').raty({
-      	path: '/assets',
+    	   path: '/assets',
       	scoreName: 'review[star]',
       	score: 3
       });

@@ -16,12 +16,13 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     validates :password, presence: true, length: { minimum: 6 }, on: :create
     has_secure_password
-
-
     has_attached_file :image, styles: {small: '50X50', thumb: '100x100>', square: '200x200#', medium: '300x300>', large: '600x600>'}, :default_url => "default.jpeg"
+    
+
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
-    validates_with AttachmentSizeValidator, attributes: :image, less_than: 5.megabytes
+    validates_with AttachmentSizeValidator, attributes: :image, less_than: 10.megabytes
     scope :search_import, -> { includes(:tags) }
+
     recommends :photos, :portfolios, :users
     searchkick word_start: [:first_name, :last_name, :display_name, :portfolio_tags, :portfolio_names], callbacks: :queue, settings: {index: {refresh_interval: "30s"}}
     after_commit :reindex_users

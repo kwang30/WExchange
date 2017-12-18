@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @portfolio.photos.build
     @tags = ActsAsTaggableOn::Tag.all
     current_user.like(@user)
+
     Delayed::Job.enqueue Recommendable::Workers::DelayedJob.new(current_user.id), :queue => 'recommendations'
   end
 

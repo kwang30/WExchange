@@ -1,5 +1,6 @@
 @import "materialize/components/color";
 
+#discover-wrapper {
 #user_search {
 color: color("blue", "base")  !important;
 }
@@ -102,4 +103,5 @@ color: color("blue", "base")  !important;
     text-overflow: ellipsis;
   }
 
+}
 }
