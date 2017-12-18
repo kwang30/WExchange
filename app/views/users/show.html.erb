@@ -1,35 +1,28 @@
 <div class="container row" id="profile-wrapper">
   <div class="left-side col s5 l4">
     <div class="profile-img">
-      <%= link_to "#profile_edit_picture_modal", class: "modal-trigger", id: "profile-edit-picture-link" do %>
-      <div class="edit-picture-text-wrapper">
-        <p class="profile-picture-hover-text">Update Profile Picture</p>
-      </div>
-      <%= image_tag @user.image.url %>
-      <% end %>
-      <%= render 'layouts/profile_edit_picture_modal' %>
-      <%= link_to "Edit Tags", '#edit-user-tags-modal', class: "modal-trigger waves-effect waves-light btn", id: "tags-edit-button" %>
-      <%= render 'layouts/edit_user_tags' %>
-      <p>Tags:
-        <% @user.tags.each do |tag| %>
-          <%= link_to tag.name, discover_path(tag.name ), name: "tags", class: "waves-effect waves-light btn"%>
+      <% if @user.id == current_user.id %>
+        <%= link_to "#profile_edit_picture_modal", class: "modal-trigger", id: "profile-edit-picture-link" do %>
+        <div class="edit-picture-text-wrapper">
+          <p class="profile-picture-hover-text">Update Profile Picture</p>
+        </div>
+        <%= image_tag @user.image.url %>
         <% end %>
-      </p>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-
-
-    <div>
+        <%= render 'layouts/profile_edit_picture_modal' %>
+      <% else %>
+        <%= image_tag @user.image.url %>
+      <% end %>
       <p class="name"><%= @name %></p>
       <p class="display-name">@<%= @user.display_name %></p>
       <%if current_user.id!=params[:id].to_i%>
-        <%= link_to "Request Job", '#transaction-create-modal', class: "modal-trigger waves-effect waves-light btn-small", id: "transaction-create-button" %>
+        <%= link_to "Request Job", '#transaction-create-modal', class: "modal-trigger waves-effect waves-light btn btn-small", id: "transaction-create-button" %>
         <%= render 'layouts/transaction_create_modal' %>
       <%end%>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
   </div>
 
   <div class="right-side col s7 l8">
@@ -55,16 +48,6 @@
     <% end %>
   </div>
 </div>
-
-
-<style>
-
-.btn-small {
-    height: 24px;
-    line-height: 24px;
-    padding: 0 0.5rem;
-}
-</style>
 
 
   <script>
