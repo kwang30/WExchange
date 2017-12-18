@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218012207) do
+ActiveRecord::Schema.define(version: 20171218000338) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20171218012207) do
     t.integer "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "creator_files_file_name"
-    t.string "creator_files_content_type"
-    t.integer "creator_files_file_size"
-    t.datetime "creator_files_updated_at"
+    t.string "creator_file_file_name"
+    t.string "creator_file_content_type"
+    t.integer "creator_file_file_size"
+    t.datetime "creator_file_updated_at"
     t.index ["imageable_type", "imageable_id"], name: "index_creatorworks_on_imageable_type_and_imageable_id"
   end
 
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20171218012207) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "balance"
     t.string "long_description"
     t.string "content_type"
   end
@@ -99,10 +100,6 @@ ActiveRecord::Schema.define(version: 20171218012207) do
     t.integer "imageable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "request_files_file_name"
-    t.string "request_files_content_type"
-    t.integer "request_files_file_size"
-    t.datetime "request_files_updated_at"
     t.string "request_file_file_name"
     t.string "request_file_content_type"
     t.integer "request_file_file_size"
@@ -153,9 +150,9 @@ ActiveRecord::Schema.define(version: 20171218012207) do
     t.integer "recipient_id"
     t.integer "creator_id"
     t.string "request_message"
-    t.string "transaction_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "transaction_title"
     t.datetime "deadline"
     t.integer "status"
     t.text "progress"
@@ -169,7 +166,6 @@ ActiveRecord::Schema.define(version: 20171218012207) do
     t.string "full_name"
     t.string "display_name"
     t.string "email"
-    t.string "creator_type"
     t.integer "rating"
     t.string "phone_number"
     t.string "biography"
