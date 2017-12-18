@@ -13,6 +13,7 @@ class PortfolioControllerTest < ActionDispatch::IntegrationTest
                                          description: "Portfolio tagline",
                                          long_description: "Description"}}
     end
+
   end
 
 end
