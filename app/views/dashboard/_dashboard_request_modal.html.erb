@@ -25,11 +25,20 @@
       <!-- CREATOR ACCEPTING / DECLINING REQUEST -->
       <% if request.status == 0 && request.creator_id == current_user.id %>
       <div class="creator-accept-decline-input-wrapper">
+
+        <% if request.requestworks!=null %>
+          <% request.requestworks.each do |work| %>
+          <%= image_tag work.request_file.url %>
+          <% end %>
+        <% end %>
         <div class="checkbox-wrapper">
           <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
           <%= label_tag :include_message, "Include Message to Sender" %>
         </div>
         <%= f.text_area :response_message, placeholder: "Message", disabled: false, class: "materialize-textarea col-s12 response-textarea", size: "12x12"  %>
+
+
+
         <div class="input-field inline row price-input">
           <div class="col s12">
             Price($):
