@@ -46,6 +46,11 @@ color: color("blue", "base")  !important;
   height: 325px;
   color: black;
 
+  .container .row {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
   .row .col {
     padding: 0;
   }
