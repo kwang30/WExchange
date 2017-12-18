@@ -16,4 +16,11 @@ WExchange is for everyone. Whether you are a content-creator looking for clients
 Abu Batjargal (@abubatjargal), Alec Rodgers (@AlecR), Kevin Wang (@kwang30) & Paul Cabrera (@paulcabrera93).
 
 ### Running The Application Locally
-Since this app uses an elasticsearch server for searching, you will need to first install elasticsearch on your machine. Then, you will need run redis-server in your terminal. In addition, since our app does background processing of certain jobs with dealyed jobs, you will need to run  rake jobs:work.
+Becasue this application uses elasticsearch, redis, and delayed jobs, you will need to configure your machine before running the application. To run the application:
+1. build elasticsearch as mentioned in Build Elasticsearch.
+2. type redis-server in terminal.
+3. open another terminal window and type: rake jobs:work.
+4. open a final terminal window and type: rails s
+
+### Running App on Heroku Issues
+Sometimes the server freezes on heroku for user processes due the background processing of updating user recommednation fitlering and elsaticsearch API reindexing and redis-server when viewing user profiles. You may get a "Reqest Timeout" Error. Please re-render the page if theres seems to be issues with it.
