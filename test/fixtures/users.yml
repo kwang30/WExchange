@@ -5,6 +5,13 @@ sally:
   email: sadams@gmail.com
   password_digest: <%= User.digest('123456') %>
 
+michael:
+  first_name: Michael
+  last_name: Andrews
+  display_name: michael
+  email: mandrews@gmail.com
+  password_digest: <%= User.digest('123456') %>
+
 <% 9.times do |n| %>
 user_<%= n %>:
   first_name:  <%= "User #{n}" %>
