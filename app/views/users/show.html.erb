@@ -5,9 +5,7 @@
       <div class="edit-picture-text-wrapper">
         <p class="profile-picture-hover-text">Update Profile Picture</p>
       </div>
-
-  <%= image_tag @user.image.url %>
-
+      <%= image_tag @user.image.url %>
       <% end %>
       <%= render 'layouts/profile_edit_picture_modal' %>
       <%= link_to "Edit Tags", '#edit-user-tags-modal', class: "modal-trigger waves-effect waves-light btn", id: "tags-edit-button" %>
@@ -22,6 +20,11 @@
     <br />
     <br />
     <br />
+    <div id="user_stars" data=<%User.find_by(params[:id]).reviews.average(:star)%>>
+<p>
+  <%=User.find_by(params[:id]).reviews.count %> reviews
+</p>
+    </div>
 
     <div>
       <p class="name"><%= @name %></p>
@@ -33,6 +36,7 @@
     </div>
 
   </div>
+
   <div class="right-side col s7 l8">
     <div class="card about-me-wrapper">
         <span class="card-header">
@@ -66,3 +70,13 @@
     padding: 0 0.5rem;
 }
 </style>
+
+
+  <script>
+  $('#user_stars').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data');
+  }
+  });
+  </script>

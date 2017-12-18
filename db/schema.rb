@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217051809) do
+ActiveRecord::Schema.define(version: 20171218012207) do
 
   create_table "chats", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20171217051809) do
     t.index ["recipient_id", "sender_id"], name: "index_chats_on_recipient_id_and_sender_id", unique: true
     t.index ["recipient_id"], name: "index_chats_on_recipient_id"
     t.index ["sender_id"], name: "index_chats_on_sender_id"
+  end
+
+  create_table "creatorworks", force: :cascade do |t|
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "creator_files_file_name"
+    t.string "creator_files_content_type"
+    t.integer "creator_files_file_size"
+    t.datetime "creator_files_updated_at"
+    t.index ["imageable_type", "imageable_id"], name: "index_creatorworks_on_imageable_type_and_imageable_id"
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -82,6 +94,22 @@ ActiveRecord::Schema.define(version: 20171217051809) do
     t.string "content_type"
   end
 
+  create_table "requestworks", force: :cascade do |t|
+    t.string "imageable_type"
+    t.integer "imageable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "request_files_file_name"
+    t.string "request_files_content_type"
+    t.integer "request_files_file_size"
+    t.datetime "request_files_updated_at"
+    t.string "request_file_file_name"
+    t.string "request_file_content_type"
+    t.integer "request_file_file_size"
+    t.datetime "request_file_updated_at"
+    t.index ["imageable_type", "imageable_id"], name: "index_requestworks_on_imageable_type_and_imageable_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "star", default: 1
     t.text "text"
@@ -141,6 +169,7 @@ ActiveRecord::Schema.define(version: 20171217051809) do
     t.string "full_name"
     t.string "display_name"
     t.string "email"
+    t.string "creator_type"
     t.integer "rating"
     t.string "phone_number"
     t.string "biography"

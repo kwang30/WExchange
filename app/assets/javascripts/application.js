@@ -24,6 +24,8 @@
 //= require fancybox
 //= require multi-select
 //= require_self
+//= require jquery.raty
+//= require jquery.raty.min
 //= require_tree .
 
 

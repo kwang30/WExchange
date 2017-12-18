@@ -14,6 +14,13 @@ class TransactionsController < ApplicationController
     @request.creator_id = params[:transaction][:creator_id]
     @request.status = 0
     if @request.save
+      if !params[:request_files].nil?
+        params[:request_files].each do |image|
+          puts image
+            @request.requestworks.create!(:request_file => image)
+        end
+      end
+
       Notification.create(recipient: User.find_by(id: params[:transaction][:creator_id]), actor: current_user, action: "sent you a request", notifiable: @request, destination_url: dashboard_path)
 
       pusher = Pusher::Client.new(
@@ -54,6 +61,11 @@ class TransactionsController < ApplicationController
     elsif params["send_content"]
       pusherID = @request.recipient_id;
       creator_send_content @request
+      if !params[:creator_files].nil?
+        params[:creator_files].each do |image|
+            @request.creatorwork.create!(:image => image)
+        end
+      end
     elsif params["client_accept"]
       pusherID = @request.creator_id;
       client_accept_content @request
@@ -68,6 +80,8 @@ class TransactionsController < ApplicationController
       end
       cancel @request
     end
+
+
 
     pusher = Pusher::Client.new(
       app_id: ENV['PUSHER_APP_ID'],
@@ -147,12 +161,22 @@ class TransactionsController < ApplicationController
     end
   end
 
-  private
-     def request_params
-       params.require(:transaction).permit(:request_message, :transaction_title, :deadline, :status, :price)
-     end
 
-     def get_request
-       @request = Transaction.find(params[:id])
-     end
-end
+    private
+       def request_params
+         params.require(:transaction).permit(:creator_id, :request_file, :request_message, :transaction_title, :deadline, :status, :price, :user_id, request_work_attributes:[:request_file], creator_work_attributes: [:creator_file])
+       end
+
+       def get_request
+         @request = Transaction.find(params[:id])
+       end
+
+       def creator_work_params
+         creatorwork.require(:creatorwork).permit(:creator_id, :creator_file)
+       end
+
+       def request_work_params
+         params.require(:requestwork).permit(:request_id, :request_file)
+       end
+
+  end
