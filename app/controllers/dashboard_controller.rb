@@ -36,7 +36,7 @@ class DashboardController < ApplicationController
     puts @markers
     respond_to do |format|
       format.js {
-        render 'update_progress_tracker.js.erb'
+        render 'update_progress_tracker.js.erb', locals: {request: @request_to_save}
       }
       format.json
     end

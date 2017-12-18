@@ -1,4 +1,4 @@
-$("#transaction_progress_tracker").html("<%= raw escape_javascript(render(:partial => 'layouts/transaction_progress_tracker')) %>")
+$("#transaction-progress-tracker").html(`<%= render partial: 'layouts/transaction_progress_tracker', locals: { request: request } %>`)
 
 $('input:checkbox').change(
   function(){
