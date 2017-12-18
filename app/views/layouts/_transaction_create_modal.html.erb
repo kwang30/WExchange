@@ -15,11 +15,6 @@
         <%= f.date_field :deadline %>
       </div>
 
-      <div class="input-field">
-        <%= file_field_tag "request_files[]", type: :file, multiple: true, id: "files" %>
-
-      </div>
-
       <%= f.hidden_field :creator_id, value: params[:id] %>
       <%= f.submit "Send", url: {controller: 'transactions', action: 'create'}, class: "waves-effect waves-light btn" %>
     <% end %>

@@ -26,9 +26,7 @@
       <% if request.status == 0 && request.creator_id == current_user.id %>
       <div class="creator-accept-decline-input-wrapper">
 
-          <% request.requestworks.each do |work| %>
-          <%= image_tag work.request_file.url %>
-          <% end %>
+    
         <div class="checkbox-wrapper">
           <%= check_box_tag :include_message, "", false, class: "include-message-check-box" %>
           <%= label_tag :include_message, "Include Message to Sender" %>
@@ -67,10 +65,6 @@
 
       <!-- CREATOR SUBMIT & CANCEL "IN PROGRESS" BUTTONS -->
       <% if request.status == 2 && request.creator_id == current_user.id %>
-
-                <% request.requestworks.each do |work| %>
-                <%= image_tag work.request_file.url %>
-                <% end %>
 
       <%= f.submit "Send", class: "waves-effect waves-light btn", name: "send_content"  %>
       <%= f.submit "Cancel Request", class: "waves-effect waves-light btn", name: "cancel" %>
