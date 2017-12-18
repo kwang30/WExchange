@@ -47,11 +47,6 @@ color: color("blue", "base")  !important;
   height: 325px;
   color: black;
 
-  .container .row {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
   .row .col {
     padding: 0;
   }
@@ -60,7 +55,7 @@ color: color("blue", "base")  !important;
     display: block;
     height: 150px;
     width: 150px;
-    margin-bottom: 0px;
+    margin: auto !important;
     img {
       margin-top: 20px;
       max-width: 100%;
