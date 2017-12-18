@@ -61,6 +61,21 @@ $(document).ready( function(){
   $('select').material_select();
   $('select').material_select('destroy');
 
+  $('input:checkbox').change(
+    function(){
+      console.log(this.closest("div").id)
+          $.ajax({
+            url: '/update_marker',
+            data: {
+              id: this.id,
+              request_id: this.closest("div").id
+            },
+            // success: function(data) {
+            //   $("#someid").append(data.sometext);
+            // }
+          });
+  });
+
 });
 
 function displayDashboardTab(tabName) {
