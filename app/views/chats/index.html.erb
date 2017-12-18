@@ -32,7 +32,6 @@
     var channel = pusher.subscribe('user_<%= current_user.id %>');
     var activeUser = -1;
     channel.bind('refresh_chats', function(data) {
-      console.log("ACTIVE:" + activeUser);
       $.ajax({
         type: "POST",
         url: '/chats/refresh',

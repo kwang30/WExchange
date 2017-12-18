@@ -36,7 +36,7 @@ class DashboardController < ApplicationController
     puts @markers
     respond_to do |format|
       format.js {
-        render 'update_progress_tracker.js.erb'
+        render 'update_progress_tracker.js.erb', locals: {request: @request_to_save}
       }
       format.json
     end
@@ -44,7 +44,8 @@ class DashboardController < ApplicationController
 
   def update_marker
     marker_id = params[:id].sub!("marker-check-", "")
-    @selected_request = Transaction.find_by(id: @request.id)
+    puts params[:request_id]
+    @selected_request = Transaction.find_by(id: params[:request_id])
 
     @markers_to_update = @selected_request.progress
     puts @markers_to_update
@@ -55,7 +56,6 @@ class DashboardController < ApplicationController
     end
     @selected_request.progress = @markers_to_update
     @selected_request.save
-    puts Transaction.find_by(id: @@request.id).progress
   end
 
   def swap_marker

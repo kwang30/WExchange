@@ -1,0 +1,102 @@
+@import "materialize/components/color";
+
+#discover-wrapper {
+#user_search {
+color: color("blue", "base")  !important;
+}
+
+.search-bar-container {
+background-color: white !important;
+height: 80px !important;
+}
+
+.input-field {
+float: left;
+}
+
+.search-filter-container {
+margin-top: 15px;
+float: right;
+color: color("blue", "base") ;
+}
+
+.search-result-filter {
+z-index: 100;
+position: fixed !important;
+background-color: white !important;
+float: left;
+margin-top: 100px;
+margin-left: 20px !important;
+}
+
+.search-result-filter p {
+color: color("blue", "base")  !important;
+margin-left: 10px;
+}
+
+#filter-title {
+font-size: 20px;
+}
+
+.filter-dropdown {
+color: color("blue", "base")  !important;
+}
+
+.discover-card {
+  margin: 10px;
+  height: 325px;
+  color: black;
+
+  .row .col {
+    padding: 0;
+  }
+
+  .card-image-wrapper {
+    display: block;
+    height: 150px;
+    width: 150px;
+    margin-bottom: 0px;
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      display: block;
+      border-radius: 50%;
+    }
+  }
+
+  .card-title {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-content {
+    padding: 10px 20px;
+    height: 200px;
+  }
+
+  .card-subtitle {
+    display: block;
+    font-weight: lighter;
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+
+  .card-about-me {
+    display: block;
+    /* Fallback for non-webkit */
+    display: -webkit-box;
+    height: 85px;
+    /* Fallback for non-webkit */
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+}
+}
