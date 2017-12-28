@@ -12,6 +12,10 @@ WExchange is for everyone. Whether you are a content-creator looking for clients
 * Secure request flow ensures that content creators receive compensation while clients receive the work they paid for
 * Clean and simple user interface using Materialize
 * Realtime messaging and notifications with Pusher
+* In app notifications with Pusher
+* Background processing with redis server
+* AWS Storage of multimedia 
+* Recommednation system of similar users based on collaborative filtering 
 
 ### Creators
 Abu Batjargal (@abubatjargal), Alec Rodgers (@AlecR), Kevin Wang (@kwang30) & Paul Cabrera (@paulcabrera93).
@@ -21,7 +25,4 @@ Becasue this application uses elasticsearch, redis, and delayed jobs, you will n
 1. build elasticsearch as mentioned in Build Elasticsearch.
 2. type redis-server in terminal.
 3. open another terminal window and type: rake jobs:work.
-4. open a final terminal window and type: rails s
-
-### Running App on Heroku Issues
-Sometimes the server freezes on heroku for user processes due the background processing of updating user recommednation fitlering and elsaticsearch API reindexing and redis-server when viewing user profiles. You may get a "Reqest Timeout" Error. Please re-render the page if theres seems to be issues with it.
+4. Open a third terminal window and type: rails s
